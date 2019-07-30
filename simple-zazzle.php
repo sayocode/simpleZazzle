@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Simple Zazzle
+Plugin Name: SC Simple Zazzle
 Plugin URI: https://sayoko-ct.com/
 Description: ZazzleのRSSから商品一覧を出力
 Author: sayoko
@@ -31,26 +31,43 @@ function add_plugin_admin_menu() {
 }
  
 function display_plugin_admin_page() {
-	 ?>
-	<div class="wrap">
-		<p><a href="?page=simple-zazzle-sub">new</a></p>
-		<form method="post" action="options.php">
-			<?php wp_nonce_field('update-options'); ?>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row">アフィリエイトコード</th>
-					<td><input type="text" name="affiliate" value="<?php echo get_option('affiliate'); ?>" /></td>
-				</tr>
-			</table>
-			<input type="hidden" name="action" value="update" />
-			<input type="hidden" name="page_options" value="affiliate" />
-			<p class="submit">
-				<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-			</p>
-		</form>
-	</div>
+    // POSTデータがあれば設定を更新
+    if (isset($_POST['affiliate'])) {
+        // POSTデータの'"などがエスケープされるのでwp_unslashで戻して保存
+        update_option('affiliate', wp_unslash($_POST['affiliate']));
+        // チェックボックスはチェックされないとキーも受け取れないので、ない時は0にする
+        $affiliate_agree = isset($_POST['affiliate_agree']) ? 1 : 0;
+        update_option('affiliate_agree', $affiliate_agree);
+    }
+?>
+<div class="wrap">
+<a href="?page=simple-zazzle-sub">新規</a>
+<?php
+    // 更新完了を通知
+    if (isset($_POST['affiliate'])) {
+        echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible">
+            <p><strong>設定を保存しました。</strong></p></div>';
+    }
+    $agreeFlg = get_option('affiliate_agree');
+?>
+<h2></h2>
+<form method="post" action="">
+<table class="form-table">
+    <tr id="agreeAffiliate">
+        <td colspan="2"><label>アフィリエイトを利用します&emsp;<input name="affiliate_agree" type="checkbox" id="affiliate_agree" value="1" <?php checked( 1, $agreeFlg); ?> /> </label></td>
+    </tr>
+    <tr class="after-agreeing" <?php if($agreeFlg == 0) { echo 'style="display:none;"'; } ?>>
+        <th scope="row"><label for="affiliate">アフィリエイトコード</label></th>
+        <td><input name="affiliate" type="text" id="affiliate" value="<?php form_option('affiliate'); ?>" class="regular-text" /></td>
+    </tr>
+    
+</table>
+<?php submit_button(); ?>
+</form>
+</div>
 <?php
 }
+
 
  
 function display_plugin_sub_page() {
@@ -83,7 +100,7 @@ if(!is_admin()){
 	if ( $storename_value ) {
 	$rss = simplexml_load_file('https://www.zazzle.co.jp/store/'.$storename_value.'/rss');
 	echo '<ul>';
-	if(empty($affiliate_value)){
+	if(empty($affiliate_value) || empty(get_option('affiliate_agree'))){
 		$affiliate_value = "238522058487844682";
 	}
 
