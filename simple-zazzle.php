@@ -12,7 +12,7 @@ add_action( 'admin_menu', 'add_plugin_admin_menu' );
 function add_plugin_admin_menu() {
 	 add_menu_page(
 		'Simple-Zazzle', // page_title
-		'Simple-Zazzle', // menu_title
+		'Simple Zazzle', // menu_title
 		'administrator', // capability
 		'simple-zazzle', // menu_slug
 		'display_plugin_admin_page', // function
@@ -23,7 +23,7 @@ function add_plugin_admin_menu() {
 	 add_submenu_page(
 		'simple-zazzle', // parent_slug
 		'Simple Zazzle', // page_title
-		'Simple-Zazzle_Sub', // menu_title
+		'新規', // menu_title
 		'administrator', // capability
 		'simple-zazzle-sub', // menu_slug
 		'display_plugin_sub_page' // function
@@ -33,7 +33,7 @@ function add_plugin_admin_menu() {
 function display_plugin_admin_page() {
 	 ?>
 	<div class="wrap">
-		<h2>基本設定</h2>
+		<p><a href="?page=simple-zazzle-sub">new</a></p>
 		<form method="post" action="options.php">
 			<?php wp_nonce_field('update-options'); ?>
 			<table class="form-table">
@@ -48,7 +48,6 @@ function display_plugin_admin_page() {
 				<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 			</p>
 		</form>
-		<p><a href="?page=simple-zazzle-sub">new</a></p>
 	</div>
 <?php
 }
@@ -107,3 +106,6 @@ if(!is_admin()){
 }
 }
 add_shortcode('simple_zazzle', 'echoItemList');
+
+// スタイルとスクリプト
+include('fileRead.php');
