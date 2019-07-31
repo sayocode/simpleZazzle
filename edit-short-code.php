@@ -62,6 +62,7 @@ function mt_options_page()
 
 <form method="post" action="">
 		<table class="form-table">
+            <tr><th>ショートコード</th><td><?php if($newFlg){echo '[simple_zazzle id='.$scid.']';} ?></td></tr>
 			<tr>
 				<th scope="row"><label for="typeSelect">種別</label></th>
 				<td><select name="type" id="typeSelect">
@@ -82,17 +83,17 @@ function mt_options_page()
 			<tr id="hideMarket">
 				<th scope="row"><label for="feedName" id="typeText">ストア名</label></th>
 				<td><input name="feed_name" type="text" id="feedName"
-						value="<?php form_option('feed_name'); ?>" class="regular-text" /></td>
+						value="<?php if($newFlg){echo $feedSetting->feed_name;} ?>" class="regular-text" /></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="defaultChk">Zazzleデフォルトの表示機能を利用する</label></th>
 				<td><label><input name="default" type="checkbox" id="defaultChk"
-							value="1" <?php checked( 1, get_option('default')); ?> /> チェック</label></td>
+							value="1" <?php checked( 1, $feedSetting -> feed_default_flg); ?> /> チェック</label></td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="feedCustom">カスタムHTML</label></th>
 				<td><textarea name="feed_custom" id="feedCustom"
-						class="large-text code" rows="5"><?php echo esc_textarea(get_option('feed_custom')); ?></textarea></td>
+						class="large-text code" rows="5"><?php if($newFlg){echo $feedSetting->feed_custom;} ?></textarea></td>
 			</tr>
 		</table>
 <?php submit_button(); ?>
