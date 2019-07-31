@@ -77,62 +77,7 @@ function display_plugin_sub_page() {
 	include('new-short-code.php');
 }
 
-add_shortcode('simple_zazzle', 'echoItemList');
-function echoItemList($atts) {
-    if(!is_admin()){
-
-        // idの指定がない場合はマーケットプレイスの出力を行う。
-
-        $affiliate_value = '238522058487844682';
-        
-        $scid = $atts['id'];
-        if(empty($scid)){
-            return defaultMarketPlace($affiliate_value);
-        }
-
-        if(!(empty($affiliate_value) && get_option('affiliate_agree') == "1")){
-            $affiliate_value = get_option('affiliate');
-        }
-        $return = '<ul>';
-        
-        $rss = simplexml_load_file('https://www.zazzle.co.jp/store/sayocode/rss');
-
-        foreach($rss->channel->item as $item){
-            $title = $item->title;
-            $link = $item->link.'?rf='.$affiliate_value;
-            $price = $item->price;
-            $image = $item->children('media', true)->thumbnail->attributes()->url;
-
-            $return = $return.'<li><img src="'.$image.'"> <a href="'.$link.'" target="_blank"><span class="title">'.$title.'</span> <span class="price">'.$price.'</span></a></li>';
-
-        }
-        $return = $return.'</ul>';
-        return $return;
-    }
-}
-
-function defaultMarketPlace($affiliate_value){
-    $rss = simplexml_load_file('https://www.zazzle.co.jp/rss');
-    $return = '';
-    foreach($rss->channel->item as $item){
-        $description = $item->description;
-        $link = $item->link;
-        $author = $item->author;
-        $afLink = $link.'?rf='.$affiliate_value;
-
-        // なぜかRSSに作者のリンクが書かれていないので、こちらで変換する。（Zazzle側のバグ）
-        $pattern = '/<span class="ZazzleCollectionItemCellProduct-byLine">作者：(.*)<\/span>/u';
-        $replace = '<span class="ZazzleCollectionItemCellProduct-byLine">作者：'.$author.'</span>';
-        $description = preg_replace($pattern, $replace, str_replace($link, $afLink, $description));
-
-
-        $return = $return.$description;
-    }
-
-    return $return;
-}
-
-
+include('edit-item-list.php');
 include('uninstall.php');
 include('list-table.php');
 include('file-read.php');
