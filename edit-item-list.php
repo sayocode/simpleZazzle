@@ -14,8 +14,8 @@ function echoItemList($atts) {
         // idに対応するデータが存在しない場合にもマーケットプレイスの出力を行う
         global $wpdb;
         $table_name = $wpdb->prefix . "sc_simple_zazzle_table";
-        $results = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE `scid` = '".$scid."'");
-        if(empty($results)){
+        $feedSettings = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE `scid` = '".$scid."'");
+        if(empty($feedSettings)){
             return defaultMarketPlace($affiliate_value);
         }
 
@@ -23,14 +23,14 @@ function echoItemList($atts) {
             $affiliate_value = get_option('affiliate');
         }
 
-        $result = $results[0];
-        $feed_name = $result -> feed_name;
+        $feedSetting = $feedSettings[0];
+        $feed_name = $feedSetting -> feed_name;
 
         $rss = '';
         if($feed_name == 'market'){
             $rss = simplexml_load_file('https://www.zazzle.co.jp/rss');
         } else {
-            $feed_name = $result -> feed_type.'/'.$feed_name.'/';
+            $feed_name = $feedSetting -> feed_type.'/'.$feed_name.'/';
             $rss = simplexml_load_file('https://www.zazzle.co.jp/'.$feed_name.'rss');
             if(empty($rss)){
                 $rss = simplexml_load_file('https://www.zazzle.co.jp/rss');
@@ -38,8 +38,8 @@ function echoItemList($atts) {
         }
 
         // デフォルトフラグが付いているか、feed_customが空の場合はデフォルト形式で出力
-        $feed_custom = $result -> feed_custom;
-        if($result -> feed_default_flg == "1" || empty($feed_custom)){
+        $feed_custom = $feedSetting -> feed_custom;
+        if($feedSetting -> feed_default_flg == "1" || empty($feed_custom)){
             return defaultView($rss, $affiliate_value);
         }
 

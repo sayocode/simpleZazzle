@@ -2,7 +2,7 @@
 /*
 Plugin Name: SC Simple Zazzle
 Plugin URI: https://sayoko-ct.com/
-Description: ZazzleのRSSから商品一覧を出力
+Description: ZazzleのRSSフィードを取得し、HTMLとして出力します。マーケットプレイスのみならず、ストアやコレクションのフィードを設定することができます。アフィリエイトにももちろん対応しているので、紹介料の取りこぼしも防げます！
 Author: sayoko
 Version: 0.1
 Author URI: https://sayoko-ct.com/
@@ -26,7 +26,7 @@ function add_plugin_admin_menu() {
 		'Simple Zazzle', // page_title
 		'新規', // menu_title
 		'administrator', // capability
-		'simple-zazzle-sub', // menu_slug
+		'simple-zazzle-edit', // menu_slug
 		'display_plugin_sub_page' // function
 	 );
 }
@@ -42,7 +42,7 @@ function display_plugin_admin_page() {
 	}
 ?>
 <div class="wrap">
-	<a href="?page=simple-zazzle-sub">新規</a>
+	<a href="?page=simple-zazzle-edit">新規</a>
 	<?php
 	// 更新完了を通知
 	if (isset($_POST['affiliate'])) {
@@ -51,8 +51,46 @@ function display_plugin_admin_page() {
 	}
 	$agreeFlg = get_option('affiliate_agree');
 
-?>
-	<h2></h2>
+	global $wpdb;
+	$table_name = $wpdb->prefix . "sc_simple_zazzle_table";
+	$allFeedSettings = $wpdb->get_results("SELECT * FROM ".$table_name);
+
+	?>
+	<h2>設定一覧</h2>
+	<table id="feedSettingList">
+		<thead>
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>ショートコード</th>
+				<th>タイトル</th>
+				<th>種別</th>
+				<th>ストア名 / コレクション名</th>
+				<th>Zazzleデフォルト表示</th>
+				<th>カスタムHTML</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php 
+		foreach($allFeedSettings as $feedSetting){
+		$scid = $feedSetting -> scid;
+		$feedType = $feedSetting -> feed_type;
+		$defaultFlg = $feedSetting -> feed_default_flg ? 'ON' : 'OFF';
+		$feedCustom = htmlentities($feedSetting -> feed_custom);
+		?>
+			<tr>
+				<td><a href="?page=simple-zazzle-edit&scid=<?php echo $scid; ?>">編集</a></td>
+				<td><?php echo $scid; ?></td>
+				<td><?php echo '[simple_zazzle id='.$scid.']'; ?></td>
+				<td><?php echo ($feedSetting -> title); ?></td>
+				<td><?php echo $feedType; ?></td>
+				<td><?php if($feedType != "market"){echo ($feedSetting -> feed_name);} ?></td>
+				<td><?php echo $defaultFlg; ?></td>
+				<td class="feed-custom"><?php echo $feedCustom; ?></td>
+			</tr>
+	<?php } ?>
+		</tbody>
+	</table>
 	<form method="post" action="">
 		<table class="form-table">
 			<tr id="agreeAffiliate">
@@ -74,7 +112,7 @@ function display_plugin_admin_page() {
 }
 
 function display_plugin_sub_page() {
-	include('new-short-code.php');
+	include('edit-short-code.php');
 }
 
 include('edit-item-list.php');

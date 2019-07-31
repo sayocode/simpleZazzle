@@ -1,3 +1,37 @@
 .form-table .hide {
 	visibility: hidden;
 }
+
+#feedSettingList {
+	background-color: #ffffff;
+	border-spacing: 0px;
+	border: solid 1px #afafaf;
+}
+
+#feedSettingList td{
+	border-top: solid 1px #dedede;
+}
+
+#feedSettingList tr:first-child td{
+	border-top: none;
+}
+
+#feedSettingList td, #feedSettingList th{
+	padding: 0.5em;
+	border-left: solid 1px #dedede;
+}
+
+#feedSettingList tr td:first-child, #feedSettingList th:first-child {
+	border-left: none;
+}
+
+#feedSettingList thead th{
+	border-bottom: solid 1px #afafaf;
+}
+
+#feedSettingList .feed-custom {
+	max-width: 30vw;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
