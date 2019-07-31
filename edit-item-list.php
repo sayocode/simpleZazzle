@@ -33,7 +33,7 @@ function echoItemList($atts) {
             $feed_name = $result -> feed_type.'/'.$feed_name.'/';
             $rss = simplexml_load_file('https://www.zazzle.co.jp/'.$feed_name.'rss');
             if(empty($rss)){
-                return defaultMarketPlace($affiliate_value);
+                $rss = simplexml_load_file('https://www.zazzle.co.jp/rss');
             }
         }
 
@@ -45,12 +45,23 @@ function echoItemList($atts) {
 
         $return = '';
         foreach($rss->channel->item as $item){
-            $title = $item->title;
+            $fullTitle = $item->title;
+            $category = str_replace(' ', '', str_replace($item->children('media', true)->title, '', $fullTitle));
+            $title = str_replace(' ', '', str_replace($category, '', $fullTitle));
             $link = $item->link.'?rf='.$affiliate_value;
             $price = $item->price;
-            $image = $item->children('media', true)->thumbnail->attributes()->url;
+            $image = $item->children('media', true)->content->attributes()->url;
+            $thumbnail = $item->children('media', true)->thumbnail->attributes()->url;
+            $description = nl2br($item->children('media', true)->description);
 
-            $itemDom = str_replace('%title%', $title, $feed_custom);
+            $itemDom = str_replace('%fullTitle%', $fullTitle, $feed_custom);
+            $itemDom = str_replace('%category%', $category, $itemDom);
+            $itemDom = str_replace('%title%', $title, $itemDom);
+            $itemDom = str_replace('%link%', $link, $itemDom);
+            $itemDom = str_replace('%price%', $price, $itemDom);
+            $itemDom = str_replace('%image%', $image, $itemDom);
+            $itemDom = str_replace('%thumbnail%', $thumbnail, $itemDom);
+            $itemDom = str_replace('%description%', $description, $itemDom);
             $return = $return.$itemDom;
         }
         return $return;
