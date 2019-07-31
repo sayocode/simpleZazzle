@@ -115,7 +115,7 @@ function display_plugin_sub_page() {
 	include('edit-short-code.php');
 }
 
-include('edit-item-list.php');
+include('output-item-list.php');
 include('uninstall.php');
 include('list-table.php');
 include('file-read.php');
