@@ -3,10 +3,23 @@ mt_options_page();
 
 function mt_options_page()
 {
+    global $wpdb;
+    $newFlg = isset($_GET['scid']);
+
+    $feedSetting;
+    if($newFlg){
+        $scid = $_GET['scid'];
+        // 初期表示に使うフラグを設定
+        $table_name = $wpdb->prefix . "sc_simple_zazzle_table";
+        $feedSettings = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE `scid` = '".$scid."'");
+        $feedSetting = $feedSettings[0];
+        if(empty($feedSettings)){
+            $newFlg = false;
+        }
+    }
+
     // POSTデータがあれば設定を更新
     if (isset($_POST['feed_name'])) {
-
-        global $wpdb;
 
         // テーブルの接頭辞と名前を指定
         $table_name = $wpdb->prefix . "sc_simple_zazzle_table";
@@ -38,7 +51,7 @@ function mt_options_page()
     }
     ?>
 <div class="wrap">
-	<h2>設定サンプル</h2>
+	<h2>ショートコード設定</h2>
 <?php
     // 更新完了を通知
     if (isset($_POST['feed_name'])) {
@@ -50,14 +63,20 @@ function mt_options_page()
 <form method="post" action="">
 		<table class="form-table">
 			<tr>
-				<th scope="row"><label for="feed_custom">種別</label></th>
+				<th scope="row"><label for="typeSelect">種別</label></th>
 				<td><select name="type" id="typeSelect">
 						<option value="store"
-							<?php selected( 0, get_option( 'type' ) ); ?>>ストア</option>
+							<?php
+                                $selectFlg = $feedSetting->feed_type == 'store' ? ' selected' : '';
+                                echo $selectFlg; ?>>ストア</option>
 						<option value="collections"
-							<?php selected( 1, get_option( 'type' ) ); ?>>コレクション</option>
+							<?php
+                                $selectFlg = $feedSetting->feed_type == 'collections' ? ' selected' : '';
+                                echo $selectFlg; ?>>コレクション</option>
 						<option value="market"
-							<?php selected( 0, get_option( 'type' ) ); ?>>マーケットプレイス</option>
+							<?php
+                                $selectFlg = $feedSetting->feed_type == 'market' ? ' selected' : '';
+                                echo $selectFlg; ?>>マーケットプレイス</option>
 				</select></td>
 			</tr>
 			<tr id="hideMarket">

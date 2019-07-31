@@ -79,7 +79,7 @@ function display_plugin_admin_page() {
 		$feedCustom = htmlentities($feedSetting -> feed_custom);
 		?>
 			<tr>
-				<td><a href="?page=simple-zazzle-edit&scid=<?php echo $scid; ?>">編集</a></td>
+				<td><a class="edit-button button" href="?page=simple-zazzle-edit&scid=<?php echo $scid; ?>">編集</a></td>
 				<td><?php echo $scid; ?></td>
 				<td><?php echo '[simple_zazzle id='.$scid.']'; ?></td>
 				<td><?php echo ($feedSetting -> title); ?></td>
