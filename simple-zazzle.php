@@ -8,11 +8,6 @@ Version: 0.1
 Author URI: https://sayoko-ct.com/
 */
 
-
-include('uninstall.php');
-include('list-table.php');
-include('file-read.php');
-
 add_action( 'admin_menu', 'add_plugin_admin_menu' );
  
 function add_plugin_admin_menu() {
@@ -78,41 +73,66 @@ function display_plugin_admin_page() {
 <?php
 }
 
-
- 
 function display_plugin_sub_page() {
-include('new-short-code.php');
+	include('new-short-code.php');
 }
 
-function echoItemList() {
-if(!is_admin()){
-
-	$storename_value = get_option('storename');
-	$affiliate_value = get_option('affiliate');
-	if ( $storename_value ) {
-	$rss = simplexml_load_file('https://www.zazzle.co.jp/store/'.$storename_value.'/rss');
-	echo '<ul>';
-	if(empty($affiliate_value) || empty(get_option('affiliate_agree'))){
-		$affiliate_value = "238522058487844682";
-	}
-
-	foreach($rss->channel->item as $item){
-		$title = $item->title;
-		$link = $item->link.'?rf='.$affiliate_value;
-		$price = $item->price;
-		$image = $item->children('media', true)->thumbnail->attributes()->url;
-	?>
-
-<li><img src="<?php echo $image; ?>"> <a
-		href="<?php echo $link; ?>" target="_blank">
-		<span class="title">
-			<?php echo $title; ?>
-		</span> <span class="price">
-			<?php echo $price; ?>
-		</span>
-	</a></li>
-<?php } echo '</ul>'; 
-	}
-}
-}
 add_shortcode('simple_zazzle', 'echoItemList');
+function echoItemList($atts) {
+    if(!is_admin()){
+
+        // idの指定がない場合はマーケットプレイスの出力を行う。
+
+        $affiliate_value = '238522058487844682';
+        
+        $scid = $atts['id'];
+        if(empty($scid)){
+            return defaultMarketPlace($affiliate_value);
+        }
+
+        if(!(empty($affiliate_value) && get_option('affiliate_agree') == "1")){
+            $affiliate_value = get_option('affiliate');
+        }
+        $return = '<ul>';
+        
+        $rss = simplexml_load_file('https://www.zazzle.co.jp/store/sayocode/rss');
+
+        foreach($rss->channel->item as $item){
+            $title = $item->title;
+            $link = $item->link.'?rf='.$affiliate_value;
+            $price = $item->price;
+            $image = $item->children('media', true)->thumbnail->attributes()->url;
+
+            $return = $return.'<li><img src="'.$image.'"> <a href="'.$link.'" target="_blank"><span class="title">'.$title.'</span> <span class="price">'.$price.'</span></a></li>';
+
+        }
+        $return = $return.'</ul>';
+        return $return;
+    }
+}
+
+function defaultMarketPlace($affiliate_value){
+    $rss = simplexml_load_file('https://www.zazzle.co.jp/rss');
+    $return = '';
+    foreach($rss->channel->item as $item){
+        $description = $item->description;
+        $link = $item->link;
+        $author = $item->author;
+        $afLink = $link.'?rf='.$affiliate_value;
+
+        // なぜかRSSに作者のリンクが書かれていないので、こちらで変換する。（Zazzle側のバグ）
+        $pattern = '/<span class="ZazzleCollectionItemCellProduct-byLine">作者：(.*)<\/span>/u';
+        $replace = '<span class="ZazzleCollectionItemCellProduct-byLine">作者：'.$author.'</span>';
+        $description = preg_replace($pattern, $replace, str_replace($link, $afLink, $description));
+
+
+        $return = $return.$description;
+    }
+
+    return $return;
+}
+
+
+include('uninstall.php');
+include('list-table.php');
+include('file-read.php');
