@@ -28,7 +28,9 @@ function create_tables()
                feed_name varchar(50) NOT NULL,
                feed_default_flg boolean NOT NULL,
                feed_custom varchar(65535),
-               PRIMARY KEY  (scid)
+               create_date timestamp NOT NULL DEFAULT NOW(),
+               update_date timestamp NOT NULL DEFAULT NOW(),
+               PRIMARY KEY (scid)
           ) {$charset_collate};";
 
     require_once (ABSPATH . 'wp-admin/includes/upgrade.php');

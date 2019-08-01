@@ -46,8 +46,7 @@ function display_plugin_admin_page() {
 	<?php
 	// 更新完了を通知
 	if (isset($_POST['affiliate'])) {
-		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible">
-			<p><strong>設定を保存しました。</strong></p></div>';
+		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
 	}
 	$agreeFlg = get_option('affiliate_agree');
 

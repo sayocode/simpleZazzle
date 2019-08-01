@@ -3,7 +3,7 @@
 add_shortcode('simple_zazzle', 'echoItemList');
 function echoItemList($atts) {
     if(!is_admin()){
-        $affiliate_value = '238522058487844682';
+        $affiliate_value = '238522058487844682&tc=wpscplugin';
 
         // idの指定がない場合はマーケットプレイスの出力を行う。
         $scid = $atts['id'];
