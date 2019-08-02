@@ -16,8 +16,9 @@ function mt_options_page()
     }
 
     // POSTデータがあれば設定を更新
-    if (isset($_POST['feed_name'])) {
+    if (isset($_POST['scid'])) {
 
+        $scid = wp_unslash($_POST['scid']);
         $feed_title = wp_unslash($_POST['title']);
         $feed_type = wp_unslash($_POST['type']);
         $feed_name = wp_unslash($_POST['feed_name']);
@@ -122,8 +123,9 @@ function mt_options_page()
                         class="large-text code" rows="5"><?php if($updateFlg){echo $feedSetting->feed_custom;} ?></textarea></td>
             </tr>
         </table>
-<input type="text" name="update_date" value="<?php if($updateFlg){echo $feedSetting->update_date;} ?>">
-<input type="text" name="update_flg" value="<?php if($updateFlg){echo 'true';} else {echo 'false';} ?>">
+<input type="hidden" name="update_date" value="<?php if($updateFlg){echo $feedSetting->update_date;} ?>">
+<input type="hidden" name="scid" value="<?php if($updateFlg){echo $feedSetting->scid;} ?>">
+<input type="hidden" name="update_flg" value="<?php if($updateFlg){echo 'true';} else {echo 'false';} ?>">
 <?php submit_button(); ?>
 </form>
 </div>
