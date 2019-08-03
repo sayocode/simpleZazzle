@@ -6,6 +6,9 @@ function echoItemList($atts) {
         $affiliate_value = '238522058487844682&tc=wpscplugin';
 
         // idの指定がない場合はマーケットプレイスの出力を行う。
+        if(empty($atts)){
+            return defaultMarketPlace($affiliate_value);
+        }
         $scid = $atts['id'];
         if(empty($scid)){
             return defaultMarketPlace($affiliate_value);
@@ -19,15 +22,15 @@ function echoItemList($atts) {
             return defaultMarketPlace($affiliate_value);
         }
 
-        if(!(empty($affiliate_value) && get_option('affiliate_agree') == '1')){
-            $affiliate_value = get_option('affiliate');
+        $feedSetting = $feedSettings[0];
+        if(!(empty($feedSetting -> affiliate_code) && strcmp(get_option('affiliate_agree'), '1') == 0)){
+            $affiliate_value = $feedSetting -> affiliate_code;
         }
 
-        $feedSetting = $feedSettings[0];
         $feed_name = $feedSetting -> feed_name;
 
         $rss = '';
-        if($feed_name == 'market'){
+        if(strcmp($feedSetting -> feed_type, 'market') == 0){
             $rss = simplexml_load_file('https://www.zazzle.co.jp/rss');
         } else {
             $feed_name = $feedSetting -> feed_type.'/'.$feed_name.'/';

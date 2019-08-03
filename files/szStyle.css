@@ -1,5 +1,25 @@
+.main-table {
+	min-height: 60vh;
+}
+
 .form-table .hide {
 	visibility: hidden;
+}
+
+#agreeAffiliate label {
+	font-size: 0.8rem;
+}
+
+#agreeAffiliate input {
+	font-size: 0.8rem;
+	height: 0.8rem;
+	width: 0.8rem;
+	min-width: 0.8rem;
+}
+
+#agreeAffiliate input:before {
+	margin: -5px 0 0 -6px;
+	width: 0.8rem;
 }
 
 #feedSettingList {
@@ -8,15 +28,15 @@
 	border: solid 1px #afafaf;
 }
 
-#feedSettingList td{
+#feedSettingList td {
 	border-top: solid 1px #dedede;
 }
 
-#feedSettingList tr:first-child td{
+#feedSettingList tr:first-child td {
 	border-top: none;
 }
 
-#feedSettingList td, #feedSettingList th{
+#feedSettingList td, #feedSettingList th {
 	padding: 0.5em;
 	border-left: solid 1px #dedede;
 }
@@ -25,7 +45,7 @@
 	border-left: none;
 }
 
-#feedSettingList thead th{
+#feedSettingList thead th {
 	border-bottom: solid 1px #afafaf;
 }
 
@@ -36,6 +56,6 @@
 	white-space: nowrap;
 }
 
-#feedSettingList .button{
+#feedSettingList .button {
 	background-color: #99ffcc;
 }

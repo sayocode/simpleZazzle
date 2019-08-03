@@ -24,6 +24,7 @@ function mt_options_page()
         $feed_name = wp_unslash($_POST['feed_name']);
         $feed_default_flg = isset($_POST['default']) ? 1 : 0;
         $feed_custom = wp_unslash($_POST['feed_custom']);
+        $affiliate_code = wp_unslash($_POST['affiliate_code']);
         $updateFlg = (($_POST['update_flg'] == 'true') ? true : false);
 
         if($updateFlg){ // 更新
@@ -49,9 +50,10 @@ function mt_options_page()
                                         'feed_default_flg' => $feed_default_flg,
                                         'feed_custom' => $feed_custom,
                                         'update_date' => date('Y-m-d H:i:s'),
+                                        'affiliate_code' => $affiliate_code
                                         ),
                                     array( 'scid' => $scid ),
-                                    array('%s', '%s', '%s', '%d', '%s', '%s'),
+                                    array('%s', '%s', '%s', '%d', '%s', '%s', '%s'),
                                     array('%d')
                                   );
                     echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を更新しました。</strong></p></div>';
@@ -70,8 +72,9 @@ function mt_options_page()
                                              'feed_type' => $feed_type,
                                              'feed_name' => $feed_name,
                                              'feed_default_flg' => $feed_default_flg,
-                                             'feed_custom' => $feed_custom
-                                             ), array('%d', '%s', '%s', '%s', '%d', '%s'));
+                                             'feed_custom' => $feed_custom,
+                                             'affiliate_code' => $affiliate_code
+                                             ), array('%d', '%s', '%s', '%s', '%d', '%s', '%s'));
             echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
             $updateFlg = true;
             $feedSetting = setFeedInfo($wpdb, $table_name, $scid);
@@ -84,7 +87,7 @@ function mt_options_page()
 <form method="post" action="">
         <table class="form-table">
 
-            <tr id="hideMarket">
+            <tr>
                 <th scope="row"><label for="title">タイトル</label></th>
                 <td><input name="title" type="text" id="title"
                         value="<?php if($updateFlg){echo $feedSetting->title;} ?>" class="regular-text" /></td>
@@ -94,17 +97,17 @@ function mt_options_page()
                 <th scope="row"><label for="typeSelect">種別</label></th>
                 <td><select name="type" id="typeSelect">
                         <option value="store"
-                            <?php
+                            <?php if($updateFlg){
                                 $selectFlg = $feedSetting->feed_type == 'store' ? ' selected' : '';
-                                echo $selectFlg; ?>>ストア</option>
+                                echo $selectFlg;} ?>>ストア</option>
                         <option value="collections"
-                            <?php
+                            <?php if($updateFlg){
                                 $selectFlg = $feedSetting->feed_type == 'collections' ? ' selected' : '';
-                                echo $selectFlg; ?>>コレクション</option>
+                                echo $selectFlg;} ?>>コレクション</option>
                         <option value="market"
-                            <?php
+                            <?php if($updateFlg){
                                 $selectFlg = $feedSetting->feed_type == 'market' ? ' selected' : '';
-                                echo $selectFlg; ?>>マーケットプレイス</option>
+                                echo $selectFlg;} ?>>マーケットプレイス</option>
                 </select></td>
             </tr>
             <tr id="hideMarket">
@@ -115,12 +118,22 @@ function mt_options_page()
             <tr>
                 <th scope="row"><label for="defaultChk">Zazzleデフォルトの表示機能を利用する</label></th>
                 <td><label><input name="default" type="checkbox" id="defaultChk"
-                            value="1" <?php checked( 1, $feedSetting -> feed_default_flg); ?> /> チェック</label></td>
+                            value="1" <?php  if($updateFlg){checked( 1, $feedSetting -> feed_default_flg);} ?> /> チェック</label></td>
             </tr>
             <tr>
                 <th scope="row"><label for="feedCustom">カスタムHTML</label></th>
                 <td><textarea name="feed_custom" id="feedCustom"
                         class="large-text code" rows="5"><?php if($updateFlg){echo $feedSetting->feed_custom;} ?></textarea></td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="affiliateAgree">アフィリエイトを利用する</label></th>
+                <td><label><input name="affiliate_agree" type="checkbox" id="affiliateAgree"
+                            value="1" <?php  if($updateFlg){checked( 1, $feedSetting -> affiliate_agree);} ?> /> チェック</label></td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="affiliateCode">アフィリエイトコード</label></th>
+                <td><input name="affiliate_code" type="text" id="affiliateCode"
+                        value="<?php if($updateFlg){echo $feedSetting->affiliate_code;} ?>" class="regular-text" /></td>
             </tr>
         </table>
 <input type="hidden" name="update_date" value="<?php if($updateFlg){echo $feedSetting->update_date;} ?>">

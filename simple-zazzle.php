@@ -56,45 +56,63 @@ function display_plugin_admin_page() {
 
 	?>
 	<h2>設定一覧</h2>
-	<table id="feedSettingList">
-		<thead>
-			<tr>
-				<th></th>
-				<th>ID</th>
-				<th>ショートコード</th>
-				<th>タイトル</th>
-				<th>種別</th>
-				<th>ストア名 / コレクション名</th>
-				<th>Zazzleデフォルト表示</th>
-				<th>カスタムHTML</th>
-			</tr>
-		</thead>
-		<tbody>
-		<?php 
+	<div class="main-table">
+		<table id="feedSettingList">
+			<thead>
+				<tr>
+					<th></th>
+					<th>ID</th>
+					<th>ショートコード</th>
+					<th>タイトル</th>
+					<th>種別</th>
+					<th>ストア名 / コレクション名</th>
+					<th>Zazzleデフォルト表示</th>
+					<th>カスタムHTML</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
 		foreach($allFeedSettings as $feedSetting){
 		$scid = $feedSetting -> scid;
 		$feedType = $feedSetting -> feed_type;
 		$defaultFlg = $feedSetting -> feed_default_flg ? 'ON' : 'OFF';
 		$feedCustom = htmlentities($feedSetting -> feed_custom);
 		?>
-			<tr>
-				<td><a class="edit-button button" href="?page=simple-zazzle-edit&scid=<?php echo $scid; ?>">編集</a></td>
-				<td><?php echo $scid; ?></td>
-				<td><?php echo '[simple_zazzle id='.$scid.']'; ?></td>
-				<td><?php echo ($feedSetting -> title); ?></td>
-				<td><?php echo $feedType; ?></td>
-				<td><?php if($feedType != "market"){echo ($feedSetting -> feed_name);} ?></td>
-				<td><?php echo $defaultFlg; ?></td>
-				<td class="feed-custom"><?php echo $feedCustom; ?></td>
-			</tr>
-	<?php } ?>
-		</tbody>
-	</table>
+				<tr>
+					<td><a class="edit-button button"
+							href="?page=simple-zazzle-edit&scid=<?php echo $scid; ?>">編集</a></td>
+					<td>
+						<?php echo $scid; ?>
+					</td>
+					<td>
+						<?php echo '[simple_zazzle id='.$scid.']'; ?>
+					</td>
+					<td>
+						<?php echo ($feedSetting -> title); ?>
+					</td>
+					<td>
+						<?php echo $feedType; ?>
+					</td>
+					<td>
+						<?php if($feedType != "market"){echo ($feedSetting -> feed_name);} ?>
+					</td>
+					<td>
+						<?php echo $defaultFlg; ?>
+					</td>
+					<td class="feed-custom">
+						<?php echo $feedCustom; ?>
+					</td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
 	<form method="post" action="">
 		<table class="form-table">
 			<tr id="agreeAffiliate">
-				<td colspan="2"><label>アフィリエイトを利用します&emsp;
-					<input name="affiliate_agree" type="checkbox" id="affiliate_agree" value="1"<?php checked( 1, $agreeFlg); ?> />
+				<td colspan="2"><label>アフィリエイトを利用します&emsp; <input
+							name="affiliate_agree" type="checkbox" id="affiliate_agree"
+							value="1"<?php checked( 1, $agreeFlg); ?> />
 				</label></td>
 			</tr>
 			<tr class="after-agreeing"
