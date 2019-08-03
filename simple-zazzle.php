@@ -34,9 +34,6 @@ function add_plugin_admin_menu() {
 function display_plugin_admin_page() {
 	// POSTデータがあれば設定を更新
 	if (isset($_POST['affiliate'])) {
-		// POSTデータの'"などがエスケープされるのでwp_unslashで戻して保存
-		update_option('affiliate', wp_unslash($_POST['affiliate']));
-		// チェックボックスはチェックされないとキーも受け取れないので、ない時は0にする
 		$affiliate_agree = isset($_POST['affiliate_agree']) ? 1 : 0;
 		update_option('affiliate_agree', $affiliate_agree);
 	}
@@ -45,7 +42,7 @@ function display_plugin_admin_page() {
 	<a href="?page=simple-zazzle-edit">新規</a>
 	<?php
 	// 更新完了を通知
-	if (isset($_POST['affiliate'])) {
+	if (isset($_POST['affiliate_agree'])) {
 		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
 	}
 	$agreeFlg = get_option('affiliate_agree');
@@ -115,11 +112,6 @@ function display_plugin_admin_page() {
 							value="1"<?php checked( 1, $agreeFlg); ?> />
 				</label></td>
 			</tr>
-			<tr class="after-agreeing"
-				<?php if($agreeFlg == 0) { echo 'style="display:none;"'; } ?>>
-				<th scope="row"><label for="affiliate">アフィリエイトコード</label></th>
-		<td><input name="affiliate" type="text" id="affiliate" value="<?php form_option('affiliate'); ?>" class="regular-text" /></td>
-	</tr>
 
 		</table>
 		<?php submit_button(); ?>
