@@ -126,11 +126,6 @@ function mt_options_page()
                         class="large-text code" rows="5"><?php if($updateFlg){echo $feedSetting->feed_custom;} ?></textarea></td>
             </tr>
             <tr>
-                <th scope="row"><label for="affiliateAgree">アフィリエイトを利用する</label></th>
-                <td><label><input name="affiliate_agree" type="checkbox" id="affiliateAgree"
-                            value="1" <?php  if($updateFlg){checked( 1, $feedSetting -> affiliate_agree);} ?> /> チェック</label></td>
-            </tr>
-            <tr>
                 <th scope="row"><label for="affiliateCode">アフィリエイトコード</label></th>
                 <td><input name="affiliate_code" type="text" id="affiliateCode"
                         value="<?php if($updateFlg){echo $feedSetting->affiliate_code;} ?>" class="regular-text" /></td>
