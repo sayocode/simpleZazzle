@@ -56,6 +56,48 @@
 	white-space: nowrap;
 }
 
-#feedSettingList .button {
-	background-color: #99ffcc;
+#feedSettingList thead .button {
+	background-color: #ffda41;
+}
+
+#feedSettingList tbody .button {
+	background-color: #a4ffd1;
+}
+
+.tab {
+	display: inline-block;
+	width: 100%;
+	border-bottom: 3px solid #5097b9;
+}
+
+.tab li {
+	float: left;
+	margin: 0 10px -1px 0;
+	padding: 5px 10px;
+	border: 1px solid #5097b9;
+	cursor: pointer;
+	list-style: none;
+}
+
+.tab li.active {
+	color: #ffffff;
+	background: #5097b9;
+	cursor: auto;
+}
+
+.tab-area {
+	display: none;
+}
+
+.tab-area.show {
+	display: block;
+}
+
+label.required:after{
+	content: " *";
+	color: #ef6340;
+}
+
+#validError{
+	color: #d43838;
 }

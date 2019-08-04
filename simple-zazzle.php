@@ -17,7 +17,7 @@ function add_plugin_admin_menu() {
 		'administrator', // capability
 		'simple-zazzle', // menu_slug
 		'display_plugin_admin_page', // function
-		'', // icon_url
+		'dashicons-store',
 		81 // position
 	 );
  
@@ -39,7 +39,6 @@ function display_plugin_admin_page() {
 	}
 ?>
 <div class="wrap">
-	<a href="?page=simple-zazzle-edit">新規</a>
 	<?php
 	// 更新完了を通知
 	if (isset($_POST['affiliate_agree'])) {
@@ -57,7 +56,7 @@ function display_plugin_admin_page() {
 		<table id="feedSettingList">
 			<thead>
 				<tr>
-					<th></th>
+					<th><a class="button" href="?page=simple-zazzle-edit">新規</a></th>
 					<th>ID</th>
 					<th>ショートコード</th>
 					<th>タイトル</th>

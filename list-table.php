@@ -27,8 +27,16 @@ function create_tables()
                feed_type varchar(50) NOT NULL,
                feed_name varchar(50) NOT NULL,
                feed_default_flg boolean NOT NULL DEFAULT false,
-               feed_custom varchar(65535)
+               feed_custom varchar(65535),
+               phrase varchar(50),
+               department varchar(50),
+               popular_flg boolean NOT NULL DEFAULT false,
+               popular_days int(4),
+               background_color varchar(6),
+               max_num int(3),
+               page int(3),
                affiliate_code varchar(30),
+               tracking_code varchar(30),
                create_date timestamp NOT NULL DEFAULT NOW(),
                update_date timestamp NOT NULL DEFAULT NOW(),
                PRIMARY KEY (scid)
