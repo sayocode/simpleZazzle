@@ -114,7 +114,7 @@ function readFeed($feedSetting){
 
     // フィードの取得
     if(strcmp($feedSetting -> feed_type, 'market') == 0){
-        $rss = simplexml_load_file('https://www.zazzle.co.jp/rss?'.$optionParams);
+        $rss = simplexml_load_file('https://www.zazzle.co.jp/rss'.$optionParams);
     } else {
         $feed_name = $feedSetting -> feed_type.'/'.$feed_name.'/';
         $feedUrl = 'https://www.zazzle.co.jp/'.$feed_name.'rss'.$optionParams;
