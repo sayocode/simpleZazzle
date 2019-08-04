@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SC Simple Zazzle
-Plugin URI: https://wordpress.org/plugins/sc-simple-zazzle
+Plugin URI: https://sayoko-ct.com/sc-simple-zazzle/
 Description: このプラグインはZazzleのRSSフィードを取得し、HTMLとして出力します。マーケットプレイスのみならず、ストアのフィードを設定することができます。アフィリエイト設定も可能です。
 Author: sayocode
 Version: 1.0.0
