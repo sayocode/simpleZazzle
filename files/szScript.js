@@ -40,7 +40,12 @@ jQuery(document).ready(function($) {
 
 		sentence = before + obj + after;
 		$feedCustom.get(0).value = sentence;
+	});
 
+	const $feedName = $("#feedName");
+	changeFeedNameLink($, $typeSelect.val(), $feedName.val());
+	$feedName.on("change", function(){
+		changeFeedNameLink($, $typeSelect.val(), $feedName.val());
 	});
 
 	/** タブ制御 */
@@ -58,7 +63,7 @@ jQuery(document).ready(function($) {
 	// バリデーション
 	$(".sc-edit-short-code #submit").on("click", function(e) {
 		const $validError = $("#validError");
-		if (!isHalf($(feedName).val())) {
+		if (!isHalf($feedName.val())) {
 			$validError.text("ストア名 / コレクション名は半角英数で入力してください。");
 			e.preventDefault();
 		}
@@ -84,6 +89,8 @@ function typeSetting($, $typeSelect) {
 	const $feedName = $("#feedName");
 	const $hideMarket = $("#hideMarket");
 	const val = $typeSelect.val();
+	const $feedNameVal = $feedName.val();
+
 	if (val == "market") {
 		$hideMarket.addClass("hide");
 		$typeText.removeClass("required");
@@ -92,10 +99,24 @@ function typeSetting($, $typeSelect) {
 		$typeText.text("ストア名").addClass("required");
 		$hideMarket.removeClass("hide");
 		$feedName.prop("required", "required");
+
+		changeFeedNameLink($, val, $feedNameVal);
 	} else {
 		$typeText.text("コレクション名").addClass("required");
 		$hideMarket.removeClass("hide");
 		$feedName.prop("required", "required");
+
+		changeFeedNameLink($, val, $feedNameVal);
+	}
+}
+
+function changeFeedNameLink($, val, $feedNameVal){
+	const $feedNameLink = $('<a target="_blank">確認</a>');
+	if($feedNameVal != null && $feedNameVal != ""){
+		$feedNameLink.prop("href", "https://www.zazzle.co.jp/" + val + "/" + $feedNameVal + "?rf=238522058487844682&tc=scadmin");
+		$("#feedNameLinkWrap").html($feedNameLink);
+	} else {
+		$("#feedNameLinkWrap").html("");
 	}
 }
 

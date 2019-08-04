@@ -70,12 +70,12 @@ function display_plugin_admin_page() {
 			</thead>
 			<tbody>
 				<?php 
-		foreach($allFeedSettings as $feedSetting){
-		$scid = $feedSetting -> scid;
-		$feedType = $feedSetting -> feed_type;
-		$defaultFlg = $feedSetting -> feed_default_flg ? 'ON' : 'OFF';
-		$feedCustom = htmlentities($feedSetting -> feed_custom);
-		?>
+				  foreach($allFeedSettings as $feedSetting){
+				  $scid = $feedSetting -> scid;
+				  $feedType = $feedSetting -> feed_type;
+				  $defaultFlg = $feedSetting -> feed_default_flg ? 'ON' : 'OFF';
+				  $feedCustom = htmlentities($feedSetting -> feed_custom);
+				  ?>
 				<tr>
 					<td><a class="edit-button button"
 							href="?page=simple-zazzle-edit&scid=<?php echo $scid; ?>">編集</a></td>
@@ -86,13 +86,13 @@ function display_plugin_admin_page() {
 						<?php echo '[simple_zazzle id='.$scid.']'; ?>
 					</td>
 					<td>
-						<?php echo ($feedSetting -> title); ?>
+						<?php echo esc_html($feedSetting -> title); ?>
 					</td>
 					<td>
-						<?php echo $feedType; ?>
+						<?php echo esc_html($feedType); ?>
 					</td>
 					<td>
-						<?php if($feedType != "market"){echo ($feedSetting -> feed_name);} ?>
+						<?php if($feedType != "market"){echo esc_html($feedSetting -> feed_name);} ?>
 					</td>
 					<td>
 						<?php echo $defaultFlg; ?>
