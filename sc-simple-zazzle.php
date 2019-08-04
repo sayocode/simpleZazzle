@@ -2,9 +2,9 @@
 /*
 Plugin Name: SC Simple Zazzle
 Plugin URI: https://wordpress.org/plugins/sc-simple-zazzle
-Description: ZazzleのRSSフィードを取得し、HTMLとして出力します。マーケットプレイスのみならず、ストアやコレクションのフィードを設定することができます。アフィリエイトにももちろん対応しているので、紹介料の取りこぼしも防げます！
-Author: sayoko
-Version: 0.1
+Description: このプラグインはZazzleのRSSフィードを取得し、HTMLとして出力します。マーケットプレイスのみならず、ストアのフィードを設定することができます。アフィリエイト設定も可能です。
+Author: sayocode
+Version: 1.0.0
 Author URI: https://sayoko-ct.com/
 */
 
