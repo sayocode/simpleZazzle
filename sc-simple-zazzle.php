@@ -8,6 +8,8 @@ Version: 0.1
 Author URI: https://sayoko-ct.com/
 */
 
+/*  Copyright 2019 sayoko (email : communicate@sayoko-ct.com) */
+
 add_action( 'admin_menu', 'add_plugin_admin_menu' );
  
 function add_plugin_admin_menu() {
