@@ -35,18 +35,18 @@ function add_plugin_admin_menu() {
  
 function display_plugin_admin_page() {
 	// POSTデータがあれば設定を更新
-	if (isset($_POST['affiliate'])) {
-		$scsz_affiliate_agree = isset($_POST['sc_affiliate_agree']) ? 1 : 0;
-		update_option('sc_affiliate_agree', $scsz_affiliate_agree);
+	if (isset($_POST['scsz_affiliate_agree'])) {
+		$scsz_affiliate_agree = isset($_POST['scsz_affiliate_agree']) ? 1 : 0;
+		update_option('scsz_affiliate_agree', $scsz_affiliate_agree);
 	}
 ?>
 <div class="wrap">
 	<?php
 	// 更新完了を通知
-	if (isset($_POST['sc_affiliate_agree'])) {
+	if (isset($_POST['scsz_affiliate_agree'])) {
 		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
 	}
-	$agreeFlg = get_option('sc_affiliate_agree');
+	$scsz_agree_flg = get_option('scsz_affiliate_agree');
 
 	global $wpdb;
 	$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
@@ -109,8 +109,8 @@ function display_plugin_admin_page() {
 		<table class="form-table">
 			<tr id="agreeAffiliate">
 				<td colspan="2"><label>アフィリエイトを利用します&emsp; <input
-							name="sc_affiliate_agree" type="checkbox" id="sc_affiliate_agree"
-							value="1"<?php checked( 1, $agreeFlg); ?> />
+							name="scsz_affiliate_agree" type="checkbox" id="scsz_affiliate_agree"
+							value="1"<?php checked( 1, $scsz_agree_flg); ?> />
 				</label></td>
 			</tr>
 

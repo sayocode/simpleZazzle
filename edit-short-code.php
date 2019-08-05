@@ -279,7 +279,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 								value="<?php if($scsz_update_flag){echo '#'.esc_html($scsz_feed_setting->background_color);} else { echo "#ffffff";} ?>"
 								class="regular-text" /></td>
 					</tr>
-					<?php if(!strcmp(get_option('sc_affiliate_agree'), '1')) {?>
+					<?php if(!strcmp(get_option('scsz_affiliate_agree'), '1')) {?>
 					<tr>
 						<th scope="row"><label for="affiliateCode">アフィリエイトコード</label></th>
 						<td><input name="affiliate_code" type="text" id="affiliateCode"
