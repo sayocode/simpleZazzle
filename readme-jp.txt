@@ -47,3 +47,7 @@ plugin page: https://sayoko-ct.com/sc-simple-zazzle
 3. WP管理パネルを開き、「プラグイン」 - >「新規追加」をクリックします。  
 4. [アップロード]をクリックして、このページからダウンロードした.zipファイルを参照します。  
 5. [インストール]をクリックし、次に[プラグインの有効化]をクリックします。  
+
+## スクリーンショット
+https://sayoko-ct.com/sc-simple-zazzle/wp-content/uploads/2019/08/%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2.png
+https://sayoko-ct.com/sc-simple-zazzle/wp-content/uploads/2019/08/%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A.png

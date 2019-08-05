@@ -10,6 +10,7 @@ Requires PHP: 7.0
 
 
 ## Description
+== Description ==  
 
 plugin page: https://sayoko-ct.com/sc-simple-zazzle  
 This plugin takes Zazzle's RSS feed and outputs it as HTML.  
@@ -40,6 +41,7 @@ Create a setting from the new button.
 
 
 ## Installation
+== Installation ==  
 1. From the WP admin panel, click “Plugins” -> “Add new”.  
 2. In the browser input box, type “SC Simple Zazzle”.  
 3. Select the “SC Simple Zazzle” plugin and click “Install”.  
@@ -52,3 +54,8 @@ OR…
 3. Open the WP admin panel, and click “Plugins” -> “Add new”.  
 4. Click “upload”.. then browse to the .zip file downloaded from this page.  
 5. Click “Install”.. and then “Activate plugin”.  
+
+## Screenshots
+== Screenshots ==  
+https://sayoko-ct.com/sc-simple-zazzle/wp-content/uploads/2019/08/%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2.png
+https://sayoko-ct.com/sc-simple-zazzle/wp-content/uploads/2019/08/%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A.png
