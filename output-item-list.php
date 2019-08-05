@@ -119,8 +119,8 @@ function sc_reed_feed($scsz_feed_setting){
 	} else {
 		$scsz_feed_name = $scsz_feed_setting -> feed_type.'/'.$scsz_feed_name.'/';
 		$scsz_feed_url = 'https://www.zazzle.co.jp/'.$scsz_feed_name.'rss'.$scsz_option_params;
-		$get_contents = @file_get_contents($scsz_feed_url);
-		if($get_contents){
+		$response = wp_remote_get($scsz_feed_url);
+		if($response['response']['code'] == 200){
 			$scsz_rss = simplexml_load_file($scsz_feed_url);
 		} else {
 			$scsz_rss = simplexml_load_file('https://www.zazzle.co.jp/rss'.$scsz_option_params);
