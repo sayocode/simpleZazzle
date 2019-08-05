@@ -11,6 +11,7 @@ Requires PHP: 7.0
 
 ## Description
 
+plugin page: https://sayoko-ct.com/sc-simple-zazzle
 この機能を使うためにはショートコードの生成が必要です。
 新規ボタンから設定を作成してください。
 
