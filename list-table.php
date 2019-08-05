@@ -9,7 +9,7 @@ function create_tables()
     $charset_collate = "";
 
     // 接頭辞の追加（socal_count_cache）
-    $table_name = $wpdb->prefix . 'sc_simple_zazzle_table';
+    $scsz_table_name = $wpdb->prefix . 'sc_simple_zazzle_table';
 
     // charsetを指定する
     if (! empty($wpdb->charset))
@@ -21,7 +21,7 @@ function create_tables()
 
     // SQL文でテーブルを作る
     $sql = "
-          CREATE TABLE {$table_name} (
+          CREATE TABLE {$scsz_table_name} (
                scid bigint(20) NOT NULL,
                title varchar(50) NOT NULL,
                feed_type varchar(50) NOT NULL,

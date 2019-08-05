@@ -36,21 +36,21 @@ function add_plugin_admin_menu() {
 function display_plugin_admin_page() {
 	// POSTデータがあれば設定を更新
 	if (isset($_POST['affiliate'])) {
-		$affiliate_agree = isset($_POST['affiliate_agree']) ? 1 : 0;
-		update_option('affiliate_agree', $affiliate_agree);
+		$scsz_affiliate_agree = isset($_POST['sc_affiliate_agree']) ? 1 : 0;
+		update_option('sc_affiliate_agree', $scsz_affiliate_agree);
 	}
 ?>
 <div class="wrap">
 	<?php
 	// 更新完了を通知
-	if (isset($_POST['affiliate_agree'])) {
+	if (isset($_POST['sc_affiliate_agree'])) {
 		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
 	}
-	$agreeFlg = get_option('affiliate_agree');
+	$agreeFlg = get_option('sc_affiliate_agree');
 
 	global $wpdb;
-	$table_name = $wpdb->prefix . "sc_simple_zazzle_table";
-	$allFeedSettings = $wpdb->get_results("SELECT * FROM ".$table_name);
+	$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
+	$scsz_all_feed_settings = $wpdb->get_results("SELECT * FROM ".$scsz_table_name);
 
 	?>
 	<h2>設定一覧</h2>
@@ -70,11 +70,11 @@ function display_plugin_admin_page() {
 			</thead>
 			<tbody>
 				<?php 
-				  foreach($allFeedSettings as $feedSetting){
-				  $scid = $feedSetting -> scid;
-				  $feedType = $feedSetting -> feed_type;
-				  $defaultFlg = $feedSetting -> feed_default_flg ? 'ON' : 'OFF';
-				  $feedCustom = htmlentities($feedSetting -> feed_custom);
+				  foreach($scsz_all_feed_settings as $scsz_feed_setting){
+				  $scid = $scsz_feed_setting -> scid;
+				  $scsz_feed_type = $scsz_feed_setting -> feed_type;
+				  $scsz_default_flag = $scsz_feed_setting -> feed_default_flg ? 'ON' : 'OFF';
+				  $scsz_feed_custom = htmlentities($scsz_feed_setting -> feed_custom);
 				  ?>
 				<tr>
 					<td><a class="edit-button button"
@@ -86,19 +86,19 @@ function display_plugin_admin_page() {
 						<?php echo '[simple_zazzle id='.$scid.']'; ?>
 					</td>
 					<td>
-						<?php echo esc_html($feedSetting -> title); ?>
+						<?php echo esc_html($scsz_feed_setting -> title); ?>
 					</td>
 					<td>
-						<?php echo esc_html($feedType); ?>
+						<?php echo esc_html($scsz_feed_type); ?>
 					</td>
 					<td>
-						<?php if($feedType != "market"){echo esc_html($feedSetting -> feed_name);} ?>
+						<?php if($scsz_feed_type != "market"){echo esc_html($scsz_feed_setting -> feed_name);} ?>
 					</td>
 					<td>
-						<?php echo $defaultFlg; ?>
+						<?php echo $scsz_default_flag; ?>
 					</td>
 					<td class="feed-custom">
-						<?php echo $feedCustom; ?>
+						<?php echo $scsz_feed_custom; ?>
 					</td>
 				</tr>
 				<?php } ?>
@@ -109,7 +109,7 @@ function display_plugin_admin_page() {
 		<table class="form-table">
 			<tr id="agreeAffiliate">
 				<td colspan="2"><label>アフィリエイトを利用します&emsp; <input
-							name="affiliate_agree" type="checkbox" id="affiliate_agree"
+							name="sc_affiliate_agree" type="checkbox" id="sc_affiliate_agree"
 							value="1"<?php checked( 1, $agreeFlg); ?> />
 				</label></td>
 			</tr>
