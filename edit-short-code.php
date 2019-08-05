@@ -226,6 +226,7 @@ function editHtml($scid, $updateFlg, $feedSetting){
 							<button class="button assist-button" data-object="image">商品画像URL</button>
 							<button class="button assist-button" data-object="thumbnail">商品画像URL（サムネイル）</button>
 							<button class="button assist-button" data-object="description">商品説明</button>
+							<button class="button assist-button" data-object="descriptionJs">商品説明（HTMLエスケープ）</button>
 							<button class="button assist-button" data-object="tags">タグ（JavaScript配列）</button>
 							<textarea name="feed_custom" id="feedCustom"
 								class="large-text code" rows="5"><?php if($updateFlg){echo $feedSetting->feed_custom;} ?></textarea>

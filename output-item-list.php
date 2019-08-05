@@ -54,15 +54,16 @@ function echoItemList($atts) {
             $description = nl2br($item->children('media', true)->description);
             $keywords = '["'. str_replace( ', ', '", "',$item->children('media', true)->keywords) . '"]';
 
-            $itemDom = str_replace('%fullTitle%', $fullTitle, $feed_custom);
-            $itemDom = str_replace('%category%', $category, $itemDom);
-            $itemDom = str_replace('%title%', $title, $itemDom);
-            $itemDom = str_replace('%link%', $link, $itemDom);
-            $itemDom = str_replace('%price%', $price, $itemDom);
-            $itemDom = str_replace('%author%', $author, $itemDom);
-            $itemDom = str_replace('%image%', $image, $itemDom);
+            $itemDom = str_replace('%fullTitle%', esc_html($fullTitle), $feed_custom);
+            $itemDom = str_replace('%category%', esc_html($category), $itemDom);
+            $itemDom = str_replace('%title%', esc_html($title), $itemDom);
+            $itemDom = str_replace('%link%', esc_html($link), $itemDom);
+            $itemDom = str_replace('%price%', esc_html($price), $itemDom);
+            $itemDom = str_replace('%author%', esc_html($author), $itemDom);
+            $itemDom = str_replace('%image%', esc_html($image), $itemDom);
             $itemDom = str_replace('%thumbnail%', $thumbnail, $itemDom);
             $itemDom = str_replace('%description%', $description, $itemDom);
+            $itemDom = str_replace('%descriptionJs%', str_replace(array("\r\n", "\r", "\n"), '', esc_html($description, ENT_QUOTES|ENT_HTML5)), $itemDom);
             $itemDom = str_replace('%tags%', $keywords, $itemDom);
             $return = $return.$itemDom;
         }
