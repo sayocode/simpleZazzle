@@ -24,18 +24,18 @@ function mt_options_page()
 		$feed_title = wp_unslash($_POST['title']);
 		$feed_type = wp_unslash($_POST['type']);
 		$feed_name = wp_unslash($_POST['feed_name']);
-		$feed_default_flg = isset($_POST['default']) ? 1 : 0;
+		$feed_default_flg = wp_unslash(isset($_POST['default']) ? 1 : 0);
 		$feed_custom = wp_unslash($_POST['feed_custom']);
 		$phrase = wp_unslash($_POST['phrase']);
 		$department = wp_unslash($_POST['department']);
-		$popular_flg = isset($_POST['popular_flg']) ? 1 : 0;
-		$popular_days = empty($_POST['popular_days']) ? 0 : $_POST['popular_days'];
-		$max_num = empty($_POST['max_num']) ? 100 : $_POST['max_num'];
-		$page = empty($_POST['page']) ? 0 : $_POST['page'];
-		$background_color = str_replace('#', '', wp_unslash($_POST['background_color']));
+		$popular_flg = wp_unslash(isset($_POST['popular_flg']) ? 1 : 0);
+		$popular_days = wp_unslash(empty($_POST['popular_days']) ? 0 : $_POST['popular_days']);
+		$max_num = wp_unslash(empty($_POST['max_num']) ? 100 : $_POST['max_num']);
+		$page = wp_unslash(empty($_POST['page']) ? 0 : $_POST['page']);
+		$background_color = wp_unslash(str_replace('#', '', wp_unslash($_POST['background_color'])));
 		$affiliate_code = wp_unslash($_POST['affiliate_code']);
 		$tracking_code = wp_unslash($_POST['tracking_code']);
-		$updateFlg = (($_POST['update_flg'] == 'true') ? true : false);
+		$updateFlg = wp_unslash(($_POST['update_flg'] == 'true') ? true : false);
 
 		if ($updateFlg) { // 更新
 			$oldDataResults = $wpdb->get_results("SELECT * FROM " . $table_name . " WHERE `scid` = '" . $scid . "'");
