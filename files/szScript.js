@@ -7,29 +7,42 @@ jQuery(document).ready(function($) {
 		typeSetting($, $typeSelect);
 	});
 
+	// デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。
 	const $defaultChk = $("#defaultChk");
 	const $feedCustom = $("#feedCustom");
+	disabledFeedCustom($defaultChk, $feedCustom);
 	$defaultChk.on("change", function() {
-		if ($defaultChk.prop("checked")) {
-			$feedCustom.prop("disabled", true);
-		} else {
-			$feedCustom.prop("disabled", false);
-		}
+		disabledFeedCustom($defaultChk, $feedCustom);
 	});
 
 	/** 要素の入力アシスト */
+	// エンターキーで発火させない
+	$( 'input' ).keypress( function ( e ) {
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			return false;
+		}
+	} );
+
+	// クリックのみで発火
 	$(".assist-button").on("click", function(e) {
+		// 通信をさせない
 		e.preventDefault();
+
+		// 挿入する文字列
 		const obj = "%" + $(this).data("object") + "%";
 
+		// テキストエリアの文字取得とカーソル位置を取得
 		const feedCustomDom = $feedCustom.get(0);
 		let sentence = feedCustomDom.value;
 		const len = sentence.length;
 		const pos = feedCustomDom.selectionStart;
 
+		// カーソル位置で文字をぶった切る
 		const before = sentence.substr(0, pos);
 		const after = sentence.substr(pos, len);
 
+		// 文字列を挿入し、カーソルを返す
 		sentence = before + obj + after;
 		feedCustomDom.value = sentence;
 		feedCustomDom.selectionStart = pos + obj.length;
@@ -111,6 +124,16 @@ function typeSetting($, $typeSelect) {
 	}
 }
 
+/** デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。 */
+function disabledFeedCustom($defaultChk, $feedCustom){
+	if ($defaultChk.prop("checked")) {
+		$feedCustom.prop("disabled", true);
+	} else {
+		$feedCustom.prop("disabled", false);
+	}
+}
+
+/** ストア名・コレクション名のリンクを生成し確認できるようにする */
 function changeFeedNameLink($, val, $feedNameVal){
 	const $feedNameLink = $('<a target="_blank">確認</a>');
 	if($feedNameVal != null && $feedNameVal != ""){
