@@ -58,14 +58,14 @@ function display_plugin_admin_page() {
 		<table class="wp-list-table widefat fixed striped posts" id="feedSettingList">
 			<thead>
 				<tr>
-					<th class="thead-button"><a class="button" href="?page=simple-zazzle-edit">新規</a></th>
-					<th class="thead-id">ID</th>
+					<th class="thead-button manage-column"><a class="button" href="?page=simple-zazzle-edit">新規</a></th>
+					<th class="thead-id manage-column">ID</th>
 					<th class="thead-shortcode">ショートコード</th>
 					<th>タイトル</th>
-					<th>種別</th>
-					<th>ストア名 / コレクション名</th>
-					<th>Zazzleデフォルト表示</th>
-					<th class="thead-customhtml">カスタムHTML</th>
+					<th class="manage-column">種別</th>
+					<th class="manage-column">ストア名 / コレクション名</th>
+					<th class="manage-column">Zazzleデフォルト表示</th>
+					<th class="thead-customhtml manage-column">カスタムHTML</th>
 				</tr>
 			</thead>
 			<tbody>

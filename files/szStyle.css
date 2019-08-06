@@ -79,7 +79,7 @@ label.required:after{
 	white-space: nowrap;
 }
 
-.thead-id, .thead-button{
+.thead-id{
 	width: 7%;
 }
 

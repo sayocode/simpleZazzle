@@ -138,7 +138,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 					<tr>
 						<th scope="row"><label class="required" for="title">タイトル</label></th>
 						<td><input name="title" type="text" id="title" required
-								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->title);} ?>"
+								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->title);} else { echo "新規の商品一覧";} ?>"
 								class="regular-text" /></td>
 					</tr>
 					<tr>
