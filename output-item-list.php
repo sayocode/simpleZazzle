@@ -35,7 +35,7 @@ function sc_echo_item_list($atts) {
 		}
 
 		// デフォルトフラグが付いているか、feed_customが空の場合はデフォルト形式で出力
-		$scsz_feed_custom = $scsz_feed_setting -> feed_custom;
+		$scsz_feed_custom = urldecode($scsz_feed_setting -> feed_custom);
 		if($scsz_feed_setting -> feed_default_flg == "1" || empty($scsz_feed_custom)){
 			return sc_default_view($scsz_rss, $scsz_affiliate_value);
 		}

@@ -74,7 +74,7 @@ function display_plugin_admin_page() {
 				  $scid = $scsz_feed_setting -> scid;
 				  $scsz_feed_type = $scsz_feed_setting -> feed_type;
 				  $scsz_default_flag = $scsz_feed_setting -> feed_default_flg ? 'ON' : 'OFF';
-				  $scsz_feed_custom = htmlentities($scsz_feed_setting -> feed_custom);
+				  $scsz_feed_custom = htmlentities(urldecode($scsz_feed_setting -> feed_custom));
 				  ?>
 				<tr>
 					<td><a class="edit-button button"

@@ -1,13 +1,4 @@
 jQuery(document).ready(function($) {
-	const $affiliateAgree = $("#affiliate_agree");
-	const $afterAgreeing = $(".after-agreeing");
-	$affiliateAgree.on("change", function() {
-		if ($affiliateAgree.prop("checked")) {
-			$afterAgreeing.prop("style", "display: table-row;");
-		} else {
-			$afterAgreeing.prop("style", "display: none;");
-		}
-	});
 
 	// 編集画面
 	const $typeSelect = $("#typeSelect");
@@ -80,6 +71,14 @@ jQuery(document).ready(function($) {
 			e.preventDefault();
 		}
 
+		if(!isHalf($("#affiliateCode").val())){
+			$validError.text("アフィリエイトコードは半角英数で入力してください。");
+			e.preventDefault();
+		}
+		if(!isHalf($("#trackingCode").val())){
+			$validError.text("トラッキングコードは半角英数で入力してください。");
+			e.preventDefault();
+		}
 	});
 });
 

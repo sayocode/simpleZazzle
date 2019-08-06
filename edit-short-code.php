@@ -20,22 +20,22 @@ function sc_mt_options_page()
 	// POSTデータがあれば設定を更新
 	if (isset($_POST['scid'])) {
 
-		$scid = wp_unslash($_POST['scid']);
-		$scsz_feed_title = wp_unslash($_POST['title']);
-		$scsz_feed_type = wp_unslash($_POST['type']);
-		$scsz_feed_name = wp_unslash($_POST['feed_name']);
-		$scsz_feed_default_flg = wp_unslash(isset($_POST['default']) ? 1 : 0);
-		$scsz_feed_custom = wp_unslash($_POST['feed_custom']);
-		$scsz_phrase = wp_unslash($_POST['phrase']);
-		$scsz_department = wp_unslash($_POST['department']);
-		$scsz_popular_flg = wp_unslash(isset($_POST['popular_flg']) ? 1 : 0);
-		$scsz_popular_days = wp_unslash(empty($_POST['popular_days']) ? 0 : $_POST['popular_days']);
-		$scsz_max_num = wp_unslash(empty($_POST['max_num']) ? 100 : $_POST['max_num']);
-		$scsz_page = wp_unslash(empty($_POST['page']) ? 0 : $_POST['page']);
-		$scsz_background_color = wp_unslash(str_replace('#', '', wp_unslash($_POST['background_color'])));
-		$scsz_affiliate_code = wp_unslash($_POST['affiliate_code']);
-		$scsz_tracking_code = wp_unslash($_POST['tracking_code']);
-		$scsz_update_flag = wp_unslash(($_POST['update_flg'] == 'true') ? true : false);
+		$scid = sanitize_text_field($_POST['scid']);
+		$scsz_feed_title = sanitize_text_field($_POST['title']);
+		$scsz_feed_type = sanitize_text_field($_POST['type']);
+		$scsz_feed_name = sanitize_text_field(preg_replace('/( |　)/', '', $_POST['feed_name']));
+		$scsz_feed_default_flg = sanitize_text_field(isset($_POST['default']) ? 1 : 0);
+		$scsz_feed_custom = urlencode(wp_unslash($_POST['feed_custom']));
+		$scsz_phrase = sanitize_text_field($_POST['phrase']);
+		$scsz_department = sanitize_text_field($_POST['department']);
+		$scsz_popular_flg = sanitize_text_field(isset($_POST['popular_flg']) ? 1 : 0);
+		$scsz_popular_days = sanitize_text_field(empty($_POST['popular_days']) ? 0 : $_POST['popular_days']);
+		$scsz_max_num = sanitize_text_field(empty($_POST['max_num']) ? 100 : $_POST['max_num']);
+		$scsz_page = sanitize_text_field(empty($_POST['page']) ? 0 : $_POST['page']);
+		$scsz_background_color = sanitize_text_field(str_replace('#', '', sanitize_text_field($_POST['background_color'])));
+		$scsz_affiliate_code = preg_replace('/( |　)/', '', sanitize_text_field($_POST['affiliate_code']));
+		$scsz_tracking_code = preg_replace('/( |　)/', '', sanitize_text_field($_POST['tracking_code']));
+		$scsz_update_flag = sanitize_text_field(($_POST['update_flg'] == 'true') ? true : false);
 
 		if ($scsz_update_flag) { // 更新
 			$scsz_old_data_results = $wpdb->get_results("SELECT * FROM " . $scsz_table_name . " WHERE `scid` = '" . $scid . "'");
@@ -46,7 +46,7 @@ function sc_mt_options_page()
 				// 最終更新日時チェック
 				$oldData = $scsz_old_data_results[0];
 				$scsz_old_update_date = $oldData->update_date;
-				$scsz_now_update_date = wp_unslash($_POST['update_date']);
+				$scsz_now_update_date = $_POST['update_date'];
 				if (strcmp($scsz_old_update_date, $scsz_now_update_date) != 0) {
 
 					echo '<div id="setting-error-settings_updated" class="error settings-error notice is-dismissible"><p><strong>更新が既にされているようです。画面を更新して再度内容を入力し、更新し直してください。</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">この通知を非表示にする</span></button></div>';
@@ -229,7 +229,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 							<button class="button assist-button" data-object="descriptionJs">商品説明（HTMLエスケープ）</button>
 							<button class="button assist-button" data-object="tags">タグ（JavaScript配列）</button>
 							<textarea name="feed_custom" id="feedCustom"
-								class="large-text code" rows="5"><?php if($scsz_update_flag){echo $scsz_feed_setting->feed_custom;} ?></textarea>
+								class="large-text code" rows="5"><?php if($scsz_update_flag){echo urldecode($scsz_feed_setting->feed_custom);} ?></textarea>
 						</td>
 					</tr>
 				</table>
