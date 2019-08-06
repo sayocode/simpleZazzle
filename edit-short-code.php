@@ -70,21 +70,7 @@ function sc_mt_options_page()
 					), array(
 						'scid' => $scid
 					), array(
-						'%s',
-						'%s',
-						'%s',
-						'%d',
-						'%s',
-						'%s',
-						'%s',
-						'%d',
-						'%d',
-						'%d',
-						'%d',
-						'%s',
-						'%s',
-						'%s',
-						'%s'
+						'%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 					), array(
 						'%d'
 					));
@@ -114,21 +100,7 @@ function sc_mt_options_page()
 				'affiliate_code' => $scsz_affiliate_code,
 				'tracking_code' => $scsz_tracking_code
 			), array(
-				'%d',
-				'%s',
-				'%s',
-				'%s',
-				'%d',
-				'%s',
-				'%s',
-				'%s',
-				'%d',
-				'%d',
-				'%d',
-				'%d',
-				'%s',
-				'%s',
-				'%s'
+				'%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s'
 			));
 			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
 			$scsz_update_flag = true;
