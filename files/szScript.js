@@ -22,15 +22,17 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 		const obj = "%" + $(this).data("object") + "%";
 
-		let sentence = $feedCustom.get(0).value;
+		const feedCustomDom = $feedCustom.get(0);
+		let sentence = feedCustomDom.value;
 		const len = sentence.length;
-		const pos = $feedCustom.get(0).selectionStart;
+		const pos = feedCustomDom.selectionStart;
 
 		const before = sentence.substr(0, pos);
 		const after = sentence.substr(pos, len);
 
 		sentence = before + obj + after;
-		$feedCustom.get(0).value = sentence;
+		feedCustomDom.value = sentence;
+		feedCustomDom.selectionStart = pos + obj.length;
 	});
 
 	const $feedName = $("#feedName");
