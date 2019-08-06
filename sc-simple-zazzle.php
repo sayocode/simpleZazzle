@@ -55,17 +55,17 @@ function display_plugin_admin_page() {
 	?>
 	<h2>設定一覧</h2>
 	<div class="main-table">
-		<table id="feedSettingList">
+		<table class="wp-list-table widefat fixed striped posts" id="feedSettingList">
 			<thead>
 				<tr>
-					<th><a class="button" href="?page=simple-zazzle-edit">新規</a></th>
-					<th>ID</th>
-					<th>ショートコード</th>
+					<th class="thead-button"><a class="button" href="?page=simple-zazzle-edit">新規</a></th>
+					<th class="thead-id">ID</th>
+					<th class="thead-shortcode">ショートコード</th>
 					<th>タイトル</th>
 					<th>種別</th>
 					<th>ストア名 / コレクション名</th>
 					<th>Zazzleデフォルト表示</th>
-					<th>カスタムHTML</th>
+					<th class="thead-customhtml">カスタムHTML</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -82,7 +82,7 @@ function display_plugin_admin_page() {
 					<td>
 						<?php echo $scid; ?>
 					</td>
-					<td>
+					<td class="nowrap">
 						<?php echo '[simple_zazzle id='.$scid.']'; ?>
 					</td>
 					<td>

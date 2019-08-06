@@ -201,7 +201,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 							<button class="button assist-button" data-object="descriptionJs">商品説明（HTMLエスケープ）</button>
 							<button class="button assist-button" data-object="tags">タグ（JavaScript配列）</button>
 							<textarea name="feed_custom" id="feedCustom"
-								class="large-text code" rows="5"><?php if($scsz_update_flag){echo urldecode($scsz_feed_setting->feed_custom);} ?></textarea>
+								class="large-text code" rows="5"><?php if($scsz_update_flag){echo urldecode(esc_textarea($scsz_feed_setting->feed_custom));} ?></textarea>
 						</td>
 					</tr>
 				</table>
