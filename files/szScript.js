@@ -1,8 +1,40 @@
 jQuery(document).ready(function($) {
+	
+	// トースト通知クラス
+	const Toast = (function(){
+		var timer;
+		var speed;
+		function Toast() {
+			this.speed = 3000;
+		}
+		// メッセージを表示。表示時間(speed)はデフォルトで3秒
+		Toast.prototype.show = function(message, speed) {
+			if (speed === undefined) speed = this.speed;
+			$('.toast').remove();
+			clearTimeout(this.timer);
+			$('body').append('<div class="toast">' + message + '</div>');
+			var leftpos = $('body').width()/2 - $('.toast').outerWidth()/2;
+			$('.toast').css('left', leftpos).hide().fadeIn('fast');
 
+			this.timer = setTimeout(function() {
+				$('.toast').fadeOut('slow',function(){
+					$(this).remove();
+				});
+			}, speed);
+		};
+		// 明示的にメッセージを消したい場合は使う
+		Toast.prototype.hide = function() {
+			$('.toast').fadeOut('slow',function() {
+				$(this).remove();
+			});
+		}
+		return Toast;
+	})();
+	const toast = new Toast();
+
+	// コピー押下でクリップボードにコピー
 	$(".text-copy").on("click", function(){
-
-		// テキストエリアを選択
+		// ショートコードを専用inputに記載する
 		$(".output-code").val($(this).data("shortCode"));
 		$(".output-code").select();
 
@@ -15,9 +47,10 @@ jQuery(document).ready(function($) {
 		if(active_element){
 			active_element.blur();
 		}
+		$(".output-code").val("");
 
 		// コピーしましたのメッセージを表示
-		$(this).addClass("copy-msg");
+		toast.show("コピーしました。");
 	});
 
 	// 編集画面

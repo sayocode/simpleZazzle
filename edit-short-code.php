@@ -139,7 +139,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 						<th scope="row"><label class="required" for="title">タイトル</label></th>
 						<td><input name="title" type="text" id="title" required
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->title);} else { echo "新規の商品一覧";} ?>"
-								class="regular-text" /></td>
+								class="regular-text" maxlength="50" /></td>
 					</tr>
 					<tr>
 						<th>ショートコード</th>
@@ -177,7 +177,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 						<th scope="row"><label for="feedName" id="typeText">ストア名</label></th>
 						<td><input name="feed_name" type="text" id="feedName"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->feed_name);} ?>"
-								class="regular-text" />
+								class="regular-text" maxlength="50" />
 								<span id="feedNameLinkWrap"></span></td>
 					</tr>
 					<tr>
@@ -200,7 +200,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 							<button class="button assist-button" data-object="description">商品説明</button>
 							<button class="button assist-button" data-object="descriptionJs">商品説明（HTMLエスケープ）</button>
 							<button class="button assist-button" data-object="tags">タグ（JavaScript配列）</button>
-							<textarea name="feed_custom" id="feedCustom"
+							<textarea name="feed_custom" id="feedCustom" maxlength="65535"
 								class="large-text code" rows="5"><?php if($scsz_update_flag){echo urldecode(esc_textarea($scsz_feed_setting->feed_custom));} ?></textarea>
 						</td>
 					</tr>
@@ -210,14 +210,14 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 				<table class="form-table">
 					<tr>
 						<th scope="row"><label for="phrase">商品名の検索フレーズ</label></th>
-						<td><input name="phrase" type="text" id="phrase"
+						<td><input name="phrase" type="text" id="phrase" maxlength="50"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->phrase);} ?>"
 								class="regular-text" /></td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="department">部門ID</label>
 						<span style="font-size:0.8em;">（<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss#page_departmentId" target="_blank">検索</a>）</span></th>
-						<td><input name="department" type="text" id="department"
+						<td><input name="department" type="text" id="department" maxlength="50"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->department);} ?>"
 								class="regular-text" /></td>
 					</tr>
@@ -254,13 +254,13 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 					<?php if(!strcmp(get_option('scsz_affiliate_agree'), '1')) {?>
 					<tr>
 						<th scope="row"><label for="affiliateCode">アフィリエイトコード</label></th>
-						<td><input name="affiliate_code" type="text" id="affiliateCode"
+						<td><input name="affiliate_code" type="text" id="affiliateCode" maxlength="30"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->affiliate_code);} ?>"
 								class="regular-text" /></td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="trackingCode">トラッキングコード</label></th>
-						<td><input name="tracking_code" type="text" id="trackingCode"
+						<td><input name="tracking_code" type="text" id="trackingCode" maxlength="30"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->tracking_code);} ?>"
 								class="regular-text" /></td>
 					</tr>
