@@ -2,8 +2,14 @@
 	min-height: 60vh;
 }
 
-.form-table .hide {
-	visibility: hidden;
+@media screen and (min-width: 783px) {
+	.column-short_code {
+		width: 30%;
+	}
+}
+
+.text-copy{
+	cursor: pointer;
 }
 
 #agreeAffiliate label {
@@ -20,21 +26,6 @@
 #agreeAffiliate input:before {
 	margin: -5px 0 0 -6px;
 	width: 0.8rem;
-}
-
-#feedSettingList .feed-custom {
-	max-width: 30vw;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-#feedSettingList thead .button {
-	background-color: #ffda41;
-}
-
-#feedSettingList tbody .button {
-	background-color: #a4ffd1;
 }
 
 .tab {
@@ -66,27 +57,15 @@
 	display: block;
 }
 
-label.required:after{
+label.required:after {
 	content: " *";
 	color: #ef6340;
 }
 
-#validError{
+#validError {
 	color: #d43838;
 }
 
-.nowrap{
+.nowrap {
 	white-space: nowrap;
-}
-
-.thead-id{
-	width: 7%;
-}
-
-.thead-shortcode{
-	width: 20%;
-}
-
-.thead-customhtml{
-	width: 25%;
 }

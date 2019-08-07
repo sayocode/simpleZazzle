@@ -1,5 +1,25 @@
 jQuery(document).ready(function($) {
 
+	$(".text-copy").on("click", function(){
+
+		// テキストエリアを選択
+		$(".output-code").val($(this).data("shortCode"));
+		$(".output-code").select();
+
+		// 選択範囲をコピー
+		document.execCommand('copy');
+		window.getSelection().collapse(document.body, 0);
+
+		// 選択を解除
+		const active_element = document.activeElement;
+		if(active_element){
+			active_element.blur();
+		}
+
+		// コピーしましたのメッセージを表示
+		$(this).addClass("copy-msg");
+	});
+
 	// 編集画面
 	const $typeSelect = $("#typeSelect");
 	typeSetting($, $typeSelect);
