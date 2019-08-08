@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-	
+
 	// トースト通知クラス
 	const Toast = (function(){
 		var timer;
@@ -106,7 +106,6 @@ jQuery(document).ready(function($) {
 
 		// コンテンツを一旦非表示にし、クリックされた順番のコンテンツのみを表示
 		$('.tab-area').removeClass('show').eq(index).addClass('show');
-
 	});
 
 	// バリデーション

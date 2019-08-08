@@ -77,6 +77,14 @@ label.required:after {
 	color: rgba(0, 0, 0, 0) !important;
 }
 
+.hide{
+	visibility: hidden;
+}
+
+.row-actions {
+	left : 0 !important;
+}
+
 .toast {
 	position: fixed;
 	bottom: 10px;
