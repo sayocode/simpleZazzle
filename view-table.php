@@ -89,7 +89,7 @@ class My_List_Table extends WP_List_Table {
         $myListTable->prepare_items();
         $myListTable->display();
         ?>
-        <input type="text" class="output-code"> <!-- ショートコードをクリップボードにコピーするためのボックス -->
+        <input type="hidden" id="outputCode"> <!-- ショートコードをクリップボードにコピーするためのボックス -->
         </div></div>
         <form method="post" action="">
             <table class="form-table">

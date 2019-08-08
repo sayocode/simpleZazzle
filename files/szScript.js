@@ -35,21 +35,11 @@ jQuery(document).ready(function($) {
 	// コピー押下でクリップボードにコピー
 	$(".text-copy").on("click", function(){
 		// ショートコードを専用inputに記載する
-		$(".output-code").val($(this).data("shortCode"));
-		$(".output-code").select();
+		const $outputCode = $("#outputCode");
+		$outputCode.val($(this).data("shortCode"));
 
-		// 選択範囲をコピー
-		document.execCommand('copy');
-		window.getSelection().collapse(document.body, 0);
-
-		// 選択を解除
-		const active_element = document.activeElement;
-		if(active_element){
-			active_element.blur();
-		}
-		$(".output-code").val("");
-
-		// コピーしましたのメッセージを表示
+		const hideInput = $outputCode[0];
+		hideCopy(hideInput);
 		toast.show("コピーしました。");
 	});
 
@@ -185,6 +175,37 @@ function disabledFeedCustom($defaultChk, $feedCustom){
 		$feedCustom.prop("disabled", false);
 	}
 }
+
+/** 見えないinput要素の内容をクリップボードにコピーする */
+function hideCopy(hideInput){
+
+	// その場限りのinput要素を作る
+	const newInput = document.createElement("input");
+	newInput.type = "text";
+
+	// 処理は一瞬で見えないけど、一応画面外に追い出す…
+	newInput.style.position = "absolute";
+	newInput.style.marginLeft = "200vw";
+	hideInput.parentNode.insertBefore(newInput, hideInput.nextSibling);
+	newInput.value = hideInput.value;
+	console.log(newInput);
+
+	newInput.focus();
+	newInput.setSelectionRange(0, newInput.value.length);
+
+	// 選択範囲をコピー
+	document.execCommand('copy');
+	window.getSelection().collapse(document.body, 0);
+
+	// 選択を解除
+	const active_element = document.activeElement;
+	if(active_element){
+	active_element.blur();
+	}
+
+	// 作ったinput要素を消す
+	newInput.parentNode.removeChild(newInput);
+	}
 
 /** ストア名・コレクション名のリンクを生成し確認できるようにする */
 function changeFeedNameLink($, val, $feedNameVal){
