@@ -143,7 +143,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 					</tr>
 					<tr>
 						<th>ショートコード</th>
-						<td><?php if($scsz_update_flag){echo '[simple_zazzle id='.$scid.']';} ?></td>
+						<td><?php if($scsz_update_flag){$scode = '[simple_zazzle id='.$scid.']'; echo $scode.'&emsp;<a class="text-copy" data-short-code="'.$scode.'">コピー</a><input type="hidden" id="outputCode">';} ?></td>
 					</tr>
 					<tr>
 						<th scope="row"><label class="required" for="typeSelect">種別</label></th>

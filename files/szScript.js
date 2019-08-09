@@ -187,7 +187,6 @@ function hideCopy(hideInput){
 	newInput.style.marginLeft = "200vw";
 	hideInput.parentNode.insertBefore(newInput, hideInput.nextSibling);
 	newInput.value = hideInput.value;
-	console.log(newInput);
 
 	newInput.focus();
 	newInput.setSelectionRange(0, newInput.value.length);
