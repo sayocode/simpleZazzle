@@ -50,14 +50,6 @@ jQuery(document).ready(function($) {
 		typeSetting($, $typeSelect);
 	});
 
-	// デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。
-	const $defaultChk = $("#defaultChk");
-	const $feedCustom = $("#feedCustom");
-	disabledFeedCustom($defaultChk, $feedCustom);
-	$defaultChk.on("change", function() {
-		disabledFeedCustom($defaultChk, $feedCustom);
-	});
-
 	/** 要素の入力アシスト */
 	// エンターキーで発火させない
 	$( 'input' ).keypress( function ( e ) {
