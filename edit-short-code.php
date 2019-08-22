@@ -25,8 +25,7 @@ function sc_mt_options_page()
 		$scsz_feed_type = sanitize_text_field($_POST['type']);
 		$scsz_feed_name = sanitize_text_field(preg_replace('/( |　)/', '', $_POST['feed_name']));
 		$scsz_feed_default_flg = sanitize_text_field(isset($_POST['default']) ? 1 : 0);
-		$cutProtocolAmount = (empty($_SERVER['HTTPS']) ? 7 : 8);
-		$scsz_feed_custom = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom']))), '' , 0, $cutProtocolAmount );
+		$scsz_feed_custom = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom']))), '' , 0, 7 );
 		$scsz_phrase = sanitize_text_field($_POST['phrase']);
 		$scsz_department = sanitize_text_field($_POST['department']);
 		$scsz_popular_flg = sanitize_text_field(isset($_POST['popular_flg']) ? 1 : 0);
