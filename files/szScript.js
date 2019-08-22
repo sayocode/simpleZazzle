@@ -168,6 +168,11 @@ function typeSetting($, $typeSelect) {
 
 /** デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。 */
 function disabledFeedCustom($defaultChk, $feedCustom){
+	if ($defaultChk.prop("checked")) {
+		$feedCustom.prop("readonly", true);
+	} else {
+		$feedCustom.prop("readonly", false);
+	}
 }
 
 /** 見えないinput要素の内容をクリップボードにコピーする */
