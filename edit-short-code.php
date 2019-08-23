@@ -25,7 +25,7 @@ function sc_mt_options_page()
 		$scsz_feed_type = sanitize_text_field($_POST['type']);
 		$scsz_feed_name = sanitize_text_field(preg_replace('/( |　)/', '', $_POST['feed_name']));
 		$scsz_feed_default_flg = sanitize_text_field(isset($_POST['default']) ? 1 : 0);
-		$scsz_feed_custom = urlencode(wp_unslash($_POST['feed_custom']));
+		$scsz_feed_custom = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom']))), '' , 0, 7 );
 		$scsz_phrase = sanitize_text_field($_POST['phrase']);
 		$scsz_department = sanitize_text_field($_POST['department']);
 		$scsz_popular_flg = sanitize_text_field(isset($_POST['popular_flg']) ? 1 : 0);
@@ -46,7 +46,7 @@ function sc_mt_options_page()
 				// 最終更新日時チェック
 				$oldData = $scsz_old_data_results[0];
 				$scsz_old_update_date = $oldData->update_date;
-				$scsz_now_update_date = $_POST['update_date'];
+				$scsz_now_update_date = sanitize_text_field($_POST['update_date']);
 				if (strcmp($scsz_old_update_date, $scsz_now_update_date) != 0) {
 
 					echo '<div id="setting-error-settings_updated" class="error settings-error notice is-dismissible"><p><strong>更新が既にされているようです。画面を更新して再度内容を入力し、更新し直してください。</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">この通知を非表示にする</span></button></div>';
