@@ -6,11 +6,11 @@ if (! class_exists('WP_List_Table')) {
 /**
  * 管理ページに表示するテーブルのクラス
  */
-class My_List_Table extends WP_List_Table
+class scsz_My_List_Table extends WP_List_Table
 {
 
 	// カラムの設定
-	function get_columns()
+	function scsz_get_columns()
 	{
 		$columns = array(
 			'title' => 'タイトル',
@@ -44,7 +44,7 @@ class My_List_Table extends WP_List_Table
 			$scsz_obj_to_arr['feed_default_flg'] = $scsz_obj_to_arr['feed_default_flg'] ? 'ON' : 'OFF';
 		}
 
-		$columns = $this->get_columns();
+		$columns = $this->scsz_get_columns();
 		$hidden = array();
 		$sortable = array();
 		$this->_column_headers = array(
@@ -89,7 +89,7 @@ class My_List_Table extends WP_List_Table
 	}
 }
 
-function display_plugin_admin_page()
+function scsz_display_plugin_admin_page()
 {
 
 	// POSTデータがあれば設定を更新
@@ -100,7 +100,7 @@ function display_plugin_admin_page()
 	}
 	$scsz_agree_flg = get_option('scsz_affiliate_agree');
 
-	$myListTable = new My_List_Table();
+	$myListTable = new scsz_My_List_Table();
 	echo '<div class="wrap aioseop_options_wrapper"><h1 class="wp-heading-inline">SC Simple Zazzle</h1><a class="page-title-action" href="?page=simple-zazzle-edit">新規追加</a>';
 	echo '<div class="main-table"><h2>設定一覧</h2>';
 	$myListTable->prepare_items();

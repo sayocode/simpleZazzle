@@ -18,7 +18,7 @@ function add_plugin_admin_menu() {
 		'Simple Zazzle', // menu_title
 		'administrator', // capability
 		'simple-zazzle', // menu_slug
-		'display_plugin_admin_page', // function
+		'scsz_display_plugin_admin_page', // function
 		'dashicons-store',
 		81 // position
 	 );
@@ -29,13 +29,13 @@ function add_plugin_admin_menu() {
 		'新規', // menu_title
 		'administrator', // capability
 		'simple-zazzle-edit', // menu_slug
-		'display_plugin_sub_page' // function
+		'scsz_display_plugin_sub_page' // function
 	 );
 }
 
 include('view-table.php');
 
-function display_plugin_sub_page() {
+function scsz_display_plugin_sub_page() {
 	include('edit-short-code.php');
 }
 

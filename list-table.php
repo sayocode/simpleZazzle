@@ -1,7 +1,7 @@
 <?php
-create_tables();
+scsz_create_tables();
 
-function create_tables()
+function scsz_create_tables()
 {
 	global $wpdb;
 
