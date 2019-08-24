@@ -10,7 +10,7 @@ class scsz_My_List_Table extends WP_List_Table
 {
 
 	// カラムの設定
-	function scsz_get_columns()
+	function get_columns()
 	{
 		$columns = array(
 			'title' => 'タイトル',
@@ -44,7 +44,7 @@ class scsz_My_List_Table extends WP_List_Table
 			$scsz_obj_to_arr['feed_default_flg'] = $scsz_obj_to_arr['feed_default_flg'] ? 'ON' : 'OFF';
 		}
 
-		$columns = $this->scsz_get_columns();
+		$columns = $this->get_columns();
 		$hidden = array();
 		$sortable = array();
 		$this->_column_headers = array(
