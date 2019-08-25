@@ -1,15 +1,14 @@
-# SC Simple Zazzle
+=== SC Simple Zazzle ===  
 Contributors: sayocode  
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.2.2  
-Stable tag: 1.0.0  
+Stable tag: 1.0.2  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
 
 
-## Description
 == Description ==  
 
 plugin page: https://sayoko-ct.com/sc-simple-zazzle  
@@ -17,11 +16,11 @@ This plugin takes Zazzle's RSS feed and outputs it as HTML.
 You can set not only Marketplace but also Store Feed.  
 Affiliate settings are also possible.  
 
-### About SC Simple Zazzle
+About SC Simple Zazzle  
 It is necessary to generate short code to use this function.  
 Create a setting from the new button.  
 
-#### basic setting
+basic setting  
 * Title: The managed name of this plug-in. Please give a name that you can easily understand.  
 * Short Code: Displayed after the short code is generated.  
 * Type: Select Marketplace or Store Feed. We have suspended the provision of functions because we can not acquire RSS of the collection normally.  
@@ -29,7 +28,7 @@ Create a setting from the new button.
 * Use the default display function of Zazzle: Please check to output in HTML format prepared by Zazzle.  
 * Custom HTML: If you do not check above, please input HTML in the format you want to output.  
 
-#### Other
+Other  
 * Product Name Search Phrase: You can perform a partial match search for the product name you want to display.  
 * Department ID: You can narrow down the department of the product. Please select a department from (Search).  
 * Display in order of popularity: Please check if you want to order the display in order of popularity. If you do not enter, it will be acquired from the latest product.  
@@ -39,8 +38,6 @@ Create a setting from the new button.
 * Background color of image: The background color of the image can be specified with a hexadecimal color code. This setting does not apply to some products.  
 
 
-
-## Installation
 == Installation ==  
 1. From the WP admin panel, click “Plugins” -> “Add new”.  
 2. In the browser input box, type “SC Simple Zazzle”.  
@@ -55,7 +52,24 @@ OR…
 4. Click “upload”.. then browse to the .zip file downloaded from this page.  
 5. Click “Install”.. and then “Activate plugin”.  
 
-## Screenshots
 == Screenshots ==  
-https://sayoko-ct.com/sc-simple-zazzle/wp-content/uploads/2019/08/%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2.png
-https://sayoko-ct.com/sc-simple-zazzle/wp-content/uploads/2019/08/%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A.png
+
+screenshot-1.png  
+screenshot-2.png  
+
+== Changelog ==  
+  
+= 1.0.0 =  
+First Commit.  
+  
+= 1.0.1 =  
+Bug fix.  
+  
+= 1.0.2 =  
+Bug fix.  
+
+== Frequently Asked Questions ==  
+none.
+
+== Upgrade Notice ==
+none.
