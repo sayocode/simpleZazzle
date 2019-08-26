@@ -1,5 +1,6 @@
 === SC Simple Zazzle ===  
 Contributors: sayocode  
+Donate link: comming soon.  
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.2.2  
@@ -54,8 +55,8 @@ OR…
 
 == Screenshots ==  
 
-screenshot-1.png  
-screenshot-2.png  
+1. Main screen.  
+2. Screen to edit Zazzle information.  
 
 == Changelog ==  
   
