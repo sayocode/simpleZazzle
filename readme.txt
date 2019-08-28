@@ -4,7 +4,7 @@ Donate link: comming soon.
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.2.2  
-Stable tag: 1.0.2  
+Stable tag: 1.0.0  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
@@ -12,10 +12,10 @@ Requires PHP: 7.0
 
 == Description ==  
 
-plugin page: https://sayoko-ct.com/sc-simple-zazzle  
 This plugin takes Zazzle's RSS feed and outputs it as HTML.  
 You can set not only Marketplace but also Store Feed.  
 Affiliate settings are also possible.  
+plugin page: https://sayoko-ct.com/sc-simple-zazzle  
 
 About SC Simple Zazzle  
 It is necessary to generate short code to use this function.  
