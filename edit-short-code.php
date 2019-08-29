@@ -36,6 +36,7 @@ function sc_mt_options_page()
 		$scsz_affiliate_code = preg_replace('/( |　)/', '', sanitize_text_field($_POST['affiliate_code']));
 		$scsz_tracking_code = preg_replace('/( |　)/', '', sanitize_text_field($_POST['tracking_code']));
 		$scsz_update_flag = sanitize_text_field(($_POST['update_flg'] == 'true') ? true : false);
+		$scsz_now_update_date = sanitize_text_field($_POST['update_date']);
 
 		if ($scsz_update_flag) { // 更新
 			$scsz_old_data_results = $wpdb->get_results("SELECT * FROM " . $scsz_table_name . " WHERE `scid` = '" . $scid . "'");
@@ -46,7 +47,6 @@ function sc_mt_options_page()
 				// 最終更新日時チェック
 				$oldData = $scsz_old_data_results[0];
 				$scsz_old_update_date = $oldData->update_date;
-				$scsz_now_update_date = sanitize_text_field($_POST['update_date']);
 				if (strcmp($scsz_old_update_date, $scsz_now_update_date) != 0) {
 
 					echo '<div id="setting-error-settings_updated" class="error settings-error notice is-dismissible"><p><strong>更新が既にされているようです。画面を更新して再度内容を入力し、更新し直してください。</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">この通知を非表示にする</span></button></div>';
@@ -98,9 +98,10 @@ function sc_mt_options_page()
 				'page' => $scsz_page,
 				'background_color' => $scsz_background_color,
 				'affiliate_code' => $scsz_affiliate_code,
-				'tracking_code' => $scsz_tracking_code
+				'tracking_code' => $scsz_tracking_code,
+				'update_date' => date('Y-m-d H:i:s')
 			), array(
-				'%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s'
+				'%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 			));
 			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
 			$scsz_update_flag = true;
@@ -200,8 +201,15 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 							<button class="button assist-button" data-object="description">商品説明</button>
 							<button class="button assist-button" data-object="descriptionJs">商品説明（HTMLエスケープ）</button>
 							<button class="button assist-button" data-object="tags">タグ（JavaScript配列）</button>
+							<button class="button assist-button" data-object="roopIndex">ループインデックス</button>
 							<textarea name="feed_custom" id="feedCustom" maxlength="65535"
-								class="large-text code" rows="5"><?php if($scsz_update_flag){echo urldecode(esc_textarea($scsz_feed_setting->feed_custom));} ?></textarea>
+								class="large-text code" rows="5"><?php
+								if($scsz_update_flag){
+									echo urldecode(esc_textarea($scsz_feed_setting->feed_custom));
+								} else {
+									echo '<li id="scSimpleZazzle-%roopIndex%">&#13;<a href="%link%"><img src="%thumbnail%" alt="%fullTitle%"><br>&#13;%title% %price%</a><br>&#13;%description%&#13;</li>';
+								}
+								?></textarea>
 						</td>
 					</tr>
 				</table>

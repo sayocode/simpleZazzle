@@ -38,7 +38,7 @@ function scsz_create_tables()
 				affiliate_code varchar(30),
 				tracking_code varchar(30),
 				create_date timestamp NOT NULL DEFAULT NOW(),
-				update_date timestamp NOT NULL DEFAULT NOW(),
+				update_date timestamp NOT NULL,
 				PRIMARY KEY (scid)
 			) {$charset_collate};";
 

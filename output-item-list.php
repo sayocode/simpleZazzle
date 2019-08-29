@@ -42,6 +42,7 @@ function sc_echo_item_list($atts) {
 
 		// カスタムHTMLの出力
 		$return = '';
+		$roopIndex = 0;
 		foreach($scsz_rss->channel->item as $item){
 			$scsz_full_title = $item->title;
 			$scsz_category = str_replace(' ', '', str_replace($item->children('media', true)->title, '', $scsz_full_title));
@@ -65,6 +66,8 @@ function sc_echo_item_list($atts) {
 			$itemDom = str_replace('%description%', $scsz_description, $itemDom);
 			$itemDom = str_replace('%descriptionJs%', str_replace(array("\r\n", "\r", "\n"), '', esc_html($scsz_description, ENT_QUOTES|ENT_HTML5)), $itemDom);
 			$itemDom = str_replace('%tags%', $scsz_keywords, $itemDom);
+			$itemDom = str_replace('%roopIndex%', $roopIndex, $itemDom);
+			$roopIndex++;
 			$return = $return.$itemDom;
 		}
 		return $return;
