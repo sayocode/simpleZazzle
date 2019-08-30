@@ -136,5 +136,8 @@ function scsz_display_plugin_admin_page()
 	<input type="hidden" name="affiliate_update" value="1" />
 		<?php submit_button(); ?>
 	</form>
+    <script type="text/javascript">
+        const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); //コピーしました。 ?>";
+    </script>
 <?php
 }
