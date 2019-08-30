@@ -26,6 +26,8 @@ function sc_mt_options_page()
 		$scsz_feed_name = sanitize_text_field(preg_replace('/( |　)/', '', $_POST['feed_name']));
 		$scsz_feed_default_flg = sanitize_text_field(isset($_POST['default']) ? 1 : 0);
 		$scsz_feed_custom = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom']))), '' , 0, 7 );
+		$scsz_feed_custom_before = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom_before']))), '' , 0, 7 );
+		$scsz_feed_custom_after = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom_after']))), '' , 0, 7 );
 		$scsz_phrase = sanitize_text_field($_POST['phrase']);
 		$scsz_department = sanitize_text_field($_POST['department']);
 		$scsz_popular_flg = sanitize_text_field(isset($_POST['popular_flg']) ? 1 : 0);
@@ -57,6 +59,8 @@ function sc_mt_options_page()
 						'feed_name' => $scsz_feed_name,
 						'feed_default_flg' => $scsz_feed_default_flg,
 						'feed_custom' => $scsz_feed_custom,
+						'feed_custom_before' => $scsz_feed_custom_before,
+						'feed_custom_after' => $scsz_feed_custom_after,
 						'phrase' => $scsz_phrase,
 						'department' => $scsz_department,
 						'popular_flg' => $scsz_popular_flg,
@@ -70,7 +74,7 @@ function sc_mt_options_page()
 					), array(
 						'scid' => $scid
 					), array(
-						'%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+						'%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 					), array(
 						'%d'
 					));
@@ -90,6 +94,8 @@ function sc_mt_options_page()
 				'feed_name' => $scsz_feed_name,
 				'feed_default_flg' => $scsz_feed_default_flg,
 				'feed_custom' => $scsz_feed_custom,
+				'feed_custom_before' => $scsz_feed_custom_before,
+				'feed_custom_after' => $scsz_feed_custom_after,
 				'phrase' => $scsz_phrase,
 				'department' => $scsz_department,
 				'popular_flg' => $scsz_popular_flg,
@@ -101,7 +107,7 @@ function sc_mt_options_page()
 				'tracking_code' => $scsz_tracking_code,
 				'update_date' => date('Y-m-d H:i:s')
 			), array(
-				'%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+				'%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 			));
 			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>設定を保存しました。</strong></p></div>';
 			$scsz_update_flag = true;
@@ -187,9 +193,19 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 									value="1"
 									<?php  if($scsz_update_flag){checked( 1, $scsz_feed_setting -> feed_default_flg);} ?> /></td>
 					</tr>
-					<tr>
-						<th scope="row"><label for="feedCustom">カスタムHTML</label></th>
-						<td>
+					<tr id="customHtmlWrap">
+						<th scope="row">カスタムHTM</th>
+						<td><label for="feedCustomBefore">直前に出力するHTML</label>
+							<textarea name="feed_custom_before" id="feedCustomBefore" maxlength="65535"
+								class="large-text code" rows="3"><?php
+								if($scsz_update_flag){
+									echo urldecode(esc_textarea($scsz_feed_setting->feed_custom_before));
+								} else {
+									echo '<ul>';
+								}
+								?></textarea>
+							<label for="feedCustom">商品ごとのHTML</label>
+							<div>
 							<button class="button assist-button" data-object="title">商品名</button>
 							<button class="button assist-button" data-object="fullTitle">商品名（フル）</button>
 							<button class="button assist-button" data-object="category">カテゴリー</button>
@@ -202,12 +218,22 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 							<button class="button assist-button" data-object="descriptionJs">商品説明（HTMLエスケープ）</button>
 							<button class="button assist-button" data-object="tags">タグ（JavaScript配列）</button>
 							<button class="button assist-button" data-object="roopIndex">ループインデックス</button>
+							</div>
 							<textarea name="feed_custom" id="feedCustom" maxlength="65535"
 								class="large-text code" rows="5"><?php
 								if($scsz_update_flag){
 									echo urldecode(esc_textarea($scsz_feed_setting->feed_custom));
 								} else {
 									echo '<li id="scSimpleZazzle-%roopIndex%">&#13;<a href="%link%"><img src="%thumbnail%" alt="%fullTitle%"><br>&#13;%title% %price%</a><br>&#13;%description%&#13;</li>';
+								}
+								?></textarea>
+							<label for="feedCustomAfter">直後に出力するHTML</label>
+							<textarea name="feed_custom_after" id="feedCustomAfter" maxlength="65535"
+								class="large-text code" rows="3"><?php
+								if($scsz_update_flag){
+									echo urldecode(esc_textarea($scsz_feed_setting->feed_custom_after));
+								} else {
+									echo '</ul>';
 								}
 								?></textarea>
 						</td>

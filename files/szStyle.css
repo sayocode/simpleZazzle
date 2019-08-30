@@ -89,6 +89,10 @@ label.required:after {
 	display: none;
 }
 
+#customHtmlWrap textarea{
+	margin-bottom: 0.5rem;
+}
+
 .toast {
 	position: fixed;
 	bottom: 10px;
