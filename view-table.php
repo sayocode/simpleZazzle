@@ -9,15 +9,17 @@ if (! class_exists('WP_List_Table')) {
 class scsz_My_List_Table extends WP_List_Table
 {
 
+    
 	// カラムの設定
 	function get_columns()
 	{
+
 		$columns = array(
-			'title' => 'Title', //タイトル
-			'short_code' => 'Short code', //ショートコード
-			'feed_type' => 'Type', //種別
-			'feed_name' => 'Store name', // ストア名
-			'feed_default_flg' => 'Custom HTML' //HTMLカスタム
+			'title' => __('Title', 'sc-simple-zazzle'),
+			'short_code' => __('Short code', 'sc-simple-zazzle'), //ショートコード
+			'feed_type' => __('Type', 'sc-simple-zazzle'), //種別
+			'feed_name' => __('Store name', 'sc-simple-zazzle'), // ストア名
+			'feed_default_flg' => __('Custom HTML', 'sc-simple-zazzle') //HTMLカスタム
 		);
 		return $columns;
 	}
@@ -33,9 +35,9 @@ class scsz_My_List_Table extends WP_List_Table
 
 		// 種別の日本語表記
 		$scsz_feed_type_mapping = array(
-			'store' => 'Store', // ストア
-			'collections' => 'Collections', //コレクション
-			'market' => 'Market place' //マーケットプレイス
+			'store' => __('Store', 'sc-simple-zazzle'), // ストア
+			'collections' => __('Collections', 'sc-simple-zazzle'), //コレクション
+			'market' => __('Market place', 'sc-simple-zazzle') //マーケットプレイス
 		);
 		foreach ($scsz_all_feed_settings as &$scsz_obj_to_arr) {
 			$scsz_obj_to_arr = json_decode(json_encode($scsz_obj_to_arr), true);
@@ -74,7 +76,7 @@ class scsz_My_List_Table extends WP_List_Table
 	function column_title($item)
 	{
 		$actions = array(
-			'edit' => sprintf('<a href="?page=simple-zazzle-edit&scid=%s">'.'Edit'.'</a>', $item['scid'])
+			'edit' => sprintf('<a href="?page=simple-zazzle-edit&scid=%s">'.__('Edit').'</a>', $item['scid'])
 		);
 		return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions));
 	}
@@ -83,7 +85,7 @@ class scsz_My_List_Table extends WP_List_Table
 	function column_short_code($item)
 	{
 		$actions = array(
-			'edit' => sprintf('<a class="text-copy" data-short-code=%s>'.'Copy'.'</a>', "'" . $item['short_code'] . "'")
+			'edit' => sprintf('<a class="text-copy" data-short-code=%s>'.__('Copy').'</a>', "'" . $item['short_code'] . "'")
 		);
 		return sprintf('%1$s %2$s', $item['short_code'], $this->row_actions($actions));
 	}
@@ -96,14 +98,13 @@ function scsz_display_plugin_admin_page()
 	if (isset($_POST['affiliate_update'])) {
 		$scsz_affiliate_agree = isset($_POST['scsz_affiliate_agree']) ? 1 : 0;
 		update_option('scsz_affiliate_agree', $scsz_affiliate_agree);
-        $scsz_result_msg = 'The settings was saved.'; // 設定を保存しました。
-		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'.$scsz_result_msg.'</strong></p></div>';
+		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'.__('The settings was saved.', 'sc-simple-zazzle').'</strong></p></div>'; // 設定を保存しました。
 	}
 	$scsz_agree_flg = get_option('scsz_affiliate_agree');
 
 	$myListTable = new scsz_My_List_Table();
-	echo '<div class="wrap aioseop_options_wrapper"><h1 class="wp-heading-inline">SC Simple Zazzle</h1><a class="page-title-action" href="?page=simple-zazzle-edit">新規追加</a>';
-	echo '<div class="main-table"><h2>設定一覧</h2>';
+	echo '<div class="wrap aioseop_options_wrapper"><h1 class="wp-heading-inline">SC Simple Zazzle</h1><a class="page-title-action" href="?page=simple-zazzle-edit">'.__('Add New', 'sc-simple-zazzle').'</a>';
+	echo '<div class="main-table"><h2>'.__('List of settings', 'sc-simple-zazzle').'</h2>';
 	$myListTable->prepare_items();
 	$myListTable->display();
 	?>
@@ -111,13 +112,13 @@ function scsz_display_plugin_admin_page()
 <!-- ショートコードをクリップボードにコピーするためのボックス -->
 <div class="postbox">
 	<h2>
-    <span><?php echo 'About This Plugin.'; //このプラグインについて ?></span>
+    <span><?php _e('About This Plugin.', 'sc-simple-zazzle'); //このプラグインについて ?></span>
 	</h2>
 	<div class="inside">
-    <p><?php echo 'Plugin author: ' // プラグインの作者 ?><a href="https://sayoko-ct.com/">sayoko</a><br>
-        <a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php echo 'This plugin page.'; ?></a></p>
-		<h3><?php echo 'Report bugs' ?></h3>
-        <p><?php echo 'Please send bug reports and feature improvements suggestions on GitHub.'; ?><a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
+    <p><?php _e('Plugin author: ', 'sc-simple-zazzle'); // プラグインの作者 ?><a href="https://sayoko-ct.com/">sayoko</a><br>
+        <a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page.', 'sc-simple-zazzle'); ?></a></p>
+		<h3><?php _e('Report bugs', 'sc-simple-zazzle') ?></h3>
+        <p><?php _e('Please send bug reports and feature improvements suggestions on GitHub.', 'sc-simple-zazzle'); ?><a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
 	</div>
 </div>
 </div>
@@ -125,7 +126,7 @@ function scsz_display_plugin_admin_page()
 <form method="post" action="">
 	<table class="form-table">
 		<tr id="agreeAffiliate">
-            <td colspan="2"><label><?php echo 'Use an affiliate'; ?>&emsp; <input
+            <td colspan="2"><label><?php _e('Use an affiliate', 'sc-simple-zazzle'); ?>&emsp; <input
 						name="scsz_affiliate_agree" type="checkbox"
 						id="scsz_affiliate_agree" value="1"
 						<?php checked( 1, $scsz_agree_flg); ?> />
