@@ -81,10 +81,6 @@ label.required:after {
 	visibility: hidden;
 }
 
-.main-table .row-actions {
-	left: 0 !important;
-}
-
 .main-table .tablenav.top {
 	display: none;
 }
