@@ -117,8 +117,8 @@ function scsz_display_plugin_admin_page()
 	<div class="inside">
     <p><?php _e('Plugin author: ', 'sc-simple-zazzle'); // プラグインの作者 ?><a href="https://sayoko-ct.com/">sayoko</a><br>
         <a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page.', 'sc-simple-zazzle'); ?></a></p>
-		<h3><?php _e('Report bugs', 'sc-simple-zazzle') ?></h3>
-        <p><?php _e('Please send bug reports and feature improvements suggestions on GitHub.', 'sc-simple-zazzle'); ?><a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
+		<h3><?php _e('Report bugs', 'sc-simple-zazzle'); ?></h3>
+        <p><?php _e('Please send bug reports and feature improvements suggestions on GitHub.', 'sc-simple-zazzle'); ?>&emsp;<a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
 	</div>
 </div>
 </div>
