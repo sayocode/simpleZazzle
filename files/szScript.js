@@ -53,9 +53,11 @@ jQuery(document).ready(function($) {
 	// デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。
 	const $defaultChk = $("#defaultChk");
 	const $feedCustom = $("#feedCustom");
-	disabledFeedCustom($defaultChk, $feedCustom);
+	const $feedCustomBefore = $("#feedCustomBefore");
+	const $feedCustomAfter = $("#feedCustomAfter");
+	disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter);
 	$defaultChk.on("change", function() {
-		disabledFeedCustom($defaultChk, $feedCustom);
+		disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter);
 	});
 
 	/** 要素の入力アシスト */
@@ -167,11 +169,15 @@ function typeSetting($, $typeSelect) {
 }
 
 /** デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。 */
-function disabledFeedCustom($defaultChk, $feedCustom){
+function disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter){
 	if ($defaultChk.prop("checked")) {
 		$feedCustom.prop("readonly", true);
+		$feedCustomBefore.prop("readonly", true);
+		$feedCustomAfter.prop("readonly", true);
 	} else {
 		$feedCustom.prop("readonly", false);
+		$feedCustomBefore.prop("readonly", false);
+		$feedCustomAfter.prop("readonly", false);
 	}
 }
 
