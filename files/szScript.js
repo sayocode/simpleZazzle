@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 
 		const hideInput = $outputCode[0];
 		hideCopy(hideInput);
-		toast.show("コピーしました。");
+		toast.show(copyMsg);
 	});
 
 	// 編集画面
@@ -114,11 +114,11 @@ jQuery(document).ready(function($) {
 	$(".sc-edit-short-code #submit").on("click", function(e) {
 		const $validError = $("#validError");
 		if (!isHalf($feedName.val())) {
-			$validError.text("ストア名 / コレクション名は半角英数で入力してください。");
+			$validError.text(validStoreOrCollectionsHalf);
 			e.preventDefault();
 		}
-		if($("#maxNum").val() > 100){
-			$validError.text("取得数上限は100までの数値で入力してください。");
+		if($("#maxNum").val() > 100 || $("#maxNum").val() < 0){
+			$validError.text(validMaximumNumberOfAcquisitions);
 			e.preventDefault();
 		}
 
@@ -126,16 +126,16 @@ jQuery(document).ready(function($) {
 		console.log(isFinite(bcColor));
 		console.log(bcColor.length != 6);
 		if(!isFinite(parseInt("0x" + bcColor , 16)) || bcColor.length != 6){
-			$validError.text("画像の背景色は16進数6桁のカラーコードで指定してください。");
+			$validError.text(validimageBgColor);
 			e.preventDefault();
 		}
 
 		if(!isHalf($("#affiliateCode").val())){
-			$validError.text("アフィリエイトコードは半角英数で入力してください。");
+			$validError.text(validAffiliateHalf);
 			e.preventDefault();
 		}
 		if(!isHalf($("#trackingCode").val())){
-			$validError.text("トラッキングコードは半角英数で入力してください。");
+			$validError.text(validTrackingHalf);
 			e.preventDefault();
 		}
 	});
@@ -154,13 +154,13 @@ function typeSetting($, $typeSelect) {
 		$typeText.removeClass("required");
 		$feedName.prop("required", "");
 	} else if (val == "store") {
-		$typeText.text("ストア名").addClass("required");
+		$typeText.text(storeName).addClass("required");
 		$hideMarket.removeClass("hide");
 		$feedName.prop("required", "required");
 
 		changeFeedNameLink($, val, $feedNameVal);
 	} else {
-		$typeText.text("コレクション名").addClass("required");
+		$typeText.text(correctionsName).addClass("required");
 		$hideMarket.removeClass("hide");
 		$feedName.prop("required", "required");
 
@@ -213,7 +213,7 @@ function hideCopy(hideInput){
 
 /** ストア名・コレクション名のリンクを生成し確認できるようにする */
 function changeFeedNameLink($, val, $feedNameVal){
-	const $feedNameLink = $('<a target="_blank">確認</a>');
+	const $feedNameLink = $('<a target="_blank">' + linkCheck + '</a>');
 	if($feedNameVal != null && $feedNameVal != ""){
 		$feedNameLink.prop("href", "https://www.zazzle.co.jp/" + val + "/" + $feedNameVal + "?rf=238522058487844682&tc=scadmin");
 		$("#feedNameLinkWrap").html($feedNameLink);
