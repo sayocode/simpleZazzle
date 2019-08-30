@@ -69,7 +69,7 @@ Bug fix.
 ### 1.0.2  
 Bug fix.  
 
-### Frequently Asked Questions ==  
+## Frequently Asked Questions 
 none.
 
 ## Upgrade Notice
