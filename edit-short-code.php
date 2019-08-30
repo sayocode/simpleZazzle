@@ -218,7 +218,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 							<button class="button assist-button" data-object="thumbnail"><?php _e('Thumbnail URL', 'sc-simple-zazzle'); //サムネイルURL?></button>
 							<button class="button assist-button" data-object="description"><?php _e('Description', 'sc-simple-zazzle'); //商品説明?></button>
 							<button class="button assist-button" data-object="descriptionJs"><?php _e('Product description (HTML escape)', 'sc-simple-zazzle'); //商品説明（HTMLエスケープ）?></button>
-							<button class="button assist-button" data-object="tags"><?php _e('Tag (JavaScript array', 'sc-simple-zazzle'); //タグ（JavaScript配列）?></button>
+							<button class="button assist-button" data-object="tags"><?php _e('Tag (JavaScript array)', 'sc-simple-zazzle'); //タグ（JavaScript配列）?></button>
 							<button class="button assist-button" data-object="roopIndex"><?php _e('Roop index', 'sc-simple-zazzle'); //ループインデックス?></button>
 							</div>
 							<textarea name="feed_custom" id="feedCustom" maxlength="65535"
