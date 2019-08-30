@@ -36,7 +36,7 @@ function add_plugin_admin_menu() {
 	 add_submenu_page(
 		'simple-zazzle', // parent_slug
 		'Simple Zazzle', // page_title
-		'新規', // menu_title
+		__('Add new', 'sc-simple-zazzle'), // menu_title
 		'administrator', // capability
 		'simple-zazzle-edit', // menu_slug
 		'scsz_display_plugin_sub_page' // function
