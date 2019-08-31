@@ -215,7 +215,7 @@ function hideCopy(hideInput){
 function changeFeedNameLink($, val, $feedNameVal){
 	const $feedNameLink = $('<a target="_blank">' + linkCheck + '</a>');
 	if($feedNameVal != null && $feedNameVal != ""){
-		$feedNameLink.prop("href", "https://www.zazzle.co.jp/" + val + "/" + $feedNameVal + "?rf=238522058487844682&tc=scadmin");
+		$feedNameLink.prop("href", "https://www.zazzle.com/" + val + "/" + $feedNameVal + "?rf=238522058487844682&tc=scadmin");
 		$("#feedNameLinkWrap").html($feedNameLink);
 	} else {
 		$("#feedNameLinkWrap").html("");

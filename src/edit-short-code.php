@@ -166,7 +166,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 								if ($scsz_update_flag) {
 									$scsz_select_flg = $scsz_feed_setting->country == $scsz_country_key ? ' selected' : '';
 								} else {
-									$scsz_select_flg = 'unitedStates' == $scsz_country_key ? ' selected' : '';
+								    $scsz_select_flg = $scsz_country_val[2] == get_locale() ? ' selected' : '';
 								}
 								echo '<option value="'.$scsz_country_key.'" '.$scsz_select_flg.' >'.$scsz_country_val[1].'</option>';
 							}
@@ -270,7 +270,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 					</tr>
 					<tr>
 						<th scope="row"><label for="department"><?php _e('Department ID', 'sc-simple-zazzle'); ?></label>&ensp;
-						<span style="font-size:0.8em;">(<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss#page_departmentId" target="_blank"><?php _e('Find'); //検索 ?></a>)</span></th>
+						<span style="font-size:0.8em;">(<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss#page_departmentId" target="_blank"><?php _e('Find'); ?></a>)</span></th>
 						<td><input name="department" type="text" id="department" maxlength="50"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->department);} ?>"
 								class="regular-text" /></td>
