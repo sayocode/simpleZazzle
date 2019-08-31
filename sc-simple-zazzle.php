@@ -6,6 +6,9 @@ Description: This plugin gets Zazzle's RSS feed and outputs it as HTML. You can 
 Author: sayocode
 Version: 1.0.2
 Author URI: https://sayoko-ct.com/
+Text Domain: sc-simple-zazzle
+Domain Path: /languages
+
 */
 //このプラグインはZazzleのRSSフィードを取得し、HTMLとして出力します。マーケットプレイスのみならず、ストアのフィードを設定することができます。アフィリエイト設定も可能です。
 
