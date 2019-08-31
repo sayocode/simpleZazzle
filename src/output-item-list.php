@@ -7,11 +7,11 @@ function sc_echo_item_list($atts) {
 
 		// idの指定がない場合はマーケットプレイスの出力を行う。
 		if(empty($atts)){
-			return sc_default_market_place($scsz_affiliate_value, "https://www.zazzle.com/");
+			return sc_default_market_place($scsz_affiliate_value);
 		}
 		$scid = $atts['id'];
 		if(empty($scid)){
-		    return sc_default_market_place($scsz_affiliate_value, "https://www.zazzle.com/");
+			return sc_default_market_place($scsz_affiliate_value);
 		}
 
 		// idに対応するデータが存在しない場合にもマーケットプレイスの出力を行う
@@ -19,7 +19,7 @@ function sc_echo_item_list($atts) {
 		$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
 		$scsz_feed_settings = $wpdb->get_results("SELECT * FROM ".$scsz_table_name." WHERE `scid` = '".$scid."'");
 		if(empty($scsz_feed_settings)){
-		    return sc_default_market_place($scsz_affiliate_value, "https://www.zazzle.com/");
+			return sc_default_market_place($scsz_affiliate_value);
 		}
 
 		// フィードを取得
@@ -27,7 +27,7 @@ function sc_echo_item_list($atts) {
 		$scsz_rss = sc_reed_feed($scsz_feed_setting);
 
 		// アフィリエイトコードの設定
-		if(!(empty($scsz_feed_setting -> affiliate_code) && strcmp(get_option('scsz_affiliate_agree'), '1'))){
+		if(!empty($scsz_feed_setting -> affiliate_code) && get_option('scsz_affiliate_agree') == '1'){
 			$scsz_affiliate_value = $scsz_feed_setting -> affiliate_code;
 			if(!empty($scsz_feed_setting -> tracking_code)){
 				$scsz_affiliate_value = $scsz_affiliate_value . '&tc=' . $scsz_feed_setting -> tracking_code;
@@ -47,7 +47,8 @@ function sc_echo_item_list($atts) {
 			$scsz_full_title = $item->title;
 			$scsz_category = str_replace(' ', '', str_replace($item->children('media', true)->title, '', $scsz_full_title));
 			$scsz_title = str_replace(' ', '', str_replace($scsz_category, '', $scsz_full_title));
-			$scsz_link = $item->link.'?rf='.$scsz_affiliate_value;
+			$scsz_link_param = strpos($item->link, '?')!==false ? '&' : '?';
+			$scsz_link = $item->link.$scsz_link_param.'rf='.$scsz_affiliate_value;
 			$scsz_price = $item->price;
 			$scsz_author = $item->author;
 			$scsz_image = $item->children('media', true)->content->attributes()->url;
@@ -118,21 +119,26 @@ function sc_reed_feed($scsz_feed_setting){
 		$scsz_option_params = $scsz_option_params."&bg=".urlencode($bg_color);
 	}
 
+	// 言語設定がある場合は言語のfeedを取得する
 	include('country-list.php');
 	$scsz_country = $scsz_country_list[$scsz_feed_setting -> country];
 	$scsz_country_url = $scsz_country[0];
+	$scsz_country_lang = $scsz_country[3];
+	if(!empty($scsz_country_lang)){
+		$scsz_option_params = $scsz_option_params.'&'.$scsz_country_lang;
+	}
 
 	// フィードの取得
 	if(strcmp($scsz_feed_setting -> feed_type, 'market') == 0){
-	    $scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
+		$scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
 	} else {
 		$scsz_feed_name = $scsz_feed_setting -> feed_type.'/'.$scsz_feed_name.'/';
 		$scsz_feed_url = $scsz_country_url.$scsz_feed_name.'rss'.$scsz_option_params;
 		$response = wp_remote_get($scsz_feed_url);
 		if($response['response']['code'] == 200){
-			$scsz_rss = simplexml_load_file($scsz_feed_url);
+			$scsz_rss = simplexml_load_file($scsz_feed_url.'rss'.$scsz_option_params);
 		} else {
-		    $scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
+			$scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
 		}
 	}
 	return $scsz_rss;
@@ -159,7 +165,18 @@ function sc_default_view($scsz_rss, $scsz_affiliate_value){
 }
 
 /** Zazzleのデフォルト形式でのマーケットプレイスの出力 */
-function sc_default_market_place($scsz_affiliate_value, $scsz_country_url){
-    $scsz_rss = simplexml_load_file($scsz_country_url.'rss');
+function sc_default_market_place($scsz_affiliate_value){
+	include('country-list.php');
+	$scsz_country = $scsz_country_list;
+	$scsz_country_url = 'https://www.zazzle.com/';
+	$scsz_country_lang = '';
+	foreach($scsz_country_list as $scsz_country_key => $scsz_country_val){
+		if(get_locale() == $scsz_country_val[2]){
+			$scsz_country_url = $scsz_country_val[0];
+			$scsz_country_lang = empty($scsz_country_val[3]) ? '' : '?'.$scsz_country_val[3];
+		}
+	}
+
+	$scsz_rss = simplexml_load_file($scsz_country_url.'rss');
 	return sc_default_view($scsz_rss, $scsz_affiliate_value);
 }

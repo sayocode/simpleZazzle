@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-08-31 16:07+0900\n"
-"PO-Revision-Date: 2019-08-31 16:08+0900\n"
+"POT-Creation-Date: 2019-08-31 20:44+0900\n"
+"PO-Revision-Date: 2019-08-31 20:44+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -21,69 +21,85 @@ msgstr ""
 msgid "Australia"
 msgstr "オーストラリア"
 
-#: country-list.php:9
+#: country-list.php:11
 msgid "Austria"
 msgstr "オーストリア"
 
-#: country-list.php:13
-msgid "Belgium"
-msgstr "ベルギー"
-
 #: country-list.php:17
+msgid "Belgium(FR)"
+msgstr "ベルギー（フランス語）"
+
+#: country-list.php:23
+msgid "Belgium(NL)"
+msgstr "ベルギー（オランダ語）"
+
+#: country-list.php:29
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: country-list.php:21
-msgid "Canada"
-msgstr "カナダ"
+#: country-list.php:35
+msgid "Canada(EN)"
+msgstr "カナダ（英語）"
 
-#: country-list.php:25
+#: country-list.php:41
+msgid "Canada(FR)"
+msgstr "カナダ（フランス語）"
+
+#: country-list.php:47
 msgid "England"
 msgstr "イギリス"
 
-#: country-list.php:29
+#: country-list.php:53
 msgid "France"
 msgstr "フランス"
 
-#: country-list.php:33
+#: country-list.php:59
 msgid "Germany"
 msgstr "ドイツ"
 
-#: country-list.php:37
+#: country-list.php:65
 msgid "Japan"
 msgstr "日本"
 
-#: country-list.php:41
+#: country-list.php:71
 msgid "Netherlands"
 msgstr "オランダ"
 
-#: country-list.php:45
+#: country-list.php:77
 msgid "New Zealand"
 msgstr "ニュージーランド"
 
-#: country-list.php:49
+#: country-list.php:83
 msgid "Portugal"
 msgstr "ポルトガル"
 
-#: country-list.php:53
+#: country-list.php:89
 msgid "Rest of Europa"
 msgstr "その他の欧州"
 
-#: country-list.php:57
+#: country-list.php:95
 msgid "Spain"
 msgstr "スペイン"
 
-#: country-list.php:61
+#: country-list.php:101
 msgid "Sweden"
 msgstr "スウェーデン"
 
-#: country-list.php:65
-msgid "Switzerland"
-msgstr "スイス"
+#: country-list.php:107
+msgid "Switzerland(DE)"
+msgstr "スイス（ドイツ語）"
 
-#: country-list.php:69
-msgid "United States"
-msgstr "アメリカ"
+#: country-list.php:113
+msgid "Switzerland(FR)"
+msgstr "スイス（フランス語）"
+
+#: country-list.php:119
+msgid "United States(EN)"
+msgstr "アメリカ（英語）"
+
+#: country-list.php:125
+msgid "United States(ES)"
+msgstr "アメリカ（スペイン語）"
 
 #: edit-short-code.php:48
 msgid ""
@@ -216,7 +232,7 @@ msgstr "商品"
 msgid "Price"
 msgstr "価格"
 
-#: edit-short-code.php:234 output-item-list.php:151 output-item-list.php:152
+#: edit-short-code.php:234 output-item-list.php:157 output-item-list.php:158
 msgid "Author"
 msgstr "作者"
 
