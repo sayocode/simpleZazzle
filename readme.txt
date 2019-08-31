@@ -61,10 +61,13 @@ OR…
 
 == Changelog ==  
 
-= 1.0.4 
+= 1.0.5 
+Bug Fix.  
+
+= 1.0.4  
 Country support.  
 
-= 1.0.3 
+= 1.0.3  
 Bug Fix.  
 
 = 1.0.2  
