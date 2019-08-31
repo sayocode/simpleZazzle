@@ -120,7 +120,7 @@ $scsz_country_list = array(
 		'en_US',
 		''
 	),
-	'unitedStates' => array(
+	'unitedStatesES' => array(
 		'https://www.zazzle.com/',
 		__('United States(ES)', 'sc-simple-zazzle'),
 		'',
