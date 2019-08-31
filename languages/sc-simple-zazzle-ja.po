@@ -1,0 +1,302 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-08-31 12:10+0900\n"
+"PO-Revision-Date: 2019-08-31 12:48+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"X-Poedit-Basepath: ../src\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: view-table.php\n"
+"X-Poedit-SearchPath-2: edit-short-code.php\n"
+
+#: edit-short-code.php:48
+msgid ""
+"Cannot be updated because it does not exist or has already been deleted."
+msgstr "存在しないか、すでに削除されたデータのため、更新できません。"
+
+#: edit-short-code.php:55
+msgid ""
+"It seems that the update has already been done. Please update the screen, "
+"enter the content again, and update again."
+msgstr ""
+"このデータはすでに更新されました。 画面をリロードし、コンテンツを再度入力し"
+"て、再度更新してください。"
+
+#: edit-short-code.php:82
+msgid "The configuration update was successful."
+msgstr "設定を更新しました。"
+
+#: edit-short-code.php:113
+msgid "The settings have been saved successfully."
+msgstr "設定を保存しました。"
+
+#: edit-short-code.php:130
+msgid "Back"
+msgstr "戻る"
+
+#: edit-short-code.php:131
+msgid "Short code setting"
+msgstr "ショートコード設定"
+
+#: edit-short-code.php:136
+msgid "Default"
+msgstr "基本設定"
+
+#: edit-short-code.php:137
+msgid "Options"
+msgstr "オプション"
+
+#: edit-short-code.php:140
+msgid "is a required field."
+msgstr "は必須入力です。"
+
+#: edit-short-code.php:142
+msgid ""
+"Please check the official website for a detailed explanation of each "
+"parameter."
+msgstr "各パラメータの詳しい説明は公式サイトをご確認ください。"
+
+#: edit-short-code.php:143
+msgid "If the settings are incomplete, the marketplace feed is displayed."
+msgstr "設定に不備があった場合、マーケットプレイスのFeedが表示されます。"
+
+#: edit-short-code.php:148 view-table.php:18
+msgid "Title"
+msgstr "タイトル"
+
+#: edit-short-code.php:154 view-table.php:19
+msgid "Short code"
+msgstr "ショートコード"
+
+#: edit-short-code.php:155 view-table.php:88
+msgid "Copy"
+msgstr "コピー"
+
+#: edit-short-code.php:158 view-table.php:20
+msgid "Type"
+msgstr "種別"
+
+#: edit-short-code.php:167 view-table.php:38
+msgid "Store"
+msgstr "ストア"
+
+#: edit-short-code.php:174 view-table.php:39
+msgid "Collections"
+msgstr "コレクション"
+
+#: edit-short-code.php:182 view-table.php:40
+msgid "Market place"
+msgstr "マーケットプレイス"
+
+#: edit-short-code.php:183
+msgid ""
+"* Since the RSS of the collection cannot be acquired normally, the provision "
+"of the function has been suspended."
+msgstr ""
+"※コレクションのRSSが現在正常に取得できないため、機能の提供を一時停止しており"
+"ます。"
+
+#: edit-short-code.php:186 edit-short-code.php:314
+msgid "Store Name"
+msgstr "ストア名"
+
+#: edit-short-code.php:193
+msgid "Use HTML provided by Zazzle"
+msgstr "Zazzleが提供しているHTMLを利用する"
+
+#: edit-short-code.php:199 view-table.php:22
+msgid "Custom HTML"
+msgstr "カスタムHTML"
+
+#: edit-short-code.php:200
+msgid "HTML to be output just before"
+msgstr "直前に出力するHTML"
+
+#: edit-short-code.php:209
+msgid "HTML for each product"
+msgstr "商品ごとのHTML"
+
+#: edit-short-code.php:211
+msgid "Product name"
+msgstr "商品名"
+
+#: edit-short-code.php:212
+msgid "Product name in Zazzle"
+msgstr "Zazzleでの商品名"
+
+#: edit-short-code.php:213
+msgid "Category"
+msgstr "カテゴリー"
+
+#: edit-short-code.php:214
+msgid "Product URL"
+msgstr "商品"
+
+#: edit-short-code.php:215
+msgid "Price"
+msgstr "価格"
+
+#: edit-short-code.php:216
+msgid "Author"
+msgstr "作者"
+
+#: edit-short-code.php:217
+msgid "Image URL"
+msgstr "画像URL"
+
+#: edit-short-code.php:218
+msgid "Thumbnail URL"
+msgstr "サムネイルURL"
+
+#: edit-short-code.php:219
+msgid "Description"
+msgstr "商品説明"
+
+#: edit-short-code.php:220
+msgid "Product description (HTML escape)"
+msgstr "商品説明（HTMLエスケープ）"
+
+#: edit-short-code.php:221
+msgid "Tag (JavaScript array)"
+msgstr "タグ（JavaScript配列）"
+
+#: edit-short-code.php:222
+msgid "Roop index"
+msgstr "ループインデックス"
+
+#: edit-short-code.php:232
+msgid "HTML to be output just after"
+msgstr "直後に出力するHTML"
+
+#: edit-short-code.php:248
+msgid "Product name search phrase"
+msgstr "商品名の検索フレーズ"
+
+#: edit-short-code.php:254
+msgid "Department ID"
+msgstr "部門ID"
+
+#: edit-short-code.php:254
+msgid "Find"
+msgstr "探す"
+
+#: edit-short-code.php:261
+msgid "View by popularity"
+msgstr "人気順に表示する"
+
+#: edit-short-code.php:267
+msgid "Aggregation period by popularity"
+msgstr "人気順の集計期間（日）"
+
+#: edit-short-code.php:273
+msgid "Maximum number of acquisitions"
+msgstr "取得数上限"
+
+#: edit-short-code.php:279
+msgid "Page"
+msgstr "ページ"
+
+#: edit-short-code.php:285
+msgid "Image background color"
+msgstr "画像の背景色"
+
+#: edit-short-code.php:292
+msgid "Affiliate ID"
+msgstr "アフィリエイトコード"
+
+#: edit-short-code.php:298
+msgid "Tracking ID"
+msgstr "トラッキングコード"
+
+#: edit-short-code.php:315
+msgid "Corrections Name"
+msgstr "コレクション名"
+
+#: edit-short-code.php:316
+msgid "Check"
+msgstr "確認"
+
+#: edit-short-code.php:317 view-table.php:140
+msgid "Copied."
+msgstr "コピーしました。"
+
+#: edit-short-code.php:318
+msgid ""
+"The store name / collection name can only be entered in single-byte "
+"alphanumeric characters."
+msgstr "「ストア名」 / 「コレクション名」は半角英数で入力してください。"
+
+#: edit-short-code.php:319
+msgid ""
+"A numerical value from 0 to 100 can be entered in the “Maximum number of "
+"acquisitions”."
+msgstr "「取得数上限」は0から100までの数値を入力できます。"
+
+#: edit-short-code.php:320
+msgid ""
+"“Image background color” can only be specified with a 6-digit hexadecimal "
+"color code."
+msgstr "「画像の背景色」は16進数6桁のカラーコードでのみ指定できます。"
+
+#: edit-short-code.php:321
+msgid ""
+"Only one-byte alphanumeric characters can be entered for the “Affiliate "
+"code”."
+msgstr "「アフィリエイトコード」は半角英数で入力してください。"
+
+#: edit-short-code.php:322
+msgid ""
+"Only one-byte alphanumeric characters can be entered for the “Tracking ID”."
+msgstr "「トラッキングコード」は半角英数で入力してください。"
+
+#: view-table.php:21
+msgid "Store name"
+msgstr "ストア名"
+
+#: view-table.php:79
+msgid "Edit"
+msgstr "編集"
+
+#: view-table.php:101
+msgid "The settings was saved."
+msgstr "設定を更新しました。"
+
+#: view-table.php:106
+msgid "Add New"
+msgstr "新規追加"
+
+#: view-table.php:107
+msgid "List of settings"
+msgstr "設定一覧"
+
+#: view-table.php:115
+msgid "About This Plugin."
+msgstr "このプラグインについて。"
+
+#: view-table.php:118
+msgid "Plugin author: "
+msgstr "作者： "
+
+#: view-table.php:119
+msgid "This plugin page."
+msgstr "プラグインページ."
+
+#: view-table.php:120
+msgid "Report bugs"
+msgstr "バグの報告"
+
+#: view-table.php:121
+msgid "Please send bug reports and feature improvements suggestions on GitHub."
+msgstr "バグの報告や機能改善の提案はGitHubからお願いいたします。"
+
+#: view-table.php:129
+msgid "Use an affiliate"
+msgstr "アフィリエイトを利用する"
