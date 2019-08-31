@@ -110,7 +110,7 @@ function sc_mt_options_page()
 			), array(
 				'%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 			));
-			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'._('The settings have been saved successfully.', 'sc-simple-zazzle').'</strong></p></div>';
+			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'.__('The settings have been saved successfully.', 'sc-simple-zazzle').'</strong></p></div>';
 			$scsz_update_flag = true;
 			$scsz_feed_setting = sc_set_feed_info($wpdb, $scsz_table_name, $scid);
 		}

@@ -44,13 +44,13 @@ function add_plugin_admin_menu() {
 	 );
 }
 
-include('view-table.php');
+include('src/view-table.php');
 
 function scsz_display_plugin_sub_page() {
-	include('edit-short-code.php');
+	include('src/edit-short-code.php');
 }
 
-include('output-item-list.php');
-include('uninstall.php');
-include('list-table.php');
-include('file-read.php');
+include('src/output-item-list.php');
+include('src/uninstall.php');
+include('src/list-table.php');
+include('src/file-read.php');
