@@ -4,7 +4,7 @@ Donate link: comming soon.
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.2.2  
-Stable tag: 1.0.4  
+Stable tag: 1.0.5  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
@@ -60,6 +60,9 @@ OR…
 2. Screen to edit Zazzle information.  
 
 ## Changelog  
+
+### 1.0.5 
+Bug Fix.  
 
 ### 1.0.4 
 Country support.  
