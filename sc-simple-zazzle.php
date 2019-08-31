@@ -4,7 +4,7 @@ Plugin Name: SC Simple Zazzle
 Plugin URI: https://sayoko-ct.com/sc-simple-zazzle/
 Description: This plugin gets Zazzle's RSS feed and outputs it as HTML. You can set up a feed for the store as well as the marketplace. Affiliate setting is also possible.
 Author: sayocode
-Version: 1.0.2
+Version: 1.0.3
 Author URI: https://sayoko-ct.com/
 Text Domain: sc-simple-zazzle
 Domain Path: /languages
@@ -14,17 +14,8 @@ Domain Path: /languages
 
 /*  Copyright 2019 sayoko (email : communicate@sayoko-ct.com) */
 
-class scSimpleZazzle {
-const DOMAIN = 'sc-simple-zazzle';
-	private $goption = array();
-	//コンストラクタ
-	public function __construct() {
-
-		load_plugin_textdomain(self::DOMAIN, false, basename( dirname( __FILE__ ) ).'/languages' );
-	}
-}
-
 add_action( 'admin_menu', 'add_plugin_admin_menu' );
+load_plugin_textdomain('sc-simple-zazzle', false, basename( dirname( __FILE__ ) ).'/languages' );
 
 function add_plugin_admin_menu() {
 	add_menu_page(

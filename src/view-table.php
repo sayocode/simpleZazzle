@@ -16,9 +16,9 @@ class scsz_My_List_Table extends WP_List_Table
 
 		$columns = array(
 			'title' => __('Title', 'sc-simple-zazzle'),
-			'short_code' => __('Short code', 'sc-simple-zazzle'), //ショートコード
-			'feed_type' => __('Type', 'sc-simple-zazzle'), //種別
-			'feed_name' => __('Store name', 'sc-simple-zazzle'), // ストア名
+			'short_code' => __('Short code', 'sc-simple-zazzle'),
+			'feed_type' => __('Type', 'sc-simple-zazzle'),
+			'feed_name' => __('Store name', 'sc-simple-zazzle'),
 			'feed_default_flg' => __('Custom HTML', 'sc-simple-zazzle') //HTMLカスタム
 		);
 		return $columns;
@@ -35,9 +35,9 @@ class scsz_My_List_Table extends WP_List_Table
 
 		// 種別の日本語表記
 		$scsz_feed_type_mapping = array(
-			'store' => __('Store', 'sc-simple-zazzle'), // ストア
-			'collections' => __('Collections', 'sc-simple-zazzle'), //コレクション
-			'market' => __('Market place', 'sc-simple-zazzle') //マーケットプレイス
+			'store' => __('Store', 'sc-simple-zazzle'),
+			'collections' => __('Collections', 'sc-simple-zazzle'),
+			'market' => __('Market place', 'sc-simple-zazzle')
 		);
 		foreach ($scsz_all_feed_settings as &$scsz_obj_to_arr) {
 			$scsz_obj_to_arr = json_decode(json_encode($scsz_obj_to_arr), true);
@@ -112,10 +112,10 @@ function scsz_display_plugin_admin_page()
 <!-- ショートコードをクリップボードにコピーするためのボックス -->
 <div class="postbox">
 	<h2>
-    <span><?php _e('About This Plugin.', 'sc-simple-zazzle'); //このプラグインについて ?></span>
+    <span><?php _e('About This Plugin.', 'sc-simple-zazzle'); ?></span>
 	</h2>
 	<div class="inside">
-    <p><?php _e('Plugin author: ', 'sc-simple-zazzle'); // プラグインの作者 ?><a href="https://sayoko-ct.com/">sayoko</a><br>
+    <p><?php _e('Plugin author: ', 'sc-simple-zazzle'); ?><a href="https://sayoko-ct.com/">sayoko</a><br>
         <a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page.', 'sc-simple-zazzle'); ?></a></p>
 		<h3><?php _e('Report bugs', 'sc-simple-zazzle'); ?></h3>
         <p><?php _e('Please send bug reports and feature improvements suggestions on GitHub.', 'sc-simple-zazzle'); ?>&emsp;<a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
