@@ -22,6 +22,7 @@ function sc_mt_options_page()
 
 		$scid = sanitize_text_field($_POST['scid']);
 		$scsz_feed_title = sanitize_text_field($_POST['title']);
+		$scsz_country = sanitize_text_field($_POST['country']);
 		$scsz_feed_type = sanitize_text_field($_POST['type']);
 		$scsz_feed_name = sanitize_text_field(preg_replace('/( |　)/', '', $_POST['feed_name']));
 		$scsz_feed_default_flg = sanitize_text_field(isset($_POST['default']) ? 1 : 0);
@@ -55,6 +56,7 @@ function sc_mt_options_page()
 				} else {
 					$wpdb->update($scsz_table_name, array(
 						'title' => $scsz_feed_title,
+						'country' => $scsz_country,
 						'feed_type' => $scsz_feed_type,
 						'feed_name' => $scsz_feed_name,
 						'feed_default_flg' => $scsz_feed_default_flg,
@@ -74,7 +76,7 @@ function sc_mt_options_page()
 					), array(
 						'scid' => $scid
 					), array(
-						'%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+						'%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 					), array(
 						'%d'
 					));
@@ -89,6 +91,7 @@ function sc_mt_options_page()
 			$scid = $scsz_max_id + 1;
 			$wpdb->insert($scsz_table_name, array(
 				'scid' => $scid,
+				'country' => $scsz_country,
 				'title' => $scsz_feed_title,
 				'feed_type' => $scsz_feed_type,
 				'feed_name' => $scsz_feed_name,
@@ -107,7 +110,7 @@ function sc_mt_options_page()
 				'tracking_code' => $scsz_tracking_code,
 				'update_date' => date('Y-m-d H:i:s')
 			), array(
-				'%d', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+				'%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 			));
 			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'.__('The settings have been saved successfully.', 'sc-simple-zazzle').'</strong></p></div>';
 			$scsz_update_flag = true;
@@ -136,15 +139,15 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 			<li><?php _e('Options', 'sc-simple-zazzle'); ?></li>
 		</ul>
 		<div class="area">
-        <span style="color:#ef6340;">*</span>&ensp;<?php _e('is a required field.', 'sc-simple-zazzle'); ?>
+		<span style="color:#ef6340;">*</span>&ensp;<?php _e('is a required field.', 'sc-simple-zazzle'); ?>
 		<div>
-            <?php _e('Please check the official website for a detailed explanation of each parameter.', 'sc-simple-zazzle'); ?>&ensp;<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss" target="_blank">RSS feeds</a><br>
-            <?php _e('If the settings are incomplete, the marketplace feed is displayed.', 'sc-simple-zazzle'); ?></div>
+			<?php _e('Please check the official website for a detailed explanation of each parameter.', 'sc-simple-zazzle'); ?>&ensp;<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss" target="_blank">RSS feeds</a><br>
+			<?php _e('If the settings are incomplete, the marketplace feed is displayed.', 'sc-simple-zazzle'); ?></div>
 			<div class="tab-area show">
 				<table class="form-table">
 
 					<tr>
-                        <th scope="row"><label class="required" for="title"><?php _e('Title', 'sc-simple-zazzle'); ?></label></th>
+						<th scope="row"><label class="required" for="title"><?php _e('Title', 'sc-simple-zazzle'); ?></label></th>
 						<td><input name="title" type="text" id="title" required
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->title);} else { echo 'New items';} ?>"
 								class="regular-text" maxlength="50" /></td>
@@ -154,32 +157,48 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 						<td><?php if($scsz_update_flag){$scode = '[simple_zazzle id='.$scid.']'; echo $scode.'&emsp;<a class="text-copy" data-short-code="'.$scode.'">'.__('Copy').'</a><input type="hidden" id="outputCode">';} ?></td>
 					</tr>
 					<tr>
+						<th scope="row"><label class="required" for="countrySelect"><?php _e('Country', 'sc-simple-zazzle'); ?></label></th>
+						<td><select name="country" id="countrySelect">
+							<?php 
+							include('country-list.php');
+							foreach ($scsz_country_list as $scsz_country_key => $scsz_country_val) {
+								$scsz_select_flg = '';
+								if ($scsz_update_flag) {
+									$scsz_select_flg = $scsz_feed_setting->country == $scsz_country_key ? ' selected' : '';
+								} else {
+									$scsz_select_flg = 'unitedStates' == $scsz_country_key ? ' selected' : '';
+								}
+								echo '<option value="'.$scsz_country_key.'" '.$scsz_select_flg.' >'.$scsz_country_val[1].'</option>';
+							}
+							?>
+						</select></td>
+					</tr>
+					<tr>
 						<th scope="row"><label class="required" for="typeSelect"><?php _e('Type', 'sc-simple-zazzle'); ?></label></th>
 						<td><select name="type" id="typeSelect">
 								<option value="store"
 									<?php
-
 									if ($scsz_update_flag) {
-										$selectFlg = $scsz_feed_setting->feed_type == 'store' ? ' selected' : '';
-										echo $selectFlg;
+										$scsz_select_flg = $scsz_feed_setting->feed_type == 'store' ? ' selected' : '';
+										echo $scsz_select_flg;
 									}
 									?>><?php _e('Store', 'sc-simple-zazzle'); ?></option>
 								<!-- <option value="collections"
 									<?php
 									if ($scsz_update_flag) {
-										$selectFlg = $scsz_feed_setting->feed_type == 'collections' ? ' selected' : '';
-										echo $selectFlg;
+										$scsz_select_flg = $scsz_feed_setting->feed_type == 'collections' ? ' selected' : '';
+										echo $scsz_select_flg;
 									}
 									?>><?php _e('Collections', 'sc-simple-zazzle');?></option> -->
 								<option value="market"
 									<?php
 
 									if ($scsz_update_flag) {
-										$selectFlg = $scsz_feed_setting->feed_type == 'market' ? ' selected' : '';
-										echo $selectFlg;
+										$scsz_select_flg = $scsz_feed_setting->feed_type == 'market' ? ' selected' : '';
+										echo $scsz_select_flg;
 									}
 									?>><?php _e('Market place', 'sc-simple-zazzle');?></option>
-                            </select><br><?php _e('* Since the RSS of the collection cannot be acquired normally, the provision of the function has been suspended.', 'sc-simple-zazzle'); ?></td>
+							</select><br><?php _e('* Since the RSS of the collection cannot be acquired normally, the provision of the function has been suspended.', 'sc-simple-zazzle'); ?></td>
 					</tr>
 					<tr id="hideMarket">
 						<th scope="row"><label for="feedName" id="typeText"><?php _e('Store Name', 'sc-simple-zazzle'); ?></label></th>
@@ -189,14 +208,14 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 								<span id="feedNameLinkWrap"></span></td>
 					</tr>
 					<tr>
-                        <th scope="row"><label for="defaultChk"><?php _e('Use HTML provided by Zazzle', 'sc-simple-zazzle'); ?></label></th>
+						<th scope="row"><label for="defaultChk"><?php _e('Use HTML provided by Zazzle', 'sc-simple-zazzle'); ?></label></th>
 						<td><input name="default" type="checkbox" id="defaultChk"
 									value="1"
 									<?php  if($scsz_update_flag){checked( 1, $scsz_feed_setting -> feed_default_flg);} ?> /></td>
 					</tr>
 					<tr id="customHtmlWrap">
-                        <th scope="row"><?php _e('Custom HTML', 'sc-simple-zazzle') ?></th>
-                        <td><label for="feedCustomBefore"><?php _e('HTML to be output just before', 'sc-simple-zazzle'); ?></label>
+						<th scope="row"><?php _e('Custom HTML', 'sc-simple-zazzle') ?></th>
+						<td><label for="feedCustomBefore"><?php _e('HTML to be output just before', 'sc-simple-zazzle'); ?></label>
 							<textarea name="feed_custom_before" id="feedCustomBefore" maxlength="65535"
 								class="large-text code" rows="3"><?php
 								if($scsz_update_flag){
@@ -251,7 +270,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 					</tr>
 					<tr>
 						<th scope="row"><label for="department"><?php _e('Department ID', 'sc-simple-zazzle'); ?></label>&ensp;
-                        <span style="font-size:0.8em;">(<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss#page_departmentId" target="_blank"><?php _e('Find'); //検索 ?></a>)</span></th>
+						<span style="font-size:0.8em;">(<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss#page_departmentId" target="_blank"><?php _e('Find'); //検索 ?></a>)</span></th>
 						<td><input name="department" type="text" id="department" maxlength="50"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->department);} ?>"
 								class="regular-text" /></td>
@@ -309,17 +328,17 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 			<input type="hidden" name="update_flg"
 				value="<?php if($scsz_update_flag){echo 'true';} else {echo 'false';} ?>">
 		</div>
-        <script type="text/javascript">
-            const storeName = "<?php echo __('Store Name', 'sc-simple-zazzle'); ?>";
-            const correctionsName = "<?php echo __('Corrections Name', 'sc-simple-zazzle'); ?>";
-            const linkCheck = "<?php echo __('Check', 'sc-simple-zazzle'); ?>";
-            const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); ?>";
-            const validStoreOrCollectionsHalf = "<?php echo __('The store name / collection name can only be entered in single-byte alphanumeric characters.', 'sc-simple-zazzle'); ?>";
-            const validMaximumNumberOfAcquisitions = "<?php echo __('A numerical value from 0 to 100 can be entered in the “Maximum number of acquisitions”.', 'sc-simple-zazzle'); ?>";
-            const validimageBgColor = "<?php echo __('“Image background color” can only be specified with a 6-digit hexadecimal color code.', 'sc-simple-zazzle'); ?>";
-            const validAffiliateHalf = "<?php echo __('Only one-byte alphanumeric characters can be entered for the “Affiliate code”.', 'sc-simple-zazzle'); ?>";
-            const validTrackingHalf = "<?php echo __('Only one-byte alphanumeric characters can be entered for the “Tracking ID”.', 'sc-simple-zazzle'); ?>";
-        </script>
+		<script type="text/javascript">
+			const storeName = "<?php echo __('Store Name', 'sc-simple-zazzle'); ?>";
+			const correctionsName = "<?php echo __('Corrections Name', 'sc-simple-zazzle'); ?>";
+			const linkCheck = "<?php echo __('Check', 'sc-simple-zazzle'); ?>";
+			const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); ?>";
+			const validStoreOrCollectionsHalf = "<?php echo __('The store name / collection name can only be entered in single-byte alphanumeric characters.', 'sc-simple-zazzle'); ?>";
+			const validMaximumNumberOfAcquisitions = "<?php echo __('A numerical value from 0 to 100 can be entered in the “Maximum number of acquisitions”.', 'sc-simple-zazzle'); ?>";
+			const validimageBgColor = "<?php echo __('“Image background color” can only be specified with a 6-digit hexadecimal color code.', 'sc-simple-zazzle'); ?>";
+			const validAffiliateHalf = "<?php echo __('Only one-byte alphanumeric characters can be entered for the “Affiliate code”.', 'sc-simple-zazzle'); ?>";
+			const validTrackingHalf = "<?php echo __('Only one-byte alphanumeric characters can be entered for the “Tracking ID”.', 'sc-simple-zazzle'); ?>";
+		</script>
 <?php submit_button(); ?>
 <div id="validError"></div>
 </form>
