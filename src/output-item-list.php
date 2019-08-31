@@ -7,11 +7,11 @@ function sc_echo_item_list($atts) {
 
 		// idの指定がない場合はマーケットプレイスの出力を行う。
 		if(empty($atts)){
-			return sc_default_market_place($scsz_affiliate_value);
+			return sc_default_market_place($scsz_affiliate_value, "https://www.zazzle.com/");
 		}
 		$scid = $atts['id'];
 		if(empty($scid)){
-			return sc_default_market_place($scsz_affiliate_value);
+		    return sc_default_market_place($scsz_affiliate_value, "https://www.zazzle.com/");
 		}
 
 		// idに対応するデータが存在しない場合にもマーケットプレイスの出力を行う
@@ -19,7 +19,7 @@ function sc_echo_item_list($atts) {
 		$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
 		$scsz_feed_settings = $wpdb->get_results("SELECT * FROM ".$scsz_table_name." WHERE `scid` = '".$scid."'");
 		if(empty($scsz_feed_settings)){
-			return sc_default_market_place($scsz_affiliate_value);
+		    return sc_default_market_place($scsz_affiliate_value, "https://www.zazzle.com/");
 		}
 
 		// フィードを取得
@@ -118,17 +118,21 @@ function sc_reed_feed($scsz_feed_setting){
 		$scsz_option_params = $scsz_option_params."&bg=".urlencode($bg_color);
 	}
 
+	include('country-list.php');
+	$scsz_country = $scsz_country_list[$scsz_feed_setting -> country];
+	$scsz_country_url = $scsz_country[0];
+
 	// フィードの取得
 	if(strcmp($scsz_feed_setting -> feed_type, 'market') == 0){
-		$scsz_rss = simplexml_load_file('https://www.zazzle.co.jp/rss'.$scsz_option_params);
+	    $scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
 	} else {
 		$scsz_feed_name = $scsz_feed_setting -> feed_type.'/'.$scsz_feed_name.'/';
-		$scsz_feed_url = 'https://www.zazzle.co.jp/'.$scsz_feed_name.'rss'.$scsz_option_params;
+		$scsz_feed_url = $scsz_country_url.$scsz_feed_name.'rss'.$scsz_option_params;
 		$response = wp_remote_get($scsz_feed_url);
 		if($response['response']['code'] == 200){
 			$scsz_rss = simplexml_load_file($scsz_feed_url);
 		} else {
-			$scsz_rss = simplexml_load_file('https://www.zazzle.co.jp/rss'.$scsz_option_params);
+		    $scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
 		}
 	}
 	return $scsz_rss;
@@ -144,8 +148,8 @@ function sc_default_view($scsz_rss, $scsz_affiliate_value){
 		$scsz_affiliate_link = $scsz_link.'?rf='.$scsz_affiliate_value;
 
 		// なぜかRSSに作者のリンクが書かれていないので、こちらで変換する。（Zazzle側のバグ）
-		$pattern = '/<span class="ZazzleCollectionItemCellProduct-byLine">作者：(.*)<\/span>/u';
-		$replace = '<span class="ZazzleCollectionItemCellProduct-byLine">作者：'.$scsz_author.'</span>';
+		$pattern = '/<span class="ZazzleCollectionItemCellProduct-byLine">'.__('Author', 'sc-simple-zazzle').'：(.*)<\/span>/u';
+		$replace = '<span class="ZazzleCollectionItemCellProduct-byLine">'.__('Author', 'sc-simple-zazzle').'：'.$scsz_author.'</span>';
 		$scsz_description = preg_replace($pattern, $replace, str_replace($scsz_link, $scsz_affiliate_link, $scsz_description));
 
 		$return = $return.$scsz_description;
@@ -155,7 +159,7 @@ function sc_default_view($scsz_rss, $scsz_affiliate_value){
 }
 
 /** Zazzleのデフォルト形式でのマーケットプレイスの出力 */
-function sc_default_market_place($scsz_affiliate_value){
-	$scsz_rss = simplexml_load_file('https://www.zazzle.co.jp/rss');
+function sc_default_market_place($scsz_affiliate_value, $scsz_country_url){
+    $scsz_rss = simplexml_load_file($scsz_country_url.'rss');
 	return sc_default_view($scsz_rss, $scsz_affiliate_value);
 }
