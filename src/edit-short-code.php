@@ -183,13 +183,13 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 										echo $scsz_select_flg;
 									}
 									?>><?php _e('Store', 'sc-simple-zazzle'); ?></option>
-								<!-- <option value="collections"
+								<option value="collections"
 									<?php
 									if ($scsz_update_flag) {
 										$scsz_select_flg = $scsz_feed_setting->feed_type == 'collections' ? ' selected' : '';
 										echo $scsz_select_flg;
 									}
-									?>><?php _e('Collections', 'sc-simple-zazzle');?></option> -->
+									?>><?php _e('Collections', 'sc-simple-zazzle');?></option>
 								<option value="market"
 									<?php
 
@@ -198,7 +198,8 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 										echo $scsz_select_flg;
 									}
 									?>><?php _e('Market place', 'sc-simple-zazzle');?></option>
-							</select><br><?php _e('* Since the RSS of the collection cannot be acquired normally, the provision of the function has been suspended.', 'sc-simple-zazzle'); ?></td>
+							</select><br><?php _e('* You cannot use the collection outside of the United States.', 'sc-simple-zazzle'); ?>
+                            <script type="text/javascript">const typeSelectDom = document.getElementById("typeSelect");</script></td>
 					</tr>
 					<tr id="hideMarket">
 						<th scope="row"><label for="feedName" id="typeText"><?php _e('Store Name', 'sc-simple-zazzle'); ?></label></th>

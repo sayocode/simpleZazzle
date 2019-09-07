@@ -13,10 +13,27 @@ Text Domain: sc-simple-zazzle
 
 == Description ==  
 
-This plugin takes Zazzle's RSS feed and outputs it as HTML.  
-You can set not only Marketplace but also Store Feed.  
+This is a plug-in that displays products sold on Zazzle.  
+Products listed in the store and marketplace can be easily output with short codes.  
 Affiliate settings are also possible.  
 plugin page: https://sayoko-ct.com/sc-simple-zazzle  
+
+= List of supported countries  
+* Austria  
+* Belgium  
+* Brazil  
+* Canada  
+* England  
+* France  
+* Germany  
+* Japan  
+* Netherlands  
+* New Zealand  
+* Portugal  
+* Spain  
+* Switzerland  
+* United States  
+* Rest of Europa  
 
 About SC Simple Zazzle  
 It is necessary to generate short code to use this function.  
@@ -25,6 +42,7 @@ Create a setting from the new button.
 basic setting  
 * Title: The managed name of this plug-in. Please give a name that you can easily understand.  
 * Short Code: Displayed after the short code is generated.  
+* Country: Which country URL and amount to display  
 * Type: Select Marketplace or Store Feed. We have suspended the provision of functions because we can not acquire RSS of the collection normally.  
 * Store Name: If you selected Store, please enter a store name. You can actually access the store from the "confirm" link, so use it to see if it exists.  
 * Use the default display function of Zazzle: Please check to output in HTML format prepared by Zazzle.  
