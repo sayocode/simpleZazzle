@@ -186,11 +186,9 @@ msgstr "マーケットプレイス"
 
 #: edit-short-code.php:201
 msgid ""
-"* Since the RSS of the collection cannot be acquired normally, the provision "
-"of the function has been suspended."
+"* You cannot use the collection outside of the United States."
 msgstr ""
-"※コレクションのRSSが現在正常に取得できないため、機能の提供を一時停止しており"
-"ます。"
+"※米国外ではコレクションを使用できません。"
 
 #: edit-short-code.php:204 edit-short-code.php:332
 msgid "Store Name"

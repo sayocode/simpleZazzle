@@ -1,5 +1,7 @@
+let $typeSelectDom;
 jQuery(document).ready(function($) {
 
+	$typeSelectDom = $(typeSelectDom).clone();
 	// トースト通知クラス
 	const Toast = (function(){
 		var timer;
@@ -45,7 +47,13 @@ jQuery(document).ready(function($) {
 
 	// 編集画面
 	const $typeSelect = $("#typeSelect");
+	const $countrySelect = $("#countrySelect");
+	countrySetting($, $countrySelect, $typeSelect);
 	typeSetting($, $typeSelect);
+
+	$countrySelect.on("change", function() {
+		countrySetting($, $countrySelect, $typeSelect);
+	});
 	$typeSelect.on("change", function() {
 		typeSetting($, $typeSelect);
 	});
@@ -123,8 +131,6 @@ jQuery(document).ready(function($) {
 		}
 
 		const bcColor = $("#backgroundColor").val().replace("#", "");
-		console.log(isFinite(bcColor));
-		console.log(bcColor.length != 6);
 		if(!isFinite(parseInt("0x" + bcColor , 16)) || bcColor.length != 6){
 			$validError.text(validimageBgColor);
 			e.preventDefault();
@@ -140,6 +146,37 @@ jQuery(document).ready(function($) {
 		}
 	});
 });
+
+/** アメリカの場合のみコレクションを利用できるようにする処理 */
+function countrySetting($, $countrySelect, $typeSelect){
+	const availCountries = ["unitedStates", "unitedStatesES"];
+	let useCollectinoFeed = false;
+	const typeSelectVal = $typeSelect.val();
+
+	// コレクションの利用が可能かどうかの判定、OKの場合種別にコレクションを追加
+	$.each(availCountries, function(i, elm){
+		if($countrySelect.val() == elm){
+			$typeSelect.html($typeSelectDom.clone().html());
+			useCollectinoFeed = true;
+			$typeSelect.val(typeSelectVal);
+		}
+	});
+
+	// NGの場合コレクションを除いた種別のセレクトボックスをつくる
+	if(!useCollectinoFeed){
+		const $typeSelectDomOptions = $typeSelectDom.find("option");
+		$typeSelect.html("");
+		$typeSelectDomOptions.each(function(i, elm){
+			const $elm = $(elm).clone();
+			if($elm.val() != "collections"){
+				$typeSelect.append($elm.prop("outerHTML"));
+				if($elm.val() == typeSelectVal){
+					$typeSelect.val(typeSelectVal);
+				}
+			}
+		});
+	}
+}
 
 /** 種別チェック */
 function typeSetting($, $typeSelect) {
