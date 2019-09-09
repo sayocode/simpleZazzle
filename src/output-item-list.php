@@ -122,21 +122,27 @@ function sc_reed_feed($scsz_feed_setting){
 	// 言語設定がある場合は言語のfeedを取得する
 	include('country-list.php');
 	$scsz_country = $scsz_country_list[$scsz_feed_setting -> country];
-	$scsz_country_url = $scsz_country[0];
-	$scsz_country_lang = $scsz_country[3];
+	$scsz_country_url = $scsz_country['url'];
+	$scsz_country_lang = $scsz_country['lang'];
 	if(!empty($scsz_country_lang)){
 		$scsz_option_params = $scsz_option_params.'&'.$scsz_country_lang;
 	}
 
 	// フィードの取得
-	if(strcmp($scsz_feed_setting -> feed_type, 'market') == 0){
-		$scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
+	$scsz_feed_type = $scsz_feed_setting -> feed_type;
+	if(strcmp($scsz_feed_type, 'market') == 0){
+		return simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
 	} else {
-		$scsz_feed_name = $scsz_feed_setting -> feed_type.'/'.$scsz_feed_name.'/';
+		if(strcmp($scsz_feed_type, 'collections') == 0){
+			if(!$scsz_country['collectionFeed']){
+				return simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
+			}
+		}
+		$scsz_feed_name = $scsz_feed_type.'/'.$scsz_feed_name.'/';
 		$scsz_feed_url = $scsz_country_url.$scsz_feed_name.'rss'.$scsz_option_params;
 		$response = wp_remote_get($scsz_feed_url);
 		if($response['response']['code'] == 200){
-			$scsz_rss = simplexml_load_file($scsz_feed_url.'rss'.$scsz_option_params);
+			$scsz_rss = simplexml_load_file($scsz_feed_url);
 		} else {
 			$scsz_rss = simplexml_load_file($scsz_country_url.'rss'.$scsz_option_params);
 		}

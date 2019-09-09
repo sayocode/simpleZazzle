@@ -9,7 +9,7 @@ if (! class_exists('WP_List_Table')) {
 class scsz_My_List_Table extends WP_List_Table
 {
 
-    
+	
 	// カラムの設定
 	function get_columns()
 	{
@@ -18,7 +18,7 @@ class scsz_My_List_Table extends WP_List_Table
 			'title' => __('Title', 'sc-simple-zazzle'),
 			'short_code' => __('Short code', 'sc-simple-zazzle'),
 			'feed_type' => __('Type', 'sc-simple-zazzle'),
-			'feed_name' => __('Store name', 'sc-simple-zazzle'),
+		    'feed_name' => __('Store name', 'sc-simple-zazzle').' / '.__('Correction number', 'sc-simple-zazzle'),
 			'feed_default_flg' => __('Custom HTML', 'sc-simple-zazzle') //HTMLカスタム
 		);
 		return $columns;
@@ -112,13 +112,13 @@ function scsz_display_plugin_admin_page()
 <!-- ショートコードをクリップボードにコピーするためのボックス -->
 <div class="postbox">
 	<h2>
-    <span><?php _e('About This Plugin.', 'sc-simple-zazzle'); ?></span>
+	<span><?php _e('About This Plugin.', 'sc-simple-zazzle'); ?></span>
 	</h2>
 	<div class="inside">
-    <p><?php _e('Plugin author: ', 'sc-simple-zazzle'); ?><a href="https://sayoko-ct.com/">sayoko</a><br>
-        <a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page.', 'sc-simple-zazzle'); ?></a></p>
+	<p><?php _e('Plugin author: ', 'sc-simple-zazzle'); ?><a href="https://sayoko-ct.com/">sayoko</a><br>
+		<a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page.', 'sc-simple-zazzle'); ?></a></p>
 		<h3><?php _e('Report bugs', 'sc-simple-zazzle'); ?></h3>
-        <p><?php _e('Please send bug reports and feature improvements suggestions on GitHub.', 'sc-simple-zazzle'); ?>&emsp;<a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
+		<p><?php _e('Please send bug reports and feature improvements suggestions on GitHub.', 'sc-simple-zazzle'); ?>&emsp;<a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
 	</div>
 </div>
 </div>
@@ -126,7 +126,7 @@ function scsz_display_plugin_admin_page()
 <form method="post" action="">
 	<table class="form-table">
 		<tr id="agreeAffiliate">
-            <td colspan="2"><label><?php _e('Use an affiliate', 'sc-simple-zazzle'); ?>&emsp; <input
+			<td colspan="2"><label><?php _e('Use an affiliate', 'sc-simple-zazzle'); ?>&emsp; <input
 						name="scsz_affiliate_agree" type="checkbox"
 						id="scsz_affiliate_agree" value="1"
 						<?php checked( 1, $scsz_agree_flg); ?> />
@@ -136,8 +136,8 @@ function scsz_display_plugin_admin_page()
 	<input type="hidden" name="affiliate_update" value="1" />
 		<?php submit_button(); ?>
 	</form>
-    <script type="text/javascript">
-        const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); //コピーしました。 ?>";
-    </script>
+	<script type="text/javascript">
+		const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); //コピーしました。 ?>";
+	</script>
 <?php
 }
