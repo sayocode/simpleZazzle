@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-08-31 20:44+0900\n"
-"PO-Revision-Date: 2019-08-31 20:44+0900\n"
+"POT-Creation-Date: 2019-09-09 10:02+0900\n"
+"PO-Revision-Date: 2019-09-09 10:02+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -21,83 +21,83 @@ msgstr ""
 msgid "Australia"
 msgstr "オーストラリア"
 
-#: country-list.php:11
+#: country-list.php:12
 msgid "Austria"
 msgstr "オーストリア"
 
-#: country-list.php:17
+#: country-list.php:19
 msgid "Belgium(FR)"
 msgstr "ベルギー（フランス語）"
 
-#: country-list.php:23
+#: country-list.php:26
 msgid "Belgium(NL)"
 msgstr "ベルギー（オランダ語）"
 
-#: country-list.php:29
+#: country-list.php:33
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: country-list.php:35
+#: country-list.php:40
 msgid "Canada(EN)"
 msgstr "カナダ（英語）"
 
-#: country-list.php:41
+#: country-list.php:47
 msgid "Canada(FR)"
 msgstr "カナダ（フランス語）"
 
-#: country-list.php:47
+#: country-list.php:54
 msgid "England"
 msgstr "イギリス"
 
-#: country-list.php:53
+#: country-list.php:61
 msgid "France"
 msgstr "フランス"
 
-#: country-list.php:59
+#: country-list.php:68
 msgid "Germany"
 msgstr "ドイツ"
 
-#: country-list.php:65
+#: country-list.php:75
 msgid "Japan"
 msgstr "日本"
 
-#: country-list.php:71
+#: country-list.php:82
 msgid "Netherlands"
 msgstr "オランダ"
 
-#: country-list.php:77
+#: country-list.php:89
 msgid "New Zealand"
 msgstr "ニュージーランド"
 
-#: country-list.php:83
+#: country-list.php:96
 msgid "Portugal"
 msgstr "ポルトガル"
 
-#: country-list.php:89
+#: country-list.php:103
 msgid "Rest of Europa"
 msgstr "その他の欧州"
 
-#: country-list.php:95
+#: country-list.php:110
 msgid "Spain"
 msgstr "スペイン"
 
-#: country-list.php:101
+#: country-list.php:117
 msgid "Sweden"
 msgstr "スウェーデン"
 
-#: country-list.php:107
+#: country-list.php:124
 msgid "Switzerland(DE)"
 msgstr "スイス（ドイツ語）"
 
-#: country-list.php:113
+#: country-list.php:131
 msgid "Switzerland(FR)"
 msgstr "スイス（フランス語）"
 
-#: country-list.php:119
+#: country-list.php:138
 msgid "United States(EN)"
 msgstr "アメリカ（英語）"
 
-#: country-list.php:125
+#: country-list.php:145
 msgid "United States(ES)"
 msgstr "アメリカ（スペイン語）"
 
@@ -168,184 +168,182 @@ msgstr "コピー"
 msgid "Country"
 msgstr "国"
 
-#: edit-short-code.php:177 view-table.php:20
+#: edit-short-code.php:182 view-table.php:20
 msgid "Type"
 msgstr "種別"
 
-#: edit-short-code.php:185 view-table.php:38
+#: edit-short-code.php:190 view-table.php:38
 msgid "Store"
 msgstr "ストア"
 
-#: edit-short-code.php:192 view-table.php:39
+#: edit-short-code.php:197 view-table.php:39
 msgid "Collections"
 msgstr "コレクション"
 
-#: edit-short-code.php:200 view-table.php:40
+#: edit-short-code.php:205 view-table.php:40
 msgid "Market place"
 msgstr "マーケットプレイス"
 
-#: edit-short-code.php:201
-msgid ""
-"* You cannot use the collection outside of the United States."
-msgstr ""
-"※米国外ではコレクションを使用できません。"
+#: edit-short-code.php:206
+msgid "* You cannot use the collection outside of the United States."
+msgstr "※ 米国外ではコレクションを使用できません。"
 
-#: edit-short-code.php:204 edit-short-code.php:332
+#: edit-short-code.php:210
 msgid "Store Name"
 msgstr "ストア名"
 
-#: edit-short-code.php:211
+#: edit-short-code.php:217
 msgid "Use HTML provided by Zazzle"
 msgstr "Zazzleが提供しているHTMLを利用する"
 
-#: edit-short-code.php:217 view-table.php:22
+#: edit-short-code.php:223 view-table.php:22
 msgid "Custom HTML"
 msgstr "カスタムHTML"
 
-#: edit-short-code.php:218
+#: edit-short-code.php:224
 msgid "HTML to be output just before"
 msgstr "直前に出力するHTML"
 
-#: edit-short-code.php:227
+#: edit-short-code.php:233
 msgid "HTML for each product"
 msgstr "商品ごとのHTML"
 
-#: edit-short-code.php:229
+#: edit-short-code.php:235
 msgid "Product name"
 msgstr "商品名"
 
-#: edit-short-code.php:230
+#: edit-short-code.php:236
 msgid "Product name in Zazzle"
 msgstr "Zazzleでの商品名"
 
-#: edit-short-code.php:231
+#: edit-short-code.php:237
 msgid "Category"
 msgstr "カテゴリー"
 
-#: edit-short-code.php:232
+#: edit-short-code.php:238
 msgid "Product URL"
 msgstr "商品"
 
-#: edit-short-code.php:233
+#: edit-short-code.php:239
 msgid "Price"
 msgstr "価格"
 
-#: edit-short-code.php:234 output-item-list.php:157 output-item-list.php:158
+#: edit-short-code.php:240 output-item-list.php:163 output-item-list.php:164
 msgid "Author"
 msgstr "作者"
 
-#: edit-short-code.php:235
+#: edit-short-code.php:241
 msgid "Image URL"
 msgstr "画像URL"
 
-#: edit-short-code.php:236
+#: edit-short-code.php:242
 msgid "Thumbnail URL"
 msgstr "サムネイルURL"
 
-#: edit-short-code.php:237
+#: edit-short-code.php:243
 msgid "Description"
 msgstr "商品説明"
 
-#: edit-short-code.php:238
+#: edit-short-code.php:244
 msgid "Product description (HTML escape)"
 msgstr "商品説明（HTMLエスケープ）"
 
-#: edit-short-code.php:239
+#: edit-short-code.php:245
 msgid "Tag (JavaScript array)"
 msgstr "タグ（JavaScript配列）"
 
-#: edit-short-code.php:240
+#: edit-short-code.php:246
 msgid "Roop index"
 msgstr "ループインデックス"
 
-#: edit-short-code.php:250
+#: edit-short-code.php:256
 msgid "HTML to be output just after"
 msgstr "直後に出力するHTML"
 
-#: edit-short-code.php:266
+#: edit-short-code.php:272
 msgid "Product name search phrase"
 msgstr "商品名の検索フレーズ"
 
-#: edit-short-code.php:272
+#: edit-short-code.php:278
 msgid "Department ID"
 msgstr "部門ID"
 
-#: edit-short-code.php:273
+#: edit-short-code.php:279
 msgid "Find"
 msgstr "探す"
 
-#: edit-short-code.php:279
+#: edit-short-code.php:285
 msgid "View by popularity"
 msgstr "人気順に表示する"
 
-#: edit-short-code.php:285
+#: edit-short-code.php:291
 msgid "Aggregation period by popularity"
 msgstr "人気順の集計期間（日）"
 
-#: edit-short-code.php:291
+#: edit-short-code.php:297
 msgid "Maximum number of acquisitions"
 msgstr "取得数上限"
 
-#: edit-short-code.php:297
+#: edit-short-code.php:303
 msgid "Page"
 msgstr "ページ"
 
-#: edit-short-code.php:303
+#: edit-short-code.php:309
 msgid "Image background color"
 msgstr "画像の背景色"
 
-#: edit-short-code.php:310
+#: edit-short-code.php:316
 msgid "Affiliate ID"
 msgstr "アフィリエイトコード"
 
-#: edit-short-code.php:316
+#: edit-short-code.php:322
 msgid "Tracking ID"
 msgstr "トラッキングコード"
 
-#: edit-short-code.php:333
-msgid "Corrections Name"
-msgstr "コレクション名"
+#: edit-short-code.php:338 view-table.php:21
+msgid "Store name"
+msgstr "ストア名"
 
-#: edit-short-code.php:334
+#: edit-short-code.php:339 view-table.php:21
+msgid "Correction number"
+msgstr "コレクションナンバー"
+
+#: edit-short-code.php:340
 msgid "Check"
 msgstr "確認"
 
-#: edit-short-code.php:335 view-table.php:140
+#: edit-short-code.php:341 view-table.php:140
 msgid "Copied."
 msgstr "コピーしました。"
 
-#: edit-short-code.php:336
+#: edit-short-code.php:342
 msgid ""
 "The store name / collection name can only be entered in single-byte "
 "alphanumeric characters."
 msgstr "「ストア名」 / 「コレクション名」は半角英数で入力してください。"
 
-#: edit-short-code.php:337
+#: edit-short-code.php:343
 msgid ""
 "A numerical value from 0 to 100 can be entered in the “Maximum number of "
 "acquisitions”."
 msgstr "「取得数上限」は0から100までの数値を入力できます。"
 
-#: edit-short-code.php:338
+#: edit-short-code.php:344
 msgid ""
 "“Image background color” can only be specified with a 6-digit hexadecimal "
 "color code."
 msgstr "「画像の背景色」は16進数6桁のカラーコードでのみ指定できます。"
 
-#: edit-short-code.php:339
+#: edit-short-code.php:345
 msgid ""
 "Only one-byte alphanumeric characters can be entered for the “Affiliate "
 "code”."
 msgstr "「アフィリエイトコード」は半角英数で入力してください。"
 
-#: edit-short-code.php:340
+#: edit-short-code.php:346
 msgid ""
 "Only one-byte alphanumeric characters can be entered for the “Tracking ID”."
 msgstr "「トラッキングコード」は半角英数で入力してください。"
-
-#: view-table.php:21
-msgid "Store name"
-msgstr "ストア名"
 
 #: view-table.php:79
 msgid "Edit"
@@ -386,3 +384,6 @@ msgstr "バグの報告や機能改善の提案はGitHubからお願いいたし
 #: view-table.php:129
 msgid "Use an affiliate"
 msgstr "アフィリエイトを利用する"
+
+#~ msgid "Store name / Collection number"
+#~ msgstr "ストア名 / コレクションナンバー"

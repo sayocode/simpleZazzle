@@ -48,6 +48,7 @@ jQuery(document).ready(function($) {
 	// 編集画面
 	const $typeSelect = $("#typeSelect");
 	const $countrySelect = $("#countrySelect");
+	const $feedName = $("#feedName");
 	countrySetting($, $countrySelect, $typeSelect);
 	typeSetting($, $typeSelect);
 
@@ -56,6 +57,7 @@ jQuery(document).ready(function($) {
 	});
 	$typeSelect.on("change", function() {
 		typeSetting($, $typeSelect);
+		changeFeedNameLink($, $typeSelect.val(), $feedName.val());
 	});
 
 	// デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。
@@ -101,7 +103,6 @@ jQuery(document).ready(function($) {
 		feedCustomDom.selectionStart = pos + obj.length;
 	});
 
-	const $feedName = $("#feedName");
 	changeFeedNameLink($, $typeSelect.val(), $feedName.val());
 	$feedName.on("change", function(){
 		changeFeedNameLink($, $typeSelect.val(), $feedName.val());
@@ -149,12 +150,11 @@ jQuery(document).ready(function($) {
 
 /** アメリカの場合のみコレクションを利用できるようにする処理 */
 function countrySetting($, $countrySelect, $typeSelect){
-	const availCountries = ["unitedStates", "unitedStatesES"];
 	let useCollectinoFeed = false;
 	const typeSelectVal = $typeSelect.val();
 
 	// コレクションの利用が可能かどうかの判定、OKの場合種別にコレクションを追加
-	$.each(availCountries, function(i, elm){
+	$.each(collectionUsables, function(i, elm){
 		if($countrySelect.val() == elm){
 			$typeSelect.html($typeSelectDom.clone().html());
 			useCollectinoFeed = true;

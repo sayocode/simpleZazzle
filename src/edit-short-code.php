@@ -161,17 +161,22 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 						<td><select name="country" id="countrySelect">
 							<?php 
 							include('country-list.php');
+							$collectionUsables = array();
 							foreach ($scsz_country_list as $scsz_country_key => $scsz_country_val) {
 								$scsz_select_flg = '';
 								if ($scsz_update_flag) {
 									$scsz_select_flg = $scsz_feed_setting->country == $scsz_country_key ? ' selected' : '';
 								} else {
-								    $scsz_select_flg = $scsz_country_val[2] == get_locale() ? ' selected' : '';
+									$scsz_select_flg = $scsz_country_val['location'] == get_locale() ? ' selected' : '';
 								}
-								echo '<option value="'.$scsz_country_key.'" '.$scsz_select_flg.' >'.$scsz_country_val[1].'</option>';
+								echo '<option value="'.$scsz_country_key.'" '.$scsz_select_flg.' >'.$scsz_country_val['countryName'].'</option>';
+								if($scsz_country_val['collectionFeed']){
+									$collectionUsables[] = $scsz_country_key;
+								}
 							}
 							?>
-						</select></td>
+						</select>
+						<script type="text/javascript">const collectionUsables = [<?php foreach ($collectionUsables as $collectionUsable){echo '"'.$collectionUsable.'",';}?>];</script></td>
 					</tr>
 					<tr>
 						<th scope="row"><label class="required" for="typeSelect"><?php _e('Type', 'sc-simple-zazzle'); ?></label></th>
@@ -199,7 +204,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 									}
 									?>><?php _e('Market place', 'sc-simple-zazzle');?></option>
 							</select><br><?php _e('* You cannot use the collection outside of the United States.', 'sc-simple-zazzle'); ?>
-                            <script type="text/javascript">const typeSelectDom = document.getElementById("typeSelect");</script></td>
+							<script type="text/javascript">const typeSelectDom = document.getElementById("typeSelect");</script></td>
 					</tr>
 					<tr id="hideMarket">
 						<th scope="row"><label for="feedName" id="typeText"><?php _e('Store Name', 'sc-simple-zazzle'); ?></label></th>
@@ -271,7 +276,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 					</tr>
 					<tr>
 						<th scope="row"><label for="department"><?php _e('Department ID', 'sc-simple-zazzle'); ?></label>&ensp;
-						<span style="font-size:0.8em;">(<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss#page_departmentId" target="_blank"><?php _e('Find'); ?></a>)</span></th>
+						<span style="font-size:0.8em;">(<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss#page_departmentId" target="_blank"><?php _e('Find', 'sc-simple-zazzle'); ?></a>)</span></th>
 						<td><input name="department" type="text" id="department" maxlength="50"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->department);} ?>"
 								class="regular-text" /></td>
@@ -330,8 +335,8 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 				value="<?php if($scsz_update_flag){echo 'true';} else {echo 'false';} ?>">
 		</div>
 		<script type="text/javascript">
-			const storeName = "<?php echo __('Store Name', 'sc-simple-zazzle'); ?>";
-			const correctionsName = "<?php echo __('Corrections Name', 'sc-simple-zazzle'); ?>";
+			const storeName = "<?php echo __('Store name', 'sc-simple-zazzle'); ?>";
+			const correctionsName = "<?php echo __('Correction number', 'sc-simple-zazzle'); ?>";
 			const linkCheck = "<?php echo __('Check', 'sc-simple-zazzle'); ?>";
 			const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); ?>";
 			const validStoreOrCollectionsHalf = "<?php echo __('The store name / collection name can only be entered in single-byte alphanumeric characters.', 'sc-simple-zazzle'); ?>";

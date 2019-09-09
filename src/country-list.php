@@ -1,129 +1,150 @@
 <?php
 $scsz_country_list = array(
 	'australia' => array(
-		'https://www.zazzle.com.au/',
-		__('Australia', 'sc-simple-zazzle'),
-		'en_AU',
-		''
+		'url' => 'https://www.zazzle.com.au/',
+		'countryName' => __('Australia', 'sc-simple-zazzle'),
+		'location' => 'en_AU',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'austria' => array(
-		'https://www.zazzle.at/',
-		__('Austria', 'sc-simple-zazzle'),
-		'',
-		''
+		'url' => 'https://www.zazzle.at/',
+		'countryName' => __('Austria', 'sc-simple-zazzle'),
+		'location' => '',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'belgium' => array(
-		'https://www.zazzle.be/',
-		__('Belgium(FR)', 'sc-simple-zazzle'),
-		'fr_BE',
-		''
+		'url' => 'https://www.zazzle.be/',
+		'countryName' => __('Belgium(FR)', 'sc-simple-zazzle'),
+		'location' => 'fr_BE',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'belgiumNl' => array(
-		'https://www.zazzle.be/',
-		__('Belgium(NL)', 'sc-simple-zazzle'),
-		'nl_BE',
-		'lang=nl'
+		'url' => 'https://www.zazzle.be/',
+		'countryName' => __('Belgium(NL)', 'sc-simple-zazzle'),
+		'location' => 'nl_BE',
+		'lang' => 'lang=nl',
+		'collectionFeed' => false
 	),
 	'brazil' => array(
-		'https://www.zazzle.com.br/',
-		__('Brazil', 'sc-simple-zazzle'),
-		'pt_BR',
-		''
+		'url' => 'https://www.zazzle.com.br/',
+		'countryName' => __('Brazil', 'sc-simple-zazzle'),
+		'location' => 'pt_BR',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'canada' => array(
-		'https://www.zazzle.ca/',
-		__('Canada(EN)', 'sc-simple-zazzle'),
-		'en_CA',
-		''
+		'url' => 'https://www.zazzle.ca/',
+		'countryName' => __('Canada(EN)', 'sc-simple-zazzle'),
+		'location' => 'en_CA',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'canadaFR' => array(
-		'https://www.zazzle.ca/',
-		__('Canada(FR)', 'sc-simple-zazzle'),
-		'',
-		'lang=fr'
+		'url' => 'https://www.zazzle.ca/',
+		'countryName' => __('Canada(FR)', 'sc-simple-zazzle'),
+		'location' => '',
+		'lang' => 'lang=fr',
+		'collectionFeed' => false
 	),
 	'england' => array(
-		'https://www.zazzle.co.uk/',
-		__('England', 'sc-simple-zazzle'),
-		'en_GB',
-		''
+		'url' => 'https://www.zazzle.co.uk/',
+		'countryName' => __('England', 'sc-simple-zazzle'),
+		'location' => 'en_GB',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'france' => array(
-		'https://www.zazzle.fr/',
-		__('France', 'sc-simple-zazzle'),
-		'fr_FR',
-		''
+		'url' => 'https://www.zazzle.fr/',
+		'countryName' => __('France', 'sc-simple-zazzle'),
+		'location' => 'fr_FR',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'germany' => array(
-		'https://www.zazzle.de/',
-		__('Germany', 'sc-simple-zazzle'),
-		'de_DE',
-		''
+		'url' => 'https://www.zazzle.de/',
+		'countryName' => __('Germany', 'sc-simple-zazzle'),
+		'location' => 'de_DE',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'japan' => array(
-		'https://www.zazzle.co.jp/',
-		__('Japan', 'sc-simple-zazzle'),
-		'ja',
-		''
+		'url' => 'https://www.zazzle.co.jp/',
+		'countryName' => __('Japan', 'sc-simple-zazzle'),
+		'location' => 'ja',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'netherlands' => array(
-		'https://www.zazzle.nl/',
-		__('Netherlands', 'sc-simple-zazzle'),
-		'',
-		''
+		'url' => 'https://www.zazzle.nl/',
+		'countryName' => __('Netherlands', 'sc-simple-zazzle'),
+		'location' => '',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'newZealand' => array(
-		'https://www.zazzle.co.nz/',
-		__('New Zealand', 'sc-simple-zazzle'),
-		'',
-		''
+		'url' => 'https://www.zazzle.co.nz/',
+		'countryName' => __('New Zealand', 'sc-simple-zazzle'),
+		'location' => '',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'portugal' => array(
-		'https://www.zazzle.pt/',
-		__('Portugal', 'sc-simple-zazzle'),
-		'pt_PT',
-		''
+		'url' => 'https://www.zazzle.pt/',
+		'countryName' => __('Portugal', 'sc-simple-zazzle'),
+		'location' => 'pt_PT',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'restOfEuropa' => array(
-		'https://www.zazzle.co.uk/',
-		__('Rest of Europa', 'sc-simple-zazzle'),
-		'',
-		''
+		'url' => 'https://www.zazzle.co.uk/',
+		'countryName' => __('Rest of Europa', 'sc-simple-zazzle'),
+		'location' => '',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'spain' => array(
-		'https://www.zazzle.es/',
-		__('Spain', 'sc-simple-zazzle'),
-		'es_ES',
-		''
+		'url' => 'https://www.zazzle.es/',
+		'countryName' => __('Spain', 'sc-simple-zazzle'),
+		'location' => 'es_ES',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'sweden' => array(
-		'https://www.zazzle.se/',
-		__('Sweden', 'sc-simple-zazzle'),
-		'sv_SE',
-		''
+		'url' => 'https://www.zazzle.se/',
+		'countryName' => __('Sweden', 'sc-simple-zazzle'),
+		'location' => 'sv_SE',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'switzerland' => array(
-		'https://www.zazzle.ch/',
-		__('Switzerland(DE)', 'sc-simple-zazzle'),
-		'de_CH',
-		''
+		'url' => 'https://www.zazzle.ch/',
+		'countryName' => __('Switzerland(DE)', 'sc-simple-zazzle'),
+		'location' => 'de_CH',
+		'lang' => '',
+		'collectionFeed' => false
 	),
 	'switzerlandFR' => array(
-		'https://www.zazzle.ch/',
-		__('Switzerland(FR)', 'sc-simple-zazzle'),
-		'',
-		'lang=fr'
+		'url' => 'https://www.zazzle.ch/',
+		'countryName' => __('Switzerland(FR)', 'sc-simple-zazzle'),
+		'location' => '',
+		'lang' => 'lang=fr',
+		'collectionFeed' => false
 	),
 	'unitedStates' => array(
-		'https://www.zazzle.com/',
-		__('United States(EN)', 'sc-simple-zazzle'),
-		'en_US',
-		''
+		'url' => 'https://feed.zazzle.com/',
+		'countryName' => __('United States(EN)', 'sc-simple-zazzle'),
+		'location' => 'en_US',
+		'lang' => '',
+		'collectionFeed' => true
 	),
 	'unitedStatesES' => array(
-		'https://www.zazzle.com/',
-		__('United States(ES)', 'sc-simple-zazzle'),
-		'',
-		'lang=es'
+		'url' => 'https://feed.zazzle.com/',
+		'countryName' => __('United States(ES)', 'sc-simple-zazzle'),
+		'location' => '',
+		'lang' => 'lang=es',
+		'collectionFeed' => true
 	)
 );

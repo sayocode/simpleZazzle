@@ -43,7 +43,7 @@ basic setting
 * Title: The managed name of this plug-in. Please give a name that you can easily understand.  
 * Short Code: Displayed after the short code is generated.  
 * Country: Which country URL and amount to display  
-* Type: Select Marketplace or Store Feed. We have suspended the provision of functions because we can not acquire RSS of the collection normally.  
+* Type: Select Marketplace or Store or Collections Feed.  
 * Store Name: If you selected Store, please enter a store name. You can actually access the store from the "confirm" link, so use it to see if it exists.  
 * Use the default display function of Zazzle: Please check to output in HTML format prepared by Zazzle.  
 * Custom HTML: If you do not check above, please input HTML in the format you want to output.  
@@ -79,26 +79,29 @@ OR…
 
 == Changelog ==  
 
-= 1.0.5 
-Bug Fix.  
+= 1.0.6 
+Added collections function only in USA.  
 
+= 1.0.5  
+Bug Fix.  
+  
 = 1.0.4  
 Country support.  
-
+  
 = 1.0.3  
 Bug Fix.  
-
+  
 = 1.0.2  
 Translation support.  
-
+  
 = 1.0.1  
 Add HTML field.  
   
 = 1.0.0  
 First Commit.  
-
+  
 == Frequently Asked Questions ==  
 none.
-
+  
 == Upgrade Notice ==
 none.

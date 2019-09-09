@@ -4,7 +4,7 @@ Donate link: comming soon.
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.2.2  
-Stable tag: 1.0.5  
+Stable tag: 1.0.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
@@ -43,7 +43,7 @@ basic setting
 * Title: The managed name of this plug-in. Please give a name that you can easily understand.  
 * Short Code: Displayed after the short code is generated.  
 * Country: Which country URL and amount to display  
-* Type: Select Marketplace or Store Feed. We have suspended the provision of functions because we can not acquire RSS of the collection normally.  
+* Type: Select Marketplace or Store or Collections Feed.  
 * Store Name: If you selected Store, please enter a store name. You can actually access the store from the "confirm" link, so use it to see if it exists.  
 * Use the default display function of Zazzle: Please check to output in HTML format prepared by Zazzle.  
 * Custom HTML: If you do not check above, please input HTML in the format you want to output.  
@@ -78,6 +78,9 @@ OR…
 2. Screen to edit Zazzle information.  
 
 ## Changelog  
+
+### 1.0.6 
+Added collections function only in USA.  
 
 ### 1.0.5 
 Bug Fix.  
