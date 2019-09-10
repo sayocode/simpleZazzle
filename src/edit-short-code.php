@@ -336,10 +336,10 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 		</div>
 		<script type="text/javascript">
 			const storeName = "<?php echo __('Store name', 'sc-simple-zazzle'); ?>";
-			const correctionsName = "<?php echo __('Correction number', 'sc-simple-zazzle'); ?>";
+			const correctionsName = "<?php echo __('Correction ID', 'sc-simple-zazzle'); ?>";
 			const linkCheck = "<?php echo __('Check', 'sc-simple-zazzle'); ?>";
-			const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); ?>";
-			const validStoreOrCollectionsHalf = "<?php echo __('The store name / collection name can only be entered in single-byte alphanumeric characters.', 'sc-simple-zazzle'); ?>";
+			const copyMsg = "<?php echo __('Copied to clipboard.', 'sc-simple-zazzle'); ?>";
+			const validStoreOrCollectionsHalf = "<?php echo __('The store name / collection ID can only be entered in single-byte alphanumeric characters.', 'sc-simple-zazzle'); ?>";
 			const validMaximumNumberOfAcquisitions = "<?php echo __('A numerical value from 0 to 100 can be entered in the “Maximum number of acquisitions”.', 'sc-simple-zazzle'); ?>";
 			const validimageBgColor = "<?php echo __('“Image background color” can only be specified with a 6-digit hexadecimal color code.', 'sc-simple-zazzle'); ?>";
 			const validAffiliateHalf = "<?php echo __('Only one-byte alphanumeric characters can be entered for the “Affiliate code”.', 'sc-simple-zazzle'); ?>";
