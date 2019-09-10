@@ -18,7 +18,7 @@ class scsz_My_List_Table extends WP_List_Table
 			'title' => __('Title', 'sc-simple-zazzle'),
 			'short_code' => __('Short code', 'sc-simple-zazzle'),
 			'feed_type' => __('Type', 'sc-simple-zazzle'),
-		    'feed_name' => __('Store name', 'sc-simple-zazzle').' / '.__('Correction number', 'sc-simple-zazzle'),
+			'feed_name' => __('Store name', 'sc-simple-zazzle').' / '.__('Correction ID', 'sc-simple-zazzle'),
 			'feed_default_flg' => __('Custom HTML', 'sc-simple-zazzle') //HTMLカスタム
 		);
 		return $columns;
@@ -75,10 +75,23 @@ class scsz_My_List_Table extends WP_List_Table
 	// タイトル列のカラム表示
 	function column_title($item)
 	{
+		$itemScid = $item['scid'];
+		$scsz_view_colmun = $item['title'].'<form method="POST" name="duplication_scid_'.$itemScid.'" action="?page=simple-zazzle">'
+			.'<input type="hidden" name="action" value="duplication" />'
+			.'<input type="hidden" name="scid" value="'.$itemScid.'" />'
+			.'</form>'
+			.'<form method="POST" name="delete_scid_'.$itemScid.'" action="?page=simple-zazzle">'
+			.'<input type="hidden" name="action" value="delete" />'
+			.'<input type="hidden" name="scid" value="'.$itemScid.'" />'
+			.'</form>';
 		$actions = array(
-			'edit' => sprintf('<a href="?page=simple-zazzle-edit&scid=%s">'.__('Edit').'</a>', $item['scid'])
+			'edit' => sprintf('<a href="?page=simple-zazzle-edit&scid=%s">'.__('Edit').'</a>', $itemScid),
+			'duplication' => sprintf(
+			'<a href="javascript:duplication_scid_%s.submit()">'.__('Duplication', 'sc-simple-zazzle').'</a>', $itemScid),
+			'delete' => sprintf(
+			'<a href="javascript:delete_scid_%s.submit()">'.__('Delete').'</a>', $itemScid)
 		);
-		return sprintf('%1$s %2$s', $item['title'], $this->row_actions($actions));
+		return sprintf('%1$s %2$s', $scsz_view_colmun, $this->row_actions($actions));
 	}
 
 	// ショートコード列のカラム表示
@@ -102,9 +115,17 @@ function scsz_display_plugin_admin_page()
 	}
 	$scsz_agree_flg = get_option('scsz_affiliate_agree');
 
+	if (isset($_POST['action']) && isset($_POST['scid'])) {
+		if( $_POST['action'] == 'delete' ){
+			scsz_delete_shortcode($_POST['scid']);
+		}else if( $_POST['action'] == 'duplication' ){
+			scsz_duplication_shortcode($_POST['scid']);
+		}
+	}
+
 	$myListTable = new scsz_My_List_Table();
 	echo '<div class="wrap aioseop_options_wrapper"><h1 class="wp-heading-inline">SC Simple Zazzle</h1><a class="page-title-action" href="?page=simple-zazzle-edit">'.__('Add New', 'sc-simple-zazzle').'</a>';
-	echo '<div class="main-table"><h2>'.__('List of settings', 'sc-simple-zazzle').'</h2>';
+	echo '<div id="scsz-main-table" class="main-table"><h2>'.__('List of settings', 'sc-simple-zazzle').'</h2>';
 	$myListTable->prepare_items();
 	$myListTable->display();
 	?>
@@ -137,7 +158,7 @@ function scsz_display_plugin_admin_page()
 		<?php submit_button(); ?>
 	</form>
 	<script type="text/javascript">
-		const copyMsg = "<?php echo __('Copied.', 'sc-simple-zazzle'); //コピーしました。 ?>";
+		const copyMsg = "<?php echo __('Copied to clipboard.', 'sc-simple-zazzle'); ?>";
 	</script>
 <?php
 }
