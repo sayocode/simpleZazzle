@@ -32,19 +32,6 @@ jQuery(document).ready(function($) {
 	})();
 	const toast = new Toast();
 
-	$("#scsz-main-table .delete").on("click", function(){
-//		const mysack = new sack( ajaxUrl );
-//
-//		mysack.execute = 1;
-//		mysack.method = 'POST';
-//		mysack.setVar( "action", "scsz_delete_shortcode" );
-//		mysack.setVar( "scid", $(this).data("scid") );
-//		mysack.encVar( "cookie", document.cookie, false );
-//		mysack.onError = function() { toast.show(delErrorMsg);};
-//		mysack.runAJAX();
-//		return false;
-	});
-
 	// コピー押下でクリップボードにコピー
 	$(".text-copy").on("click", function(){
 		// ショートコードを専用inputに記載する
@@ -85,4 +72,14 @@ function hideCopy(hideInput){
 
 	// 作ったinput要素を消す
 	newInput.parentNode.removeChild(newInput);
+}
+
+/** テーブル中のアクションリンクをクリックした際の処理 */
+function scsz_table_submit(action, scid){
+	const $ = jQuery;
+	const form = document.getElementById("scsz_table_submit");
+	$("#scszSendTableAction").val(action);
+	$("#scszSendTableScid").val(scid);
+	form.submit();
+	return false;
 }

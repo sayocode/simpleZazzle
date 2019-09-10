@@ -8,8 +8,6 @@ function scsz_delete_shortcode($scid){
 
 	$wpdb->delete( $scsz_table_name, $scsz_query_data, array( '%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s' ) );
 
-	echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'
-	.__('The selected short code setting was successfully deleted.', 'sc-simple-zazzle').'</strong></p></div>';
 }
 
 function scsz_duplication_shortcode($scid){
@@ -31,6 +29,7 @@ function scsz_duplication_shortcode($scid){
 }
 
 function scsz_create_query_data($scid, $scsz_table_name){
+	$scid = sanitize_text_field($scid);
 	global $wpdb;
 	$scsz_feed_settings = (array)($wpdb->get_results("SELECT * FROM " . $scsz_table_name . " WHERE `scid` = '" . $scid . "'"))[0];
 
