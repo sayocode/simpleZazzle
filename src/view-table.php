@@ -156,7 +156,7 @@ function scsz_display_plugin_admin_page()
 	<div class="inside">
 	<p><?php _e('Plugin author: ', 'sc-simple-zazzle'); ?><a href="https://sayoko-ct.com/">sayoko</a><br>
 		<a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page', 'sc-simple-zazzle'); ?></a></p>
-		<p><?php _e('Use this short code to get started easily. 100 new products in the marketplace are displayed.', 'sc-simple-zazzle');// 簡単に始めるには、このショートコードを使ってください。マーケットプレイスの新着商品が100件表示されます。 ?>
+		<p><?php _e('Use this short code to get started easily. 100 new products in the marketplace are displayed.', 'sc-simple-zazzle'); ?>
 		&nbsp;:&nbsp;
 		<span style="border: solid 1px #dad7d7; padding: 1px 2px;  border-radius: 4px; display: inline-block;">[simple_zazzle]</span>&ensp;<a class="text-copy" data-short-code="[simple_zazzle]"><?php _e('Copy'); ?></a></p>
 		<h3><?php _e('Report bugs', 'sc-simple-zazzle'); ?></h3>
