@@ -4,7 +4,7 @@ Donate link: comming soon.
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.2.2  
-Stable tag: 1.0.4  
+Stable tag: 1.0.7  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
@@ -79,7 +79,10 @@ OR…
 
 == Changelog ==  
 
-= 1.0.6 
+= 1.0.7  
+Added delete and duplicate functions.  
+
+= 1.0.6  
 Added collections function only in USA.  
 
 = 1.0.5  

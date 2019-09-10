@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-09-09 10:02+0900\n"
-"PO-Revision-Date: 2019-09-09 10:02+0900\n"
+"POT-Creation-Date: 2019-09-10 21:19+0900\n"
+"PO-Revision-Date: 2019-09-10 21:23+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -160,7 +160,7 @@ msgstr "タイトル"
 msgid "Short code"
 msgstr "ショートコード"
 
-#: edit-short-code.php:157 view-table.php:88
+#: edit-short-code.php:157 view-table.php:104 view-table.php:161
 msgid "Copy"
 msgstr "コピー"
 
@@ -305,22 +305,22 @@ msgid "Store name"
 msgstr "ストア名"
 
 #: edit-short-code.php:339 view-table.php:21
-msgid "Correction number"
-msgstr "コレクションナンバー"
+msgid "Correction ID"
+msgstr "コレクションID"
 
 #: edit-short-code.php:340
 msgid "Check"
 msgstr "確認"
 
-#: edit-short-code.php:341 view-table.php:140
-msgid "Copied."
-msgstr "コピーしました。"
+#: edit-short-code.php:341 view-table.php:182
+msgid "Copied to clipboard."
+msgstr "クリップボードにコピーしました。"
 
 #: edit-short-code.php:342
 msgid ""
-"The store name / collection name can only be entered in single-byte "
+"The store name / collection ID can only be entered in single-byte "
 "alphanumeric characters."
-msgstr "「ストア名」 / 「コレクション名」は半角英数で入力してください。"
+msgstr "「ストア名」 / 「コレクションID」は半角英数で入力してください。"
 
 #: edit-short-code.php:343
 msgid ""
@@ -345,45 +345,75 @@ msgid ""
 "Only one-byte alphanumeric characters can be entered for the “Tracking ID”."
 msgstr "「トラッキングコード」は半角英数で入力してください。"
 
-#: view-table.php:79
+#: table_actions.php:28
+msgid "The selected short code setting was successfully duplicated."
+msgstr "選択したショートコードを複製しました。"
+
+#: view-table.php:76 view-table.php:95
+msgid "Delete"
+msgstr "削除"
+
+#: view-table.php:91
 msgid "Edit"
 msgstr "編集"
 
-#: view-table.php:101
+#: view-table.php:93
+msgid "Duplication"
+msgstr "複製"
+
+#: view-table.php:117
 msgid "The settings was saved."
 msgstr "設定を更新しました。"
 
-#: view-table.php:106
+#: view-table.php:125 view-table.php:136
+msgid "The selected short code setting was successfully deleted."
+msgstr "選択したショートコードを削除しました。"
+
+#: view-table.php:140
 msgid "Add New"
 msgstr "新規追加"
 
-#: view-table.php:107
+#: view-table.php:141
 msgid "List of settings"
 msgstr "設定一覧"
 
-#: view-table.php:115
+#: view-table.php:154
 msgid "About This Plugin."
 msgstr "このプラグインについて。"
 
-#: view-table.php:118
+#: view-table.php:157
 msgid "Plugin author: "
 msgstr "作者： "
 
-#: view-table.php:119
-msgid "This plugin page."
-msgstr "プラグインページ."
+#: view-table.php:158
+msgid "This plugin page"
+msgstr "プラグインページ"
 
-#: view-table.php:120
+#: view-table.php:159
+msgid ""
+"Use this short code to get started easily. 100 new products in the "
+"marketplace are displayed."
+msgstr ""
+"簡単に始めるには、このショートコードを使ってください。マーケットプレイスの新"
+"着商品が100件表示されます。"
+
+#: view-table.php:162
 msgid "Report bugs"
 msgstr "バグの報告"
 
-#: view-table.php:121
+#: view-table.php:163
 msgid "Please send bug reports and feature improvements suggestions on GitHub."
 msgstr "バグの報告や機能改善の提案はGitHubからお願いいたします。"
 
-#: view-table.php:129
+#: view-table.php:171
 msgid "Use an affiliate"
 msgstr "アフィリエイトを利用する"
+
+#~ msgid "The selected short code setting was successfully copied."
+#~ msgstr "選択したショートコードを複製しました。"
+
+#~ msgid "Copied."
+#~ msgstr "コピーしました。"
 
 #~ msgid "Store name / Collection number"
 #~ msgstr "ストア名 / コレクションナンバー"

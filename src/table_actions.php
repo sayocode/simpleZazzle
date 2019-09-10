@@ -25,7 +25,7 @@ function scsz_duplication_shortcode($scid){
 	));
 
 	echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'
-	.__('The selected short code setting was successfully copied.', 'sc-simple-zazzle').'</strong></p></div>';
+	.__('The selected short code setting was successfully duplicated.', 'sc-simple-zazzle').'</strong></p></div>';
 }
 
 function scsz_create_query_data($scid, $scsz_table_name){
