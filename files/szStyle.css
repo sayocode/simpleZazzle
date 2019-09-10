@@ -81,8 +81,8 @@ label.required:after {
 	visibility: hidden;
 }
 
-.main-table .tablenav.top {
-	display: none;
+.main-table .tablenav.bottom {
+	margin-bottom: 2rem;
 }
 
 #customHtmlWrap textarea{
