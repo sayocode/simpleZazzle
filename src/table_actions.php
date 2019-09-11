@@ -6,7 +6,7 @@ function scsz_delete_shortcode($scid){
 	$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
 	$scsz_query_data = scsz_create_query_data($scid, $scsz_table_name);
 
-	$wpdb->delete( $scsz_table_name, $scsz_query_data, array( '%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s' ) );
+	$wpdb->delete( $scsz_table_name, $scsz_query_data, array( '%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s' ) );
 
 }
 
@@ -21,7 +21,7 @@ function scsz_duplication_shortcode($scid){
 	$scsz_new_data['title'] .= '_copy';
 
 	$wpdb->insert($scsz_table_name, $scsz_new_data, array(
-		'%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s'
+		'%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s'
 	));
 
 	echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'
@@ -43,6 +43,7 @@ function scsz_create_query_data($scid, $scsz_table_name){
 				'feed_custom' => $scsz_feed_settings['feed_custom'],
 				'feed_custom_before' => $scsz_feed_settings['feed_custom_before'],
 				'feed_custom_after' => $scsz_feed_settings['feed_custom_after'],
+				'feed_custom_style' => $scsz_feed_settings['feed_custom_style'],
 				'phrase' => $scsz_feed_settings['phrase'],
 				'department' => $scsz_feed_settings['department'],
 				'popular_flg' => $scsz_feed_settings['popular_flg'],

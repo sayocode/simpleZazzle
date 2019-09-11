@@ -41,7 +41,7 @@ function sc_echo_item_list($atts) {
 		}
 
 		// カスタムHTMLの出力
-		$return = urldecode($scsz_feed_setting -> feed_custom_before);
+		$return = '<style type="text/css">'.urldecode($scsz_feed_setting -> feed_custom_style).'</style>'.urldecode($scsz_feed_setting -> feed_custom_before);
 		$roopIndex = 0;
 		foreach($scsz_rss->channel->item as $item){
 			$scsz_full_title = $item->title;

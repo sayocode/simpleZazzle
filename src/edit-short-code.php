@@ -26,9 +26,10 @@ function sc_mt_options_page()
 		$scsz_feed_type = sanitize_text_field($_POST['type']);
 		$scsz_feed_name = sanitize_text_field(preg_replace('/( |　)/', '', $_POST['feed_name']));
 		$scsz_feed_default_flg = sanitize_text_field(isset($_POST['default']) ? 1 : 0);
-		$scsz_feed_custom = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom']))), '' , 0, 7 );
-		$scsz_feed_custom_before = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom_before']))), '' , 0, 7 );
-		$scsz_feed_custom_after = substr_replace(esc_url(urlencode(wp_unslash($_POST['feed_custom_after']))), '' , 0, 7 );
+		$scsz_feed_custom = urlencode(wp_unslash($_POST['feed_custom']));
+		$scsz_feed_custom_before = urlencode(wp_unslash($_POST['feed_custom_before']));
+		$scsz_feed_custom_after = urlencode(wp_unslash($_POST['feed_custom_after']));
+		$scsz_feed_custom_style = urlencode(wp_unslash($_POST['feed_custom_style']));
 		$scsz_phrase = sanitize_text_field($_POST['phrase']);
 		$scsz_department = sanitize_text_field($_POST['department']);
 		$scsz_popular_flg = sanitize_text_field(isset($_POST['popular_flg']) ? 1 : 0);
@@ -63,6 +64,7 @@ function sc_mt_options_page()
 						'feed_custom' => $scsz_feed_custom,
 						'feed_custom_before' => $scsz_feed_custom_before,
 						'feed_custom_after' => $scsz_feed_custom_after,
+						'feed_custom_style' => $scsz_feed_custom_style,
 						'phrase' => $scsz_phrase,
 						'department' => $scsz_department,
 						'popular_flg' => $scsz_popular_flg,
@@ -76,7 +78,7 @@ function sc_mt_options_page()
 					), array(
 						'scid' => $scid
 					), array(
-						'%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+						'%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 					), array(
 						'%d'
 					));
@@ -99,6 +101,7 @@ function sc_mt_options_page()
 				'feed_custom' => $scsz_feed_custom,
 				'feed_custom_before' => $scsz_feed_custom_before,
 				'feed_custom_after' => $scsz_feed_custom_after,
+				'feed_custom_style' => $scsz_feed_custom_style,
 				'phrase' => $scsz_phrase,
 				'department' => $scsz_department,
 				'popular_flg' => $scsz_popular_flg,
@@ -110,7 +113,7 @@ function sc_mt_options_page()
 				'tracking_code' => $scsz_tracking_code,
 				'update_date' => date('Y-m-d H:i:s')
 			), array(
-				'%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+				'%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
 			));
 			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'.__('The settings have been saved successfully.', 'sc-simple-zazzle').'</strong></p></div>';
 			$scsz_update_flag = true;
@@ -227,7 +230,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 								if($scsz_update_flag){
 									echo urldecode(esc_textarea($scsz_feed_setting->feed_custom_before));
 								} else {
-									echo '<ul>';
+									echo '<ul class="scsz-item-list">';
 								}
 								?></textarea>
 							<label for="feedCustom"><?php _e('HTML for each product', 'sc-simple-zazzle'); ?></label>
@@ -260,6 +263,15 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 									echo urldecode(esc_textarea($scsz_feed_setting->feed_custom_after));
 								} else {
 									echo '</ul>';
+								}
+								?></textarea>
+							<label for="feedCustomStyle">CSS</label>
+							<textarea name="feed_custom_style" id="feedCustomStyle" maxlength="65535"
+								class="large-text code" rows="3"><?php
+								if($scsz_update_flag){
+									echo urldecode(esc_textarea($scsz_feed_setting->feed_custom_style));
+								} else {
+									echo 'ul.scsz-item-list{list-style: none;}&#13;ul.scsz-item-list li{list-style: none;margin: 5px;}';
 								}
 								?></textarea>
 						</td>
