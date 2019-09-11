@@ -31,6 +31,7 @@ function scsz_create_tables()
 				feed_custom varchar(65535),
 				feed_custom_before varchar(65535),
 				feed_custom_after varchar(65535),
+				feed_custom_style varchar(65535),
 				phrase varchar(50),
 				department varchar(50),
 				popular_flg boolean NOT NULL DEFAULT false,
