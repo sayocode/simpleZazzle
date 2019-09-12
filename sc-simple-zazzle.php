@@ -13,10 +13,10 @@ Domain Path: /languages
 
 /*  Copyright 2019 sayoko (email : communicate@sayoko-ct.com) */
 
-add_action( 'admin_menu', 'add_plugin_admin_menu' );
+add_action( 'admin_menu', 'scsz_add_plugin_admin_menu' );
 load_plugin_textdomain('sc-simple-zazzle', false, basename( dirname( __FILE__ ) ).'/languages' );
 
-function add_plugin_admin_menu() {
+function scsz_add_plugin_admin_menu() {
 	add_menu_page(
 		'Simple-Zazzle', // page_title
 		'Simple Zazzle', // menu_title
@@ -40,7 +40,7 @@ function add_plugin_admin_menu() {
 include('src/view-table.php');
 
 function scsz_display_plugin_sub_page() {
-	include('src/edit-short-code.php');
+	include('src/scsz-edit-short-code.php');
 }
 
 include('src/output-item-list.php');
