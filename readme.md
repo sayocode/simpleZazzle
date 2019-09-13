@@ -18,7 +18,8 @@ Products listed in the store and marketplace can be easily output with short cod
 Affiliate settings are also possible.  
 plugin page: https://sayoko-ct.com/sc-simple-zazzle  
 
-= List of supported countries  
+### List of supported countries  
+* Australia  
 * Austria  
 * Belgium  
 * Brazil  
@@ -35,11 +36,11 @@ plugin page: https://sayoko-ct.com/sc-simple-zazzle
 * United States  
 * Rest of Europa  
 
-About SC Simple Zazzle  
+### About SC Simple Zazzle  
 It is necessary to generate short code to use this function.  
 Create a setting from the new button.  
 
-basic setting  
+#### basic setting  
 * Title: The managed name of this plug-in. Please give a name that you can easily understand.  
 * Short Code: Displayed after the short code is generated.  
 * Country: Which country URL and amount to display  
@@ -48,7 +49,7 @@ basic setting
 * Use the default display function of Zazzle: Please check to output in HTML format prepared by Zazzle.  
 * Custom HTML: If you do not check above, please input HTML in the format you want to output.  
 
-Other  
+#### Other  
 * Product Name Search Phrase: You can perform a partial match search for the product name you want to display.  
 * Department ID: You can narrow down the department of the product. Please select a department from (Search).  
 * Display in order of popularity: Please check if you want to order the display in order of popularity. If you do not enter, it will be acquired from the latest product.  

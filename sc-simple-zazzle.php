@@ -40,7 +40,7 @@ function scsz_add_plugin_admin_menu() {
 include('src/view-table.php');
 
 function scsz_display_plugin_sub_page() {
-	include('src/scsz-edit-short-code.php');
+	include('src/edit-short-code.php');
 }
 
 include('src/output-item-list.php');
