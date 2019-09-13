@@ -19,6 +19,7 @@ Affiliate settings are also possible.
 plugin page: https://sayoko-ct.com/sc-simple-zazzle  
 
 = List of supported countries  
+* Australia  
 * Austria  
 * Belgium  
 * Brazil  
