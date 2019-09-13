@@ -80,6 +80,9 @@ OR…
 
 ## Changelog  
 
+### 1.0.8  
+Add CSS Field.  
+
 ### 1.0.7  
 Added delete and duplicate functions.  
 
