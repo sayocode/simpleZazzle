@@ -151,10 +151,10 @@ function scsz_display_plugin_admin_page()
 <!-- ショートコードをクリップボードにコピーするためのボックス -->
 <div class="postbox">
 	<h2>
-	<span><?php _e('About This Plugin.', 'sc-simple-zazzle'); ?></span>
+	<span><?php _e('About This Plugin', 'sc-simple-zazzle'); ?></span>
 	</h2>
 	<div class="inside">
-<p><?php _e('Plugin author: ', 'sc-simple-zazzle'); ?><a href="https://sayoko-ct.com/" target="_blank">sayoko</a>&ensp;(<?php _e('This plugin is completely free.', 'sc-simple-zazzle'); ?>&ensp;<a href="https://sayoko-ct.com/donate/" target="_blank"><?php _e('Please support development funds.', 'sc-simple-zazzle'); ?></a>)</p>
+		<p><?php _e('Plugin author: ', 'sc-simple-zazzle'); ?><a href="https://sayoko-ct.com/" target="_blank">sayoko</a>&ensp;(<?php _e('This plugin is completely free.', 'sc-simple-zazzle'); ?>&ensp;<a href="https://sayoko-ct.com/donate/" target="_blank"><?php _e('Please support development funds.', 'sc-simple-zazzle'); ?></a>)</p>
 		<p><a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page', 'sc-simple-zazzle'); ?></a><br>
 		<?php _e('Use this short code to get started easily. 100 new products in the marketplace are displayed.', 'sc-simple-zazzle'); ?>
 		&nbsp;:&nbsp;
