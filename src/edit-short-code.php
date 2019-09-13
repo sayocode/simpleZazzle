@@ -37,8 +37,8 @@ function sc_mt_options_page()
 		$scsz_max_num = sanitize_text_field(empty($_POST['max_num']) ? 100 : $_POST['max_num']);
 		$scsz_page = sanitize_text_field(empty($_POST['page']) ? 0 : $_POST['page']);
 		$scsz_background_color = sanitize_text_field(str_replace('#', '', sanitize_text_field($_POST['background_color'])));
-		$scsz_affiliate_code = preg_replace('/( |　)/', '', sanitize_text_field($_POST['affiliate_code']));
-		$scsz_tracking_code = preg_replace('/( |　)/', '', sanitize_text_field($_POST['tracking_code']));
+		$scsz_affiliate_code = empty($_POST['affiliate_code']) ? "" : preg_replace('/( |　)/', '', sanitize_text_field($_POST['affiliate_code']));
+		$scsz_tracking_code = empty($_POST['tracking_code']) ? "" : preg_replace('/( |　)/', '', sanitize_text_field($_POST['tracking_code']));
 		$scsz_update_flag = sanitize_text_field(($_POST['update_flg'] == 'true') ? true : false);
 		$scsz_now_update_date = sanitize_text_field($_POST['update_date']);
 

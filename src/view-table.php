@@ -155,6 +155,7 @@ function scsz_display_plugin_admin_page()
 	</h2>
 	<div class="inside">
 	<p><?php _e('Plugin author: ', 'sc-simple-zazzle'); ?><a href="https://sayoko-ct.com/">sayoko</a><br>
+		<a href="https://sayoko-ct.com/donate/">Donate</a>
 		<a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php _e('This plugin page', 'sc-simple-zazzle'); ?></a></p>
 		<p><?php _e('Use this short code to get started easily. 100 new products in the marketplace are displayed.', 'sc-simple-zazzle'); ?>
 		&nbsp;:&nbsp;
