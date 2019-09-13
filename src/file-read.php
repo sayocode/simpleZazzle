@@ -1,6 +1,6 @@
 <?php
 
-function sc_file_read()
+function scsz_file_read()
 { // スタイルシート
 	wp_enqueue_style('sc_file_read', plugins_url('../files/szStyle.css', __FILE__));
     wp_enqueue_script( array( 'sack' ));
@@ -10,4 +10,4 @@ function sc_file_read()
         wp_enqueue_script('szEditPageScriptjs', plugins_url('../files/scEditPageScript.js', __FILE__));
     }
 }
-add_action('admin_head', 'sc_file_read');
+add_action('admin_head', 'scsz_file_read');

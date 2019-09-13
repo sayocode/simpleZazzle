@@ -1,6 +1,6 @@
 # SC Simple Zazzle  
 Contributors: sayocode  
-Donate link: comming soon.  
+Donate link: https://sayoko-ct.com/donate/  
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.2.2  
