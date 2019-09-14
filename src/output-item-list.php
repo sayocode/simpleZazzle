@@ -177,9 +177,9 @@ function sc_default_market_place($scsz_affiliate_value){
 	$scsz_country_url = 'https://www.zazzle.com/';
 	$scsz_country_lang = '';
 	foreach($scsz_country_list as $scsz_country_key => $scsz_country_val){
-		if(get_locale() == $scsz_country_val[2]){
-			$scsz_country_url = $scsz_country_val[0];
-			$scsz_country_lang = empty($scsz_country_val[3]) ? '' : '?'.$scsz_country_val[3];
+		if(get_locale() == $scsz_country_val['location']){
+			$scsz_country_url = $scsz_country_val['url'];
+			$scsz_country_lang = empty($scsz_country_val['lang']) ? '' : '?'.$scsz_country_val['lang'];
 		}
 	}
 
