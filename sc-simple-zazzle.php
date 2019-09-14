@@ -48,3 +48,4 @@ include('src/uninstall.php');
 include('src/list-table.php');
 include('src/file-read.php');
 include('src/table_actions.php');
+include('src/widget.php');
