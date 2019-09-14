@@ -24,7 +24,7 @@ class ScszWidget extends WP_Widget{
 	public function form( $instance ){
 
 		if(empty($instance)){
-			$instance = array('scsz_widget_title' => __('My items', 'sc-simple-zazzle'), 'scsz_widget_scid' => 1);
+			$instance = array('scsz_widget_title' =>'My items', 'scsz_widget_scid' => 1);
 		}
 
 		// タイトル
