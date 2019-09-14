@@ -72,7 +72,7 @@ function sc_echo_item_list($atts) {
 			$return = $return.$itemDom;
 		}
 
-		$return = $return.urldecode($scsz_feed_setting -> feed_custom_before);
+		$return = $return.urldecode($scsz_feed_setting -> feed_custom_after);
 		return $return;
 	}
 }
