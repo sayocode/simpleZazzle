@@ -24,7 +24,7 @@ function scsz_add_plugin_admin_menu() {
 		'simple-zazzle', // menu_slug
 		'scsz_display_plugin_admin_page', // function
 		'dashicons-store',
-		81 // position
+		51 // position
 	 );
  
 	 add_submenu_page(
