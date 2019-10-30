@@ -41,7 +41,7 @@ function sc_echo_item_list($atts) {
 		}
 
 		// カスタムHTMLの出力
-		$return = '<style type="text/css">'.urldecode($scsz_feed_setting -> feed_custom_style).'</style>'.urldecode($scsz_feed_setting -> feed_custom_before);
+		$return = '<div class="sc-simple-zazzle"><!-- Output By "SC Simple Zazzle". --><!-- https://wordpress.org/plugins/sc-simple-zazzle/ --><style type="text/css">'.urldecode($scsz_feed_setting -> feed_custom_style).'</style>'.urldecode($scsz_feed_setting -> feed_custom_before);
 		$roopIndex = 0;
 		foreach($scsz_rss->channel->item as $item){
 			$scsz_full_title = $item->title;
@@ -72,7 +72,7 @@ function sc_echo_item_list($atts) {
 			$return = $return.$itemDom;
 		}
 
-		$return = $return.urldecode($scsz_feed_setting -> feed_custom_after);
+		$return = $return.urldecode($scsz_feed_setting -> feed_custom_after).'</div>';
 		return $return;
 	}
 }
