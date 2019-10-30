@@ -3,7 +3,7 @@ Contributors: sayocode
 Donate link: https://sayoko-ct.com/donate/  
 Tags: zazzle, feed  
 Requires at least: 5.2  
-Tested up to: 5.2.2  
+Tested up to: 5.2.4  
 Stable tag: 1.0.10  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
