@@ -46,7 +46,7 @@ function sc_echo_item_list($atts) {
 		foreach($scsz_rss->channel->item as $item){
 			$scsz_full_title = $item->title;
 			$scsz_category = str_replace(' ', '', str_replace($item->children('media', true)->title, '', $scsz_full_title));
-			$scsz_title = str_replace(' ', '', str_replace($scsz_category, '', $scsz_full_title));
+			$scsz_title = trim(str_replace($scsz_category, '', $scsz_full_title));
 			$scsz_link_param = strpos($item->link, '?')!==false ? '&' : '?';
 			$scsz_link = $item->link.$scsz_link_param.'rf='.$scsz_affiliate_value;
 			$scsz_price = $item->price;
