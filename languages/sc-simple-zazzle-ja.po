@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-09-14 10:16+0900\n"
-"PO-Revision-Date: 2019-09-14 10:17+0900\n"
+"POT-Creation-Date: 2020-02-15 00:23+0900\n"
+"PO-Revision-Date: 2020-02-15 00:23+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -300,47 +300,51 @@ msgstr "アフィリエイトコード"
 msgid "Tracking ID"
 msgstr "トラッキングコード"
 
-#: edit-short-code.php:350 view-table.php:21
+#: edit-short-code.php:340
+msgid "Do not use affiliate queries"
+msgstr "アフィリエイトクエリを使用しない"
+
+#: edit-short-code.php:356 view-table.php:21
 msgid "Store name"
 msgstr "ストア名"
 
-#: edit-short-code.php:351 view-table.php:21
+#: edit-short-code.php:357 view-table.php:21
 msgid "Correction ID"
 msgstr "コレクションID"
 
-#: edit-short-code.php:352
+#: edit-short-code.php:358
 msgid "Check"
 msgstr "確認"
 
-#: edit-short-code.php:353 view-table.php:182
+#: edit-short-code.php:359 view-table.php:182
 msgid "Copied to clipboard."
 msgstr "クリップボードにコピーしました。"
 
-#: edit-short-code.php:354
+#: edit-short-code.php:360
 msgid ""
 "The store name / collection ID can only be entered in single-byte "
 "alphanumeric characters."
 msgstr "「ストア名」 / 「コレクションID」は半角英数で入力してください。"
 
-#: edit-short-code.php:355
+#: edit-short-code.php:361
 msgid ""
 "A numerical value from 0 to 100 can be entered in the “Maximum number of "
 "acquisitions”."
 msgstr "「取得数上限」は0から100までの数値を入力できます。"
 
-#: edit-short-code.php:356
+#: edit-short-code.php:362
 msgid ""
 "“Image background color” can only be specified with a 6-digit hexadecimal "
 "color code."
 msgstr "「画像の背景色」は16進数6桁のカラーコードでのみ指定できます。"
 
-#: edit-short-code.php:357
+#: edit-short-code.php:363
 msgid ""
 "Only one-byte alphanumeric characters can be entered for the “Affiliate "
 "code”."
 msgstr "「アフィリエイトコード」は半角英数で入力してください。"
 
-#: edit-short-code.php:358
+#: edit-short-code.php:364
 msgid ""
 "Only one-byte alphanumeric characters can be entered for the “Tracking ID”."
 msgstr "「トラッキングコード」は半角英数で入力してください。"
@@ -414,8 +418,8 @@ msgid "Please send bug reports and feature improvements suggestions on GitHub."
 msgstr "バグの報告や機能改善の提案はGitHubからお願いいたします。"
 
 #: view-table.php:171
-msgid "Use an affiliate"
-msgstr "アフィリエイトを利用する"
+msgid "Make affiliate settings editable"
+msgstr "アフィリエイト設定を編集可能にする"
 
 #: widget.php:12
 msgid "Output a list of \"SC Simle Zazzle\" products you set."

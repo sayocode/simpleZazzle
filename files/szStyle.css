@@ -23,11 +23,6 @@
 	min-width: 0.8rem;
 }
 
-#agreeAffiliate input:before {
-	margin: -5px 0 0 -6px;
-	width: 0.8rem;
-}
-
 .tab {
 	display: inline-block;
 	width: 100%;

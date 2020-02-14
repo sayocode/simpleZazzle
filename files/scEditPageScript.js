@@ -24,9 +24,11 @@ jQuery(document).ready(function($) {
 	const $feedCustom = $("#feedCustom");
 	const $feedCustomBefore = $("#feedCustomBefore");
 	const $feedCustomAfter = $("#feedCustomAfter");
-	disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter);
+	const $feedCustomStyle = $("#feedCustomStyle");
+	const $assistButtons = $("#assistButtonsWrap").find("button");
+	disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter, $feedCustomStyle, $assistButtons);
 	$defaultChk.on("change", function() {
-		disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter);
+		disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter, $feedCustomStyle, $assistButtons);
 	});
 
 	/** 要素の入力アシスト */
@@ -166,15 +168,19 @@ function typeSetting($, $typeSelect) {
 }
 
 /** デフォルトの出力機能を使わない場合はテキストエリアを不活性にする。 */
-function disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter){
+function disabledFeedCustom($defaultChk, $feedCustom, $feedCustomBefore, $feedCustomAfter, $feedCustomStyle, $assistButtons){
 	if ($defaultChk.prop("checked")) {
 		$feedCustom.prop("readonly", true);
 		$feedCustomBefore.prop("readonly", true);
 		$feedCustomAfter.prop("readonly", true);
+		$feedCustomStyle.prop("readonly", true);
+		$assistButtons.prop("disabled", true);
 	} else {
 		$feedCustom.prop("readonly", false);
 		$feedCustomBefore.prop("readonly", false);
 		$feedCustomAfter.prop("readonly", false);
+		$feedCustomStyle.prop("readonly", false);
+		$assistButtons.prop("disabled", false);
 	}
 }
 

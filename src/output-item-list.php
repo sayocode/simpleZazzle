@@ -27,10 +27,14 @@ function sc_echo_item_list($atts) {
 		$scsz_rss = sc_reed_feed($scsz_feed_setting);
 
 		// アフィリエイトコードの設定
-		if(!empty($scsz_feed_setting -> affiliate_code) && get_option('scsz_affiliate_agree') == '1'){
-			$scsz_affiliate_value = $scsz_feed_setting -> affiliate_code;
-			if(!empty($scsz_feed_setting -> tracking_code)){
-				$scsz_affiliate_value = $scsz_affiliate_value . '&tc=' . $scsz_feed_setting -> tracking_code;
+		if(get_option('scsz_affiliate_agree') == '1') {
+			if($scsz_feed_setting -> delete_affiliate_code_flg == "1"){
+				$scsz_affiliate_value = "";
+			} else if(!empty($scsz_feed_setting -> affiliate_code)){
+				$scsz_affiliate_value = $scsz_feed_setting -> affiliate_code;
+				if(!empty($scsz_feed_setting -> tracking_code)){
+					$scsz_affiliate_value = $scsz_affiliate_value . '&tc=' . $scsz_feed_setting -> tracking_code;
+				}
 			}
 		}
 
@@ -41,6 +45,9 @@ function sc_echo_item_list($atts) {
 		}
 
 		// カスタムHTMLの出力
+		if($scsz_affiliate_value != ""){
+			$scsz_affiliate_value = 'rf='.$scsz_affiliate_value;
+		}
 		$return = '<div class="sc-simple-zazzle"><!-- Output By "SC Simple Zazzle". --><!-- https://wordpress.org/plugins/sc-simple-zazzle/ --><style type="text/css">'.urldecode($scsz_feed_setting -> feed_custom_style).'</style>'.urldecode($scsz_feed_setting -> feed_custom_before);
 		$roopIndex = 0;
 		foreach($scsz_rss->channel->item as $item){
@@ -48,7 +55,8 @@ function sc_echo_item_list($atts) {
 			$scsz_category = str_replace(' ', '', str_replace($item->children('media', true)->title, '', $scsz_full_title));
 			$scsz_title = trim(str_replace($scsz_category, '', $scsz_full_title));
 			$scsz_link_param = strpos($item->link, '?')!==false ? '&' : '?';
-			$scsz_link = $item->link.$scsz_link_param.'rf='.$scsz_affiliate_value;
+			$scsz_link = $item->link.$scsz_link_param.$scsz_affiliate_value;
+			$scsz_link = rtrim(rtrim($scsz_link, '?'), '&');
 			$scsz_price = $item->price;
 			$scsz_author = $item->author;
 			$scsz_image = $item->children('media', true)->content->attributes()->url;
@@ -153,11 +161,14 @@ function sc_reed_feed($scsz_feed_setting){
 /** Zazzleのデフォルト形式での出力 */
 function sc_default_view($scsz_rss, $scsz_affiliate_value){
 	$return = '';
+	if($scsz_affiliate_value != ""){
+		$scsz_affiliate_value = '?rf='.$scsz_affiliate_value;
+	}
 	foreach($scsz_rss->channel->item as $item){
 		$scsz_description = $item->description;
 		$scsz_link = $item->link;
 		$scsz_author = $item->author;
-		$scsz_affiliate_link = $scsz_link.'?rf='.$scsz_affiliate_value;
+		$scsz_affiliate_link = $scsz_link.$scsz_affiliate_value;
 
 		// なぜかRSSに作者のリンクが書かれていないので、こちらで変換する。（Zazzle側のバグ）
 		$pattern = '/<span class="ZazzleCollectionItemCellProduct-byLine">'.__('Author', 'sc-simple-zazzle').'：(.*)<\/span>/u';

@@ -168,7 +168,7 @@ function scsz_display_plugin_admin_page()
 <form method="post" action="">
 	<table class="form-table">
 		<tr id="agreeAffiliate">
-			<td colspan="2"><label><?php _e('Use an affiliate', 'sc-simple-zazzle'); ?>&emsp; <input
+			<td colspan="2"><label><?php _e('Make affiliate settings editable', 'sc-simple-zazzle'); ?>&emsp; <input
 						name="scsz_affiliate_agree" type="checkbox"
 						id="scsz_affiliate_agree" value="1"
 						<?php checked( 1, $scsz_agree_flg); ?> />
