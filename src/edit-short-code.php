@@ -39,6 +39,7 @@ function sc_mt_options_page()
 		$scsz_background_color = sanitize_text_field(str_replace('#', '', sanitize_text_field($_POST['background_color'])));
 		$scsz_affiliate_code = empty($_POST['affiliate_code']) ? "" : preg_replace('/( |　)/', '', sanitize_text_field($_POST['affiliate_code']));
 		$scsz_tracking_code = empty($_POST['tracking_code']) ? "" : preg_replace('/( |　)/', '', sanitize_text_field($_POST['tracking_code']));
+		$scsz_delete_affiliate_code_flg = sanitize_text_field(isset($_POST['delete_affiliate_code_flg']) ? 1 : 0);
 		$scsz_update_flag = sanitize_text_field(($_POST['update_flg'] == 'true') ? true : false);
 		$scsz_now_update_date = sanitize_text_field($_POST['update_date']);
 
@@ -73,12 +74,13 @@ function sc_mt_options_page()
 						'page' => $scsz_page,
 						'background_color' => $scsz_background_color,
 						'affiliate_code' => $scsz_affiliate_code,
+						'delete_affiliate_code_flg' => $scsz_delete_affiliate_code_flg,
 						'tracking_code' => $scsz_tracking_code,
 						'update_date' => date('Y-m-d H:i:s')
 					), array(
 						'scid' => $scid
 					), array(
-						'%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+						'%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s', '%s'
 					), array(
 						'%d'
 					));
@@ -111,9 +113,10 @@ function sc_mt_options_page()
 				'background_color' => $scsz_background_color,
 				'affiliate_code' => $scsz_affiliate_code,
 				'tracking_code' => $scsz_tracking_code,
+				'delete_affiliate_code_flg' => $scsz_delete_affiliate_code_flg,
 				'update_date' => date('Y-m-d H:i:s')
 			), array(
-				'%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s'
+				'%d', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s', '%s'
 			));
 			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'.__('The settings have been saved successfully.', 'sc-simple-zazzle').'</strong></p></div>';
 			$scsz_update_flag = true;
@@ -234,7 +237,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 								}
 								?></textarea>
 							<label for="feedCustom"><?php _e('HTML for each product', 'sc-simple-zazzle'); ?></label>
-							<div>
+							<div id="assistButtonsWrap">
 							<button class="button assist-button" data-object="title"><?php _e('Product name', 'sc-simple-zazzle'); ?></button>
 							<button class="button assist-button" data-object="fullTitle"><?php _e('Product name in Zazzle', 'sc-simple-zazzle'); ?></button>
 							<button class="button assist-button" data-object="category"><?php _e('Category', 'sc-simple-zazzle'); ?></button>
@@ -335,6 +338,11 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 						<td><input name="tracking_code" type="text" id="trackingCode" maxlength="30"
 								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->tracking_code);} ?>"
 								class="regular-text" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="deleteAffiliateCodeFlg"><?php _e('Do not use affiliate queries', 'sc-simple-zazzle'); ?></label></th>
+						<td><input name="delete_affiliate_code_flg" type="checkbox" id="deleteAffiliateCodeFlg"
+								value="1" <?php if($scsz_update_flag){checked( 1, $scsz_feed_setting -> delete_affiliate_code_flg);} ?> /></td>
 					</tr>
 					<?php } ?>
 				</table>
