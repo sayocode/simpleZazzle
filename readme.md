@@ -4,7 +4,7 @@ Donate link: https://sayoko-ct.com/donate/
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.3.1  
-Stable tag: 1.0.12  
+Stable tag: 1.1.0 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
@@ -79,6 +79,9 @@ OR…
 2. Screen to edit Zazzle information.  
 
 ## Changelog    
+
+### 1.1.0 
+Changed to be able to delete affiliate queries. 
 
 ### 1.0.12 
 Fixed an issue where title blanks disappeared when shortcodes were created with Latin characters.  
