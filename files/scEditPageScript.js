@@ -83,7 +83,7 @@ jQuery(document).ready(function($) {
 	// バリデーション
 	$(".sc-edit-short-code #submit").on("click", function(e) {
 		const $validError = $("#validError");
-		if (!isHalf($feedName.val())) {
+		if (!isHalfUnderBar($feedName.val())) {
 			$validError.text(validStoreOrCollectionsHalf);
 			e.preventDefault();
 		}
@@ -200,6 +200,16 @@ function changeFeedNameLink($, val, $feedNameVal){
 function isHalf(str) {
 	str = (str == null) ? "" : str;
 	if (str.match(/^[A-Za-z0-9]*$/)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/** 半角英数アンダーバーチェック */
+function isHalfUnderBar(str) {
+	str = (str == null) ? "" : str;
+	if (str.match(/^[A-Za-z0-9\_]*$/)) {
 		return true;
 	} else {
 		return false;

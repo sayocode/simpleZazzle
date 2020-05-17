@@ -4,7 +4,7 @@ Donate link: https://sayoko-ct.com/donate/
 Tags: zazzle, feed  
 Requires at least: 5.2  
 Tested up to: 5.4  
-Stable tag: 1.1.1 
+Stable tag: 1.1.2 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
@@ -79,6 +79,12 @@ OR…
 2. Screen to edit Zazzle information.  
 
 ## Changelog    
+
+### 1.1.2  
+Allow underscores in store and collection names.  
+
+### 1.1.1  
+Compatible with WordPress version 5.4.  
 
 ### 1.1.0 
 Changed to be able to delete affiliate queries. 
