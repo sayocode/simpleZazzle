@@ -138,6 +138,7 @@ function scsz_display_plugin_admin_page()
 	}
 
 	echo '<div class="wrap aioseop_options_wrapper"><h1 class="wp-heading-inline">SC Simple Zazzle</h1><a class="page-title-action" href="?page=simple-zazzle-edit">'.__('Add New', 'sc-simple-zazzle').'</a>';
+	echo '<div style="margin:5px 0"><a href="https://www.zazzle.com/s/black+lives+matter" target="_blank"><strong style="font-size: 1.5em;color: white;background: black;padding: 3px;">#BlackLivesMatter</strong> on Zazzle</a></div>';
 	echo '<div id="scsz-main-table" class="main-table"><h2>'.__('List of settings', 'sc-simple-zazzle').'</h2> ';
 	echo '<form method="POST" id="scsz_table_submit" name="scsz_table_submit">';
 

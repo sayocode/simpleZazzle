@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-02-15 00:23+0900\n"
-"PO-Revision-Date: 2020-02-15 00:23+0900\n"
+"POT-Creation-Date: 2020-06-06 17:37+0900\n"
+"PO-Revision-Date: 2020-06-06 17:37+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -101,12 +101,12 @@ msgstr "アメリカ（英語）"
 msgid "United States(ES)"
 msgstr "アメリカ（スペイン語）"
 
-#: edit-short-code.php:49
+#: edit-short-code.php:50
 msgid ""
 "Cannot be updated because it does not exist or has already been deleted."
 msgstr "存在しないか、すでに削除されたデータのため、更新できません。"
 
-#: edit-short-code.php:56
+#: edit-short-code.php:57
 msgid ""
 "It seems that the update has already been done. Please update the screen, "
 "enter the content again, and update again."
@@ -114,237 +114,237 @@ msgstr ""
 "このデータはすでに更新されました。 画面をリロードし、コンテンツを再度入力し"
 "て、再度更新してください。"
 
-#: edit-short-code.php:85
+#: edit-short-code.php:87
 msgid "The configuration update was successful."
 msgstr "設定を更新しました。"
 
-#: edit-short-code.php:118
+#: edit-short-code.php:121
 msgid "The settings have been saved successfully."
 msgstr "設定を保存しました。"
 
-#: edit-short-code.php:135
+#: edit-short-code.php:138
 msgid "Back"
 msgstr "戻る"
 
-#: edit-short-code.php:136
+#: edit-short-code.php:139
 msgid "Short code setting"
 msgstr "ショートコード設定"
 
-#: edit-short-code.php:141
+#: edit-short-code.php:144
 msgid "Default"
 msgstr "基本設定"
 
-#: edit-short-code.php:142
+#: edit-short-code.php:145
 msgid "Options"
 msgstr "オプション"
 
-#: edit-short-code.php:145
+#: edit-short-code.php:149
 msgid "is a required field."
 msgstr "は必須入力です。"
 
-#: edit-short-code.php:147
+#: edit-short-code.php:151
 msgid ""
 "Please check the official website for a detailed explanation of each "
 "parameter."
 msgstr "各パラメータの詳しい説明は公式サイトをご確認ください。"
 
-#: edit-short-code.php:148
+#: edit-short-code.php:152
 msgid "If the settings are incomplete, the marketplace feed is displayed."
 msgstr "設定に不備があった場合、マーケットプレイスのFeedが表示されます。"
 
-#: edit-short-code.php:153 view-table.php:18 widget.php:34
+#: edit-short-code.php:157 view-table.php:18 widget.php:34
 msgid "Title"
 msgstr "タイトル"
 
-#: edit-short-code.php:159 view-table.php:19
+#: edit-short-code.php:163 view-table.php:19
 msgid "Short code"
 msgstr "ショートコード"
 
-#: edit-short-code.php:160 view-table.php:104 view-table.php:161
+#: edit-short-code.php:164 view-table.php:104 view-table.php:161
 msgid "Copy"
 msgstr "コピー"
 
-#: edit-short-code.php:163
+#: edit-short-code.php:167
 msgid "Country"
 msgstr "国"
 
-#: edit-short-code.php:185 view-table.php:20
+#: edit-short-code.php:189 view-table.php:20
 msgid "Type"
 msgstr "種別"
 
-#: edit-short-code.php:193 view-table.php:38
+#: edit-short-code.php:197 view-table.php:38
 msgid "Store"
 msgstr "ストア"
 
-#: edit-short-code.php:200 view-table.php:39
+#: edit-short-code.php:204 view-table.php:39
 msgid "Collections"
 msgstr "コレクション"
 
-#: edit-short-code.php:208 view-table.php:40
+#: edit-short-code.php:212 view-table.php:40
 msgid "Market place"
 msgstr "マーケットプレイス"
 
-#: edit-short-code.php:209
+#: edit-short-code.php:213
 msgid "* You cannot use the collection outside of the United States."
 msgstr "※ 米国外ではコレクションを使用できません。"
 
-#: edit-short-code.php:213
+#: edit-short-code.php:217
 msgid "Store Name"
 msgstr "ストア名"
 
-#: edit-short-code.php:220
+#: edit-short-code.php:224
 msgid "Use HTML provided by Zazzle"
 msgstr "Zazzleが提供しているHTMLを利用する"
 
-#: edit-short-code.php:226 view-table.php:22
+#: edit-short-code.php:230 view-table.php:22
 msgid "Custom HTML"
 msgstr "カスタムHTML"
 
-#: edit-short-code.php:227
+#: edit-short-code.php:231
 msgid "HTML to be output just before"
 msgstr "直前に出力するHTML"
 
-#: edit-short-code.php:236
+#: edit-short-code.php:240
 msgid "HTML for each product"
 msgstr "商品ごとのHTML"
 
-#: edit-short-code.php:238
+#: edit-short-code.php:242
 msgid "Product name"
 msgstr "商品名"
 
-#: edit-short-code.php:239
+#: edit-short-code.php:243
 msgid "Product name in Zazzle"
 msgstr "Zazzleでの商品名"
 
-#: edit-short-code.php:240
+#: edit-short-code.php:244
 msgid "Category"
 msgstr "カテゴリー"
 
-#: edit-short-code.php:241
+#: edit-short-code.php:245
 msgid "Product URL"
 msgstr "商品URL"
 
-#: edit-short-code.php:242
+#: edit-short-code.php:246
 msgid "Price"
 msgstr "価格"
 
-#: edit-short-code.php:243 output-item-list.php:163 output-item-list.php:164
+#: edit-short-code.php:247 output-item-list.php:174 output-item-list.php:175
 msgid "Author"
 msgstr "作者"
 
-#: edit-short-code.php:244
+#: edit-short-code.php:248
 msgid "Image URL"
 msgstr "画像URL"
 
-#: edit-short-code.php:245
+#: edit-short-code.php:249
 msgid "Thumbnail URL"
 msgstr "サムネイルURL"
 
-#: edit-short-code.php:246
+#: edit-short-code.php:250
 msgid "Description"
 msgstr "商品説明"
 
-#: edit-short-code.php:247
+#: edit-short-code.php:251
 msgid "Product description (HTML escape)"
 msgstr "商品説明（HTMLエスケープ）"
 
-#: edit-short-code.php:248
+#: edit-short-code.php:252
 msgid "Tag (JavaScript array)"
 msgstr "タグ（JavaScript配列）"
 
-#: edit-short-code.php:249
+#: edit-short-code.php:253
 msgid "Roop index"
 msgstr "ループインデックス"
 
-#: edit-short-code.php:259
+#: edit-short-code.php:263
 msgid "HTML to be output just after"
 msgstr "直後に出力するHTML"
 
-#: edit-short-code.php:284
+#: edit-short-code.php:288
 msgid "Product name search phrase"
 msgstr "商品名の検索フレーズ"
 
-#: edit-short-code.php:290
+#: edit-short-code.php:294
 msgid "Department ID"
 msgstr "部門ID"
 
-#: edit-short-code.php:291
+#: edit-short-code.php:295
 msgid "Find"
 msgstr "探す"
 
-#: edit-short-code.php:297
+#: edit-short-code.php:301
 msgid "View by popularity"
 msgstr "人気順に表示する"
 
-#: edit-short-code.php:303
+#: edit-short-code.php:307
 msgid "Aggregation period by popularity"
 msgstr "人気順の集計期間（日）"
 
-#: edit-short-code.php:309
+#: edit-short-code.php:313
 msgid "Maximum number of acquisitions"
 msgstr "取得数上限"
 
-#: edit-short-code.php:315
+#: edit-short-code.php:319
 msgid "Page"
 msgstr "ページ"
 
-#: edit-short-code.php:321
+#: edit-short-code.php:325
 msgid "Image background color"
 msgstr "画像の背景色"
 
-#: edit-short-code.php:328
+#: edit-short-code.php:332
 msgid "Affiliate ID"
 msgstr "アフィリエイトコード"
 
-#: edit-short-code.php:334
+#: edit-short-code.php:338
 msgid "Tracking ID"
 msgstr "トラッキングコード"
 
-#: edit-short-code.php:340
+#: edit-short-code.php:344
 msgid "Do not use affiliate queries"
 msgstr "アフィリエイトクエリを使用しない"
 
-#: edit-short-code.php:356 view-table.php:21
+#: edit-short-code.php:359 view-table.php:21
 msgid "Store name"
 msgstr "ストア名"
 
-#: edit-short-code.php:357 view-table.php:21
+#: edit-short-code.php:360 view-table.php:21
 msgid "Correction ID"
 msgstr "コレクションID"
 
-#: edit-short-code.php:358
+#: edit-short-code.php:361
 msgid "Check"
 msgstr "確認"
 
-#: edit-short-code.php:359 view-table.php:182
+#: edit-short-code.php:362 view-table.php:182
 msgid "Copied to clipboard."
 msgstr "クリップボードにコピーしました。"
 
-#: edit-short-code.php:360
+#: edit-short-code.php:363
 msgid ""
 "The store name / collection ID can only be entered in single-byte "
 "alphanumeric characters."
 msgstr "「ストア名」 / 「コレクションID」は半角英数で入力してください。"
 
-#: edit-short-code.php:361
+#: edit-short-code.php:364
 msgid ""
 "A numerical value from 0 to 100 can be entered in the “Maximum number of "
 "acquisitions”."
 msgstr "「取得数上限」は0から100までの数値を入力できます。"
 
-#: edit-short-code.php:362
+#: edit-short-code.php:365
 msgid ""
 "“Image background color” can only be specified with a 6-digit hexadecimal "
 "color code."
 msgstr "「画像の背景色」は16進数6桁のカラーコードでのみ指定できます。"
 
-#: edit-short-code.php:363
+#: edit-short-code.php:366
 msgid ""
 "Only one-byte alphanumeric characters can be entered for the “Affiliate "
 "code”."
 msgstr "「アフィリエイトコード」は半角英数で入力してください。"
 
-#: edit-short-code.php:364
+#: edit-short-code.php:367
 msgid ""
 "Only one-byte alphanumeric characters can be entered for the “Tracking ID”."
 msgstr "「トラッキングコード」は半角英数で入力してください。"
@@ -428,6 +428,11 @@ msgstr "「SC Simle Zazzle」で設定した商品一覧を表示します。"
 #: widget.php:45
 msgid "Select item"
 msgstr "アイテムを選択"
+
+#, fuzzy
+#~| msgid "%s is a required field."
+#~ msgid "%s is a required field."
+#~ msgstr "%s は必須入力です。"
 
 #~ msgid "The selected short code setting was successfully copied."
 #~ msgstr "選択したショートコードを複製しました。"
