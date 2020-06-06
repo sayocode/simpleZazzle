@@ -155,7 +155,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 					<tr>
 						<th scope="row"><label class="required" for="title"><?php _e('Title', 'sc-simple-zazzle'); ?></label></th>
 						<td><input name="title" type="text" id="title" required
-								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->title);} else { echo 'New items';} ?>"
+								value="<?php if($scsz_update_flag){echo esc_html($scsz_feed_setting->title);} else { echo esc_html__( 'New item', 'sc-simple-zazzle' ); } ?>"
 								class="regular-text" maxlength="50" /></td>
 					</tr>
 					<tr>
