@@ -145,7 +145,7 @@ function editHtml($scid, $scsz_update_flag, $scsz_feed_setting){
 			<li><?php _e('Options', 'sc-simple-zazzle'); ?></li>
 		</ul>
 		<div class="area">
-		<span style="color:#ef6340;">*</span>&ensp;<?php _e('is a required field.', 'sc-simple-zazzle'); ?>
+		<?php printf( esc_html__( '%s is a required field.', 'sc-simple-zazzle' ), '<span style="color:#ef6340;">*</span>' ); ?>
 		<div>
 			<?php _e('Please check the official website for a detailed explanation of each parameter.', 'sc-simple-zazzle'); ?>&ensp;<a href="https://www.zazzle.com/sell/affiliates/promotionaltools/rss" target="_blank">RSS feeds</a><br>
 			<?php _e('If the settings are incomplete, the marketplace feed is displayed.', 'sc-simple-zazzle'); ?></div>
