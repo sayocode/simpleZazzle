@@ -16,8 +16,12 @@ class ScszWidget extends WP_Widget{
 	//ウィジェットの表示
 	public function widget($args, $instance){
 		echo $args['before_widget'];
-		echo $args['before_title'] . $instance['scsz_widget_title'] . $args['after_title'];
-		echo sc_echo_item_list(array('id' => $instance['scsz_widget_scid']));
+		if (!empty($instance['scsz_widget_title'])){
+			echo $args['before_title'] . $instance['scsz_widget_title'] . $args['after_title'];
+		}
+		if (!empty($instance['scsz_widget_scid'])){
+			echo sc_echo_item_list(array('id' => $instance['scsz_widget_scid']));
+		}
 		echo $args['after_widget'];
 	}
 
