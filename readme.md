@@ -2,9 +2,9 @@
 Contributors: sayocode  
 Donate link: https://sayoko-ct.com/donate/  
 Tags: zazzle, feed  
-Requires at least: 5.9  
-Tested up to: 5.9  
-Stable tag: 1.1.5 
+Requires at least: 6.0  
+Tested up to: 6.1  
+Stable tag: 1.1.6 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
@@ -79,6 +79,9 @@ OR…
 2. Screen to edit Zazzle information.  
 
 ## Changelog    
+
+### 1.1.6  
+Compatible with WordPress version 6.0.  
 
 ### 1.1.2  
 Allow underscores in store and collection names.  
