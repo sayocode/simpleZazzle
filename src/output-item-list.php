@@ -39,7 +39,7 @@ function sc_echo_item_list($atts) {
 		}
 
 		// デフォルトフラグが付いているか、feed_customが空の場合はデフォルト形式で出力
-		$scsz_feed_custom = urldecode($scsz_feed_setting -> feed_custom);
+		$scsz_feed_custom = $scsz_feed_setting -> feed_custom;
 		if($scsz_feed_setting -> feed_default_flg == "1" || empty($scsz_feed_custom)){
 			return sc_default_view($scsz_rss, $scsz_affiliate_value);
 		}
@@ -48,7 +48,7 @@ function sc_echo_item_list($atts) {
 		if($scsz_affiliate_value != ""){
 			$scsz_affiliate_value = 'rf='.$scsz_affiliate_value;
 		}
-		$return = '<div class="sc-simple-zazzle"><!-- Output By "SC Simple Zazzle". --><!-- https://wordpress.org/plugins/sc-simple-zazzle/ --><style type="text/css">'.urldecode($scsz_feed_setting -> feed_custom_style).'</style>'.urldecode($scsz_feed_setting -> feed_custom_before);
+		$return = '<div class="sc-simple-zazzle"><!-- Output By "SC Simple Zazzle". --><!-- https://wordpress.org/plugins/sc-simple-zazzle/ --> <style type="text/css">'.$scsz_feed_setting -> feed_custom_style.'</style>'.$scsz_feed_setting -> feed_custom_before;
 		$roopIndex = 0;
 		foreach($scsz_rss->channel->item as $item){
 			$scsz_full_title = $item->title;
@@ -63,6 +63,7 @@ function sc_echo_item_list($atts) {
 			$scsz_thumbnail = $item->children('media', true)->thumbnail->attributes()->url;
 			$scsz_description = nl2br($item->children('media', true)->description);
 			$scsz_keywords = '["'. str_replace( ', ', '", "',$item->children('media', true)->keywords) . '"]';
+
 
 			$itemDom = str_replace('%fullTitle%', esc_html($scsz_full_title), $scsz_feed_custom);
 			$itemDom = str_replace('%category%', esc_html($scsz_category), $itemDom);
@@ -80,7 +81,7 @@ function sc_echo_item_list($atts) {
 			$return = $return.$itemDom;
 		}
 
-		$return = $return.urldecode($scsz_feed_setting -> feed_custom_after).'</div>';
+		$return = $return.$scsz_feed_setting -> feed_custom_after.'</div>';
 		return $return;
 	}
 }
