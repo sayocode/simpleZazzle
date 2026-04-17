@@ -2,24 +2,24 @@
 
 if (!function_exists('scsz_get_post_text')) {
     function scsz_get_post_text($key, $default = '') {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- sanitized helper, nonce verified before use
         if (!isset($_POST[$key])) {
             return $default;
         }
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- sanitized helper, nonce verified before use
         return sanitize_text_field(wp_unslash($_POST[$key]));
     }
 }
 
 if (!function_exists('scsz_get_post_int')) {
     function scsz_get_post_int($key, $default = 0) {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- sanitized helper, nonce verified before use
         if (!isset($_POST[$key]) || $_POST[$key] === '') {
             return $default;
         }
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- sanitized helper, nonce verified before use
         return intval(wp_unslash($_POST[$key]));
     }
 }
@@ -33,20 +33,20 @@ if (!function_exists('scsz_get_post_raw')) {
      * Sanitization must be performed at the output stage.
      */
     function scsz_get_post_raw($key, $default = '') {
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- sanitized helper, nonce verified before use
         if (!isset($_POST[$key])) {
             return $default;
         }
 
         // HTML許可
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- sanitized helper, nonce verified before use
     		return wp_kses_post(wp_unslash($_POST[$key]));
     }
 }
 
 if (!function_exists('scsz_get_post_bool')) {
     function scsz_get_post_bool($key) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- sanitized helper, nonce verified before use
         return isset($_POST[$key]) ? 1 : 0;
     }
 }
@@ -131,10 +131,10 @@ $scsz_update_flag = ! empty($scid);
 		if ($scsz_update_flag) { // 更新
 			$scsz_table_name = esc_sql($wpdb->prefix . 'sc_simple_zazzle_table');
 
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- and simple admin query, no caching needed
 			$scsz_old_data_results = $wpdb->get_results(
     		$wpdb->prepare(
-					// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table name is not user input
         	"SELECT * FROM {$scsz_table_name} WHERE scid = %d",
         	$scid
     		)
@@ -150,7 +150,7 @@ $scsz_update_flag = ! empty($scid);
 
 					echo '<div id="setting-error-settings_updated" class="error settings-error notice is-dismissible"><p><strong>'.esc_html__('It seems that the update has already been done. Please update the screen, enter the content again, and update again.', 'sc-simple-zazzle').'</strong></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">'.'Hide this notification.'.'</span></button></div>';
 				} else {
-					// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+					// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table name is not user input and simple admin query, no caching needed
 					$wpdb->update($scsz_table_name, array(
 						'title' => $scsz_feed_title,
 						'country' => $scsz_country,
@@ -186,10 +186,10 @@ $scsz_update_flag = ! empty($scid);
 		} else { // 新規
 
 			// 新しいscidを発行
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table name is not user input and simple admin query, no caching needed
 			$scsz_max_id = $wpdb->get_var("SELECT max(`scid`) FROM wp_scsz_table;");
 			$scid = $scsz_max_id + 1;
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table name is not user input and simple admin query, no caching needed
 			$wpdb->insert($scsz_table_name, array(
 				'scid' => $scid,
 				'country' => $scsz_country,
@@ -226,11 +226,10 @@ $scsz_update_flag = ! empty($scid);
 function scsz_set_feed_info($wpdb, $scsz_table_name, $scid){
 	$scsz_table_name = esc_sql($wpdb->prefix . 'sc_simple_zazzle_table');
 
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table name is not user input and simple admin query, no caching needed
 	$scsz_feed_settings = $wpdb->get_results(
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
     $wpdb->prepare(
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table name is not user input
         "SELECT * FROM {$scsz_table_name} WHERE scid = %d",
         $scid
     )

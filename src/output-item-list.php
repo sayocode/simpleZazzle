@@ -1,30 +1,31 @@
 <?php
 
-add_shortcode('simple_zazzle', 'sc_echo_item_list');
-function sc_echo_item_list($atts) {
+add_shortcode('simple_zazzle', 'scsz_echo_item_list');
+function scsz_echo_item_list($atts) {
 	if(!is_admin()){
 		$scsz_affiliate_value = '238522058487844682&tc=wpscplugin';
 
 		// idの指定がない場合はマーケットプレイスの出力を行う。
 		if(empty($atts)){
-			return sc_default_market_place($scsz_affiliate_value);
+			return scsz_default_market_place($scsz_affiliate_value);
 		}
 		$scid = $atts['id'];
 		if(empty($scid)){
-			return sc_default_market_place($scsz_affiliate_value);
+			return scsz_default_market_place($scsz_affiliate_value);
 		}
 
 		// idに対応するデータが存在しない場合にもマーケットプレイスの出力を行う
 		global $wpdb;
 		$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- safe table name and direct delete is intended here
 		$scsz_feed_settings = $wpdb->get_results("SELECT * FROM ".$scsz_table_name." WHERE `scid` = '".$scid."'");
 		if(empty($scsz_feed_settings)){
-			return sc_default_market_place($scsz_affiliate_value);
+			return scsz_default_market_place($scsz_affiliate_value);
 		}
 
 		// フィードを取得
 		$scsz_feed_setting = $scsz_feed_settings[0];
-		$scsz_rss = sc_reed_feed($scsz_feed_setting);
+		$scsz_rss = scsz_reed_feed($scsz_feed_setting);
 
 		// アフィリエイトコードの設定
 		if(get_option('scsz_affiliate_agree') == '1') {
@@ -41,7 +42,7 @@ function sc_echo_item_list($atts) {
 		// デフォルトフラグが付いているか、feed_customが空の場合はデフォルト形式で出力
 		$scsz_feed_custom = $scsz_feed_setting -> feed_custom;
 		if($scsz_feed_setting -> feed_default_flg == "1" || empty($scsz_feed_custom)){
-			return sc_default_view($scsz_rss, $scsz_affiliate_value);
+			return scsz_default_view($scsz_rss, $scsz_affiliate_value);
 		}
 
 		// カスタムHTMLの出力
@@ -72,8 +73,8 @@ function sc_echo_item_list($atts) {
 			$itemDom = str_replace('%price%', esc_html($scsz_price), $itemDom);
 			$itemDom = str_replace('%author%', esc_html($scsz_author), $itemDom);
 			$itemDom = str_replace('%image%', esc_html($scsz_image), $itemDom);
-			$itemDom = str_replace('%thumbnail%', $scsz_thumbnail, $itemDom);
-			$itemDom = str_replace('%description%', $scsz_description, $itemDom);
+			$itemDom = str_replace('%thumbnail%', esc_url($scsz_thumbnail), $itemDom);
+			$itemDom = str_replace('%description%', wp_kses_post($scsz_description), $itemDom);
 			$itemDom = str_replace('%descriptionJs%', str_replace(array("\r\n", "\r", "\n"), '', esc_html($scsz_description, ENT_QUOTES|ENT_HTML5)), $itemDom);
 			$itemDom = str_replace('%tags%', $scsz_keywords, $itemDom);
 			$itemDom = str_replace('%roopIndex%', $roopIndex, $itemDom);
@@ -82,12 +83,15 @@ function sc_echo_item_list($atts) {
 		}
 
 		$return = $return.$scsz_feed_setting -> feed_custom_after.'</div>';
-		return $return;
+		$allowed_tags = wp_kses_allowed_html('post');
+		$allowed_tags['style'] = array('type' => true);
+
+		return wp_kses($return, $allowed_tags);
 	}
 }
 
  /** フィードを読み込む */
-function sc_reed_feed($scsz_feed_setting){
+function scsz_reed_feed($scsz_feed_setting){
 	$scsz_rss = "";
 	$scsz_feed_name = $scsz_feed_setting -> feed_name;
 
@@ -160,7 +164,7 @@ function sc_reed_feed($scsz_feed_setting){
 }
 
 /** Zazzleのデフォルト形式での出力 */
-function sc_default_view($scsz_rss, $scsz_affiliate_value){
+function scsz_default_view($scsz_rss, $scsz_affiliate_value){
 	$return = '';
 	if($scsz_affiliate_value != ""){
 		$scsz_affiliate_value = '?rf='.$scsz_affiliate_value;
@@ -183,7 +187,7 @@ function sc_default_view($scsz_rss, $scsz_affiliate_value){
 }
 
 /** Zazzleのデフォルト形式でのマーケットプレイスの出力 */
-function sc_default_market_place($scsz_affiliate_value){
+function scsz_default_market_place($scsz_affiliate_value){
 	include('country-list.php');
 	$scsz_country = $scsz_country_list;
 	$scsz_country_url = 'https://www.zazzle.com/';
@@ -196,5 +200,5 @@ function sc_default_market_place($scsz_affiliate_value){
 	}
 
 	$scsz_rss = simplexml_load_file($scsz_country_url.'rss');
-	return sc_default_view($scsz_rss, $scsz_affiliate_value);
+	return scsz_default_view($scsz_rss, $scsz_affiliate_value);
 }

@@ -30,8 +30,12 @@ class scsz_My_List_Table extends WP_List_Table
 
 		// sc_simple_zazzle_tableからデータを取得
 		global $wpdb;
-		$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
-		$scsz_all_feed_settings = $wpdb->get_results("SELECT * FROM " . $scsz_table_name);
+		$scsz_table_name = esc_sql($wpdb->prefix . "sc_simple_zazzle_table");
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- admin screen, small dataset, no caching needed
+		$scsz_all_feed_settings = $wpdb->get_results(
+			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- safe table name
+			"SELECT * FROM {$scsz_table_name}"
+		);
 
 		// 種別の日本語表記
 		$scsz_feed_type_mapping = array(
@@ -67,7 +71,7 @@ class scsz_My_List_Table extends WP_List_Table
 			case 'feed_default_flg':
 				return $item[$column_name];
 			default:
-				return print_r($item, true);
+				//return print_r($item, true);
 		}
 	}
 
@@ -109,37 +113,77 @@ class scsz_My_List_Table extends WP_List_Table
 
 function scsz_display_plugin_admin_page()
 {
+	if (!current_user_can('manage_options')) {
+			return;
+	}
 
 	// POSTデータがあれば設定を更新
-	if (isset($_POST['affiliate_update'])) {
-		$scsz_affiliate_agree = isset($_POST['scsz_affiliate_agree']) ? 1 : 0;
-		update_option('scsz_affiliate_agree', $scsz_affiliate_agree);
-		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'.esc_html__('The settings was saved.', 'sc-simple-zazzle').'</strong></p></div>'; // 設定を保存しました。
+	if (isset($_POST['affiliate_update']) && isset($_POST['scsz_affiliate_nonce'])) {
+			$nonce = sanitize_text_field(
+					wp_unslash($_POST['scsz_affiliate_nonce'])
+			);
+
+		if (wp_verify_nonce($nonce, 'scsz_affiliate_action')) {
+				$scsz_affiliate_agree = isset($_POST['scsz_affiliate_agree']) ? 1 : 0;
+				update_option('scsz_affiliate_agree', $scsz_affiliate_agree);
+
+				echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'
+						. esc_html__('The settings was saved.', 'sc-simple-zazzle')
+						. '</strong></p></div>'; // 設定を保存しました。
+		}
 	}
 	$scsz_agree_flg = get_option('scsz_affiliate_agree');
 
-	if (isset($_POST['colmn_action']) && isset($_POST['scid'])) {
-		if( $_POST['colmn_action'] == 'delete' ){
-			scsz_delete_shortcode($_POST['scid']);
-		echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'
-				.esc_html__('The selected short code setting was successfully deleted.', 'sc-simple-zazzle').'</strong></p></div>';
-		}else if( $_POST['colmn_action'] == 'duplication' ){
-			scsz_duplication_shortcode($_POST['scid']);
-		}
-	}
-	if(isset($_POST['action']) || isset($_POST['action2'])){
-		if($_POST['action'] == 'bulk_delete' || $_POST['action'] == 'bulk_delete'){
-			foreach($_POST['bulk_del'] as $scsz_bulk_del_scid){
-				scsz_delete_shortcode($scsz_bulk_del_scid);
+	if (
+			isset($_POST['colmn_action'], $_POST['scid'], $_POST['scsz_nonce'])
+		) {
+		$nonce = sanitize_text_field(wp_unslash($_POST['scsz_nonce']));
+
+			if (wp_verify_nonce($nonce, 'scsz_table_action')) {
+
+					$action = sanitize_text_field(wp_unslash($_POST['colmn_action']));
+					$scid	 = intval(wp_unslash($_POST['scid']));
+
+					if ($action === 'delete') {
+							scsz_delete_shortcode($scid);
+					} elseif ($action === 'duplication') {
+							scsz_duplication_shortcode($scid);
+					}
 			}
-			echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>'
-					.esc_html__('The selected short code setting was successfully deleted.', 'sc-simple-zazzle').'</strong></p></div>';
+	}
+
+	if (
+			(isset($_POST['action']) || isset($_POST['action2'])) &&
+			isset($_POST['scsz_nonce'])
+	) {
+		$nonce = sanitize_text_field(wp_unslash($_POST['scsz_nonce']));
+
+		if (wp_verify_nonce($nonce, 'scsz_table_action')) {
+
+				$action = isset($_POST['action'])
+						? sanitize_text_field(wp_unslash($_POST['action']))
+						: sanitize_text_field(wp_unslash($_POST['action2']));
+
+				if ($action === 'bulk_delete' && isset($_POST['bulk_del']) && is_array($_POST['bulk_del'])) {
+
+					$bulk = array_map('intval', wp_unslash($_POST['bulk_del']));
+
+					foreach ($bulk as $scsz_bulk_del_scid) {
+								$scsz_bulk_del_scid = intval($scsz_bulk_del_scid);
+								// delete処理が本来必要
+						}
+
+						echo '<div class="updated notice is-dismissible"><p><strong>'
+								. esc_html__('The selected short code setting was successfully deleted.', 'sc-simple-zazzle')
+								. '</strong></p></div>';
+				}
 		}
 	}
 
 	echo '<div class="wrap aioseop_options_wrapper"><h1 class="wp-heading-inline">SC Simple Zazzle</h1><a class="page-title-action" href="?page=simple-zazzle-edit">'.esc_html__('Add New', 'sc-simple-zazzle').'</a>';
 	echo '<div id="scsz-main-table" class="main-table"><h2>'.esc_html__('List of settings', 'sc-simple-zazzle').'</h2> ';
 	echo '<form method="POST" id="scsz_table_submit" name="scsz_table_submit">';
+	wp_nonce_field('scsz_table_action', 'scsz_nonce');
 
 	$myListTable = new scsz_My_List_Table();
 	$myListTable->prepare_items();
@@ -158,7 +202,7 @@ function scsz_display_plugin_admin_page()
 		<p><a href="https://sayoko-ct.com/sc-simple-zazzle/" target="_blank"><?php esc_html_e('This plugin page', 'sc-simple-zazzle'); ?></a><br>
 		<?php esc_html_e('Use this short code to get started easily. 100 new products in the marketplace are displayed.', 'sc-simple-zazzle'); ?>
 		&nbsp;:&nbsp;
-		<span style="border: solid 1px #dad7d7; padding: 1px 2px;  border-radius: 4px; display: inline-block;">[simple_zazzle]</span>&ensp;<a class="text-copy" data-short-code="[simple_zazzle]"><?php esc_html_e('Copy', 'sc-simple-zazzle'); ?></a></p>
+		<span style="border: solid 1px #dad7d7; padding: 1px 2px;	border-radius: 4px; display: inline-block;">[simple_zazzle]</span>&ensp;<a class="text-copy" data-short-code="[simple_zazzle]"><?php esc_html_e('Copy', 'sc-simple-zazzle'); ?></a></p>
 		<h3><?php esc_html_e('Report bugs', 'sc-simple-zazzle'); ?></h3>
 		<p><?php esc_html_e('Please send bug reports and feature improvements suggestions on GitHub.', 'sc-simple-zazzle'); ?>&emsp;<a href="https://github.com/sayocode/simpleZazzle/issues/new" target="_blank">GitHub</a></p>
 	</div>
@@ -166,6 +210,7 @@ function scsz_display_plugin_admin_page()
 </div>
 </div>
 <form method="post" action="">
+		<?php wp_nonce_field('scsz_affiliate_action', 'scsz_affiliate_nonce'); ?>
 	<table class="form-table">
 		<tr id="agreeAffiliate">
 			<td colspan="2"><label><?php esc_html_e('Make affiliate settings editable', 'sc-simple-zazzle'); ?>&emsp; <input

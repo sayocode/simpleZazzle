@@ -1,21 +1,20 @@
 <?php
 
-function myplugin_activate()
-{
-	// プラグインが有効となったときにアンインストール処理をフックする
-	register_uninstall_hook(__FILE__, 'myplugin_uninstall');
-}
-register_activation_hook(__FILE__, 'myplugin_activate');
+register_uninstall_hook(__FILE__, 'scsz_uninstall');
 
-function myplugin_uninstall()
+function scsz_uninstall()
 {
-	sc_uninstall_db();
+    scsz_uninstall_db();
 }
 
-function sc_uninstall_db()
+function scsz_uninstall_db()
 {
-	global $wpdb;
-	$scsz_table_name = $wpdb->prefix . 'sc_simple_zazzle_table';
-	$wpdb->query("DROP TABLE IF EXISTS ".$scsz_table_name);
-	delete_option("sc_simple_zazzle_db_version");
+    global $wpdb;
+
+    $scsz_table_name = $wpdb->prefix . 'sc_simple_zazzle_table';
+
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.SchemaChange, -- safe: removing plugin-specific table during uninstall, table name is static and not user input
+    $wpdb->query("DROP TABLE IF EXISTS " . $scsz_table_name);
+
+    delete_option("sc_simple_zazzle_db_version");
 }

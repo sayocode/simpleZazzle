@@ -20,7 +20,8 @@ class ScszWidget extends WP_Widget{
 			echo wp_kses_post($args['before_title']) . esc_html($instance['scsz_widget_title']) . wp_kses_post($args['after_title']);
 		}
 		if (!empty($instance['scsz_widget_scid'])){
-			echo sc_echo_item_list(array('id' => $instance['scsz_widget_scid']));
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- function returns escaped HTML
+			echo scsz_echo_item_list(array('id' => $instance['scsz_widget_scid']));
 		}
 		echo wp_kses_post($args['after_widget']);
 	}
@@ -41,7 +42,7 @@ class ScszWidget extends WP_Widget{
 		// sc_simple_zazzle_tableからデータを取得
 		global $wpdb;
 		$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, 	WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- safe table name and direct delete is intended here
 		$scsz_all_feed_settings = $wpdb->get_results("SELECT * FROM " . $scsz_table_name);
 
 		// アイテム
