@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 scsz_create_tables();
 
 function scsz_create_tables()

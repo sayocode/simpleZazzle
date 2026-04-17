@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 $scsz_country_list = array(
 	'australia' => array(
 		'url' => 'https://www.zazzle.com.au/',

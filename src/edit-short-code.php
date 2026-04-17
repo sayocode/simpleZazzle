@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if (!function_exists('scsz_get_post_text')) {
     function scsz_get_post_text($key, $default = '') {

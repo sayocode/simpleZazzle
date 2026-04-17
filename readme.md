@@ -2,14 +2,14 @@
 Contributors: sayocode  
 Donate link: https://sayoko-ct.com/donate/  
 Tags: zazzle, feed  
-Requires at least: 6.0  
-Tested up to: 6.1  
-Stable tag: 1.1.6 
+Requires at least: 6.9  
+Tested up to: 6.9  
+Stable tag: 2.0.0  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 Requires PHP: 7.0  
 Text Domain: sc-simple-zazzle  
-
+Short Description: Display Zazzle products easily with shortcodes and affiliate support.  
 
 ## Description  
 
@@ -78,7 +78,10 @@ OR…
 1. Main screen.  
 2. Screen to edit Zazzle information.  
 
-## Changelog    
+## Changelog  
+
+### 2.0.0
+Solved the security problem  
 
 ### 1.1.6  
 Compatible with WordPress version 6.0.  

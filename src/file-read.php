@@ -1,13 +1,43 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 function scsz_file_read()
-{ // スタイルシート
-	wp_enqueue_style('sc_file_read', plugins_url('../files/szStyle.css', __FILE__));
-    wp_enqueue_script( array( 'sack' ));
-	wp_enqueue_script('szScriptjs', plugins_url('../files/szScript.js', __FILE__));
+{
+	$version = '2.0.0'; // プラグインバージョンに合わせる
 
-    if(isset($_GET['page']) && $_GET['page'] == 'simple-zazzle-edit'){
-        wp_enqueue_script('szEditPageScriptjs', plugins_url('../files/scEditPageScript.js', __FILE__));
-    }
+	// スタイル
+	wp_enqueue_style(
+		'scsz-style',
+		plugins_url('../files/szStyle.css', __FILE__),
+		array(),
+		$version
+	);
+
+	// スクリプト（共通）
+	wp_enqueue_script(
+		'scsz-script',
+		plugins_url('../files/szScript.js', __FILE__),
+		array('jquery'),
+		$version,
+		true // フッター読み込み
+	);
+
+	// sack（必要なら）
+	wp_enqueue_script('sack');
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- safe admin page check
+	$page = isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : '';
+
+	if ($page === 'simple-zazzle-edit') {
+		wp_enqueue_script(
+			'scsz-edit-script',
+			plugins_url('../files/scEditPageScript.js', __FILE__),
+			array('jquery'),
+			$version,
+			true
+		);
+	}
 }
-add_action('admin_head', 'scsz_file_read');
+add_action('admin_enqueue_scripts', 'scsz_file_read');

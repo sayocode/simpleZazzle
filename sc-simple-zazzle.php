@@ -4,7 +4,7 @@ Plugin Name: SC Simple Zazzle
 Plugin URI: https://sayoko-ct.com/sc-simple-zazzle/
 Description: This is a plug-in that displays products sold on Zazzle.Products listed in the store and marketplace can be easily output with short codes.Affiliate settings are also possible.
 Author: sayocode
-Version: 1.1.6
+Version: 2.0.0
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Author URI: https://sayoko-ct.com/
@@ -14,15 +14,11 @@ Domain Path: /languages
 */
 
 /*  Copyright 2019 sayoko (email : communicate@sayoko-ct.com) */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 add_action( 'admin_menu', 'scsz_add_plugin_admin_menu' );
-add_action('plugins_loaded', function() {
-	load_plugin_textdomain(
-		'sc-simple-zazzle',
-		false,
-		dirname(plugin_basename(__FILE__)) . '/languages'
-	);
-});
 
 function scsz_add_plugin_admin_menu() {
 	add_menu_page(

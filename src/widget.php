@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 // 商品一覧をウィジェットに出力できるようにする
 class ScszWidget extends WP_Widget{
@@ -41,8 +44,8 @@ class ScszWidget extends WP_Widget{
 
 		// sc_simple_zazzle_tableからデータを取得
 		global $wpdb;
-		$scsz_table_name = $wpdb->prefix . "sc_simple_zazzle_table";
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- safe table name and direct delete is intended here
+		$scsz_table_name = esc_sql($wpdb->prefix . "sc_simple_zazzle_table");
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table name is safe (no user input), admin-only small query
 		$scsz_all_feed_settings = $wpdb->get_results("SELECT * FROM " . $scsz_table_name);
 
 		// アイテム
